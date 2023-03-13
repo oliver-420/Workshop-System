@@ -24,3 +24,21 @@ Mechaniker können ihre Arbeitsstunden für jeden Auftrag erfassen und speichern
 === Rechnungserstellung: 
 Sobald ein Auftrag fertiggestellt ist, wird automatisch eine Rechnung generiert, die alle Kosten enthält. Die Rechnung kann als PDF-Export heruntergeladen werden.
 
+== Planung
+
+=== Erstellung eines Datenmodells:
+Es sollen Klassen erstellt werden, die das Datenmodell für das Werkstattsystem darstellen. Dazu gehören Klassen für Aufträge, Kunden, Fahrzeuge und Teile. Jede Klasse soll die notwendigen Attribute und Methoden enthalten, um die Daten effektiv zu verwalten.
+
+=== Erstellung einer Datenbank:
+Eine relationale Datenbank soll verwendet werden, um die Daten persistent zu speichern.
+
+=== Implementierung der Benutzeroberfläche: 
+Die Benutzeroberfläche könnte mit einem Java Framework wie JavaFX erstellt werden, um eine benutzerfreundliche Oberfläche zu bieten. Es solle eine Möglichkeit geben, um neue Aufträge zu erstellen, bestehende Aufträge anzuzeigen und zu bearbeiten sowie Kunden- und Fahrzeuginformationen zu speichern und zu verwalten.
+
+=== Implementierung der Rechnungserstellung: 
+Sobald ein Auftrag abgeschlossen ist, solle das Werkstattsystem automatisch eine Rechnung generieren und als PDF-Export herunterladbar machen. Hierfür könnte eine Bibliothek wie iText verwendet werden.
+
+=== Tests: 
+Es sollen umfassende Tests durchgeführt werden, um sicherzustellen, dass das Werkstattsystem fehlerfrei funktioniert.
+
+
