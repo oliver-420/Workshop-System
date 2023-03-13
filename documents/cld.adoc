@@ -1,0 +1,66 @@
+= Klassendiagramm
+
+ 1.Version
+
+[plantuml, target=diagram-classes, format=png]
+....
+class Task {
+    id : long
+    startDate : dateTime
+    hours : int
+
+}
+
+class Mechanic {
+    id : long
+    hourlyPay : double
+}
+
+class CustomerCard{
+    id : long
+    joinedAt : DateTime
+    firstName : string
+    lastName : string
+    discount : double
+}
+
+class Part {
+    id : long
+    name : string
+    price : double
+    additionalCharge : double
+}
+
+class Invoice {
+    date : dateTime
+    amount : double
+
+}
+
+class Car {
+    id : long
+    model : string
+    manufactorer : string
+    productionYear : int
+    registrationYear : int
+    owner : string
+    fuel : Fuel
+    numberPlate : string
+}
+
+enum Fuel {
+    Benzin
+    Diesel
+    Hybrid
+    Elektro
+}
+
+Mechanic "1" -- "*" Task
+Task "1" -- "*" Part
+Task "1"--"1" Invoice
+Task "1"--"1" Car
+Car -- Fuel
+CustomerCard "1"--"*" Invoice
+
+
+....
