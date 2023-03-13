@@ -1,0 +1,26 @@
+= WorkshopSystem
+
+== Projektüberblick
+
+Das Werkstattsystem ist eine Softwareanwendung, die es einer Werkstatt ermöglicht, Aufträge anzunehmen und zu verwalten. Jeder Auftrag beinhaltet Informationen über das Auto des Kunden, den Kunden selbst, das Problem beim Auto, die benötigten Teile und die Arbeitszeit des Mechanikers. Sobald ein Auftrag fertiggestellt ist, wird automatisch eine Rechnung generiert, die die Kosten der Teile, die Arbeitsstunden des Mechanikers sowie den Mechanikertarif und gegebenenfalls einen Rabatt für Kundenkarteninhaber enthält.
+
+== Features
+
+=== Auftragsverwaltung: 
+Mechaniker können neue Aufträge erstellen und bestehende Aufträge bearbeiten.
+
+=== Kundenverwaltung: 
+Kundeninformationen wie Name, Adresse und Kundennummer können gespeichert und verwaltet werden.
+
+=== Fahrzeugverwaltung:
+Informationen über jedes Auto, das in der Werkstatt repariert wird, können erfasst und gespeichert werden.
+
+=== Teileverwaltung: 
+Die Anwendung kann Informationen über die benötigten Teile speichern und verwalten.
+
+=== Arbeitszeitverwaltung:
+Mechaniker können ihre Arbeitsstunden für jeden Auftrag erfassen und speichern.
+
+=== Rechnungserstellung: 
+Sobald ein Auftrag fertiggestellt ist, wird automatisch eine Rechnung generiert, die alle Kosten enthält. Die Rechnung kann als PDF-Export heruntergeladen werden.
+
