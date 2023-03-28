@@ -53,4 +53,5 @@ public class TaskPartMapping {
     public Double get_price() {
         return _price;
     }
+
 }
