@@ -1,40 +1,54 @@
 = Klassendiagramm
 
- 1.Version
+ 2.Version
 
 [plantuml, target=diagram-classes, format=png]
 ....
 class Task {
     id : long
+    name : string
+    description : string
     startDate : dateTime
     hours : int
-
+    mechanic : Mechanic
 }
 
 class Mechanic {
     id : long
+    firstName : string
+    lastName : string
     hourlyPay : double
+}
+
+class Customer {
+    id : long
+    dateOfBirth : DateTime
+    firstName : string
+    lastName : string
+    customerCard : CustomerCard
 }
 
 class CustomerCard{
     id : long
     joinedAt : DateTime
-    firstName : string
-    lastName : string
     discount : double
 }
 
 class Part {
     id : long
     name : string
+    manufactorer : string
+    compatibleCars : Car
     price : double
     additionalCharge : double
+    count : int
 }
 
 class Invoice {
     date : dateTime
     amount : double
-
+    task : Task
+    isPaid : boolean
 }
 
 class Car {
@@ -44,23 +58,31 @@ class Car {
     productionYear : int
     registrationYear : int
     owner : string
-    fuel : Fuel
+    fuel : string
     numberPlate : string
 }
 
-enum Fuel {
-    Benzin
-    Diesel
-    Hybrid
-    Elektro
+class compatibleCars {
+    car : Car
+    part : Part
 }
 
+class TaskPartMapping {
+    task : Task
+    part : Part
+    partCount : int
+    price : double
+}
+
+Part "*" -- "*" Car
+(Car, Part) .. compatibleCars
+CustomerCard "1" -- "1" Customer
 Mechanic "1" -- "*" Task
-Task "1" -- "*" Part
+Task "*" -- "*" Part
+(Task, Part) .. TaskPartMapping
 Task "1"--"1" Invoice
+Customer "1"--"*" Invoice
 Task "1"--"1" Car
-Car -- Fuel
-CustomerCard "1"--"*" Invoice
 
 
 ....
