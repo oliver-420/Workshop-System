@@ -10,7 +10,6 @@ class Task {
     description : string
     startDate : dateTime
     hours : int
-    mechanic : Mechanic
 }
 
 class Mechanic {
@@ -63,21 +62,30 @@ class Car {
 }
 
 class compatibleCars {
+    id : long
     car : Car
     part : Part
 }
 
 class TaskPartMapping {
+    id : long
     task : Task
     part : Part
     partCount : int
     price : double
 }
 
+class MechanicTaskMapping {
+    id : long
+    mechanic : Mechanic
+    task : Task
+}
+
 Part "*" -- "*" Car
 (Car, Part) .. compatibleCars
 CustomerCard "1" -- "1" Customer
-Mechanic "1" -- "*" Task
+Mechanic "*" -- "*" Task
+(Mechanic, Task) .. MechanicTaskMapping
 Task "*" -- "*" Part
 (Task, Part) .. TaskPartMapping
 Task "1"--"1" Invoice
