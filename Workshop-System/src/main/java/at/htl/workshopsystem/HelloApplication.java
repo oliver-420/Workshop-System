@@ -1,13 +1,18 @@
 package at.htl.workshopsystem;
 
+import at.htl.workshopsystem.controller.database.MechanicRepository;
+import at.htl.workshopsystem.model.Mechanic;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import oracle.jdbc.replay.driver.ReplayStatisticsMBeanImpl;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class HelloApplication extends Application {
     @Override
@@ -18,19 +23,8 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            //Class.forName("oracle.jdbc.OracleDriver");
-
-            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@student.cloud.htl-leonding.ac.at:31521:ora19db\n", "IF200210", "oracle");
-            if (conn != null) {
-                System.out.println("Connected");
-            }
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        System.out.println("Hello World");
+        MechanicRepository mechanicRepository = new MechanicRepository();
+        System.out.println(mechanicRepository.insert(new Mechanic("Test", 10.0)).get_hourlyWage());
     }
 
     public static void main(String[] args) {

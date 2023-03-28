@@ -14,8 +14,7 @@ class Task {
 
 class Mechanic {
     id : long
-    firstName : string
-    lastName : string
+    name : string
     hourlyPay : double
 }
 
