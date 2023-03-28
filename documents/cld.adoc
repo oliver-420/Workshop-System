@@ -21,9 +21,9 @@ class Mechanic {
 
 class Customer {
     id : long
-    dateOfBirth : DateTime
-    firstName : string
-    lastName : string
+    name : string
+    phoneNumber : string
+    email : string
     customerCard : CustomerCard
 }
 
@@ -34,20 +34,21 @@ class CustomerCard{
 }
 
 class Part {
-    id : long
+    serialNumber : string
     name : string
     manufactorer : string
-    compatibleCars : Car
     price : double
     additionalCharge : double
     count : int
 }
 
 class Invoice {
+    id : long
     date : dateTime
     amount : double
     task : Task
     isPaid : boolean
+    customer : Customer
 }
 
 class Car {
