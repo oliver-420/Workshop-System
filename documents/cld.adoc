@@ -63,18 +63,21 @@ class Car {
 }
 
 class compatibleCars {
+    id : long
     car : Car
     part : Part
 }
 
 class TaskPartMapping {
+    id : long
     task : Task
     part : Part
     partCount : int
     price : double
 }
 
-class Work {
+class MechanicTaskMapping {
+    id : long
     mechanic : Mechanic
     task : Task
 }
@@ -83,7 +86,7 @@ Part "*" -- "*" Car
 (Car, Part) .. compatibleCars
 CustomerCard "1" -- "1" Customer
 Mechanic "*" -- "*" Task
-(Mechanic, Task) .. Work
+(Mechanic, Task) .. MechanicTaskMapping
 Task "*" -- "*" Part
 (Task, Part) .. TaskPartMapping
 Task "1"--"1" Invoice
