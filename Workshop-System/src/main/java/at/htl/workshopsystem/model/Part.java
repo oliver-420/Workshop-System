@@ -6,15 +6,15 @@ public class Part {
     private String _manufacturer;
     private double _price;
     private double _additionalCharge;
-    private int _count;
+    private int _quantity;
 
-    public Part(String serialNumber, String name, String manufacturer, double price, double additionalCharge, int count) {
+    public Part(String serialNumber, String name, String manufacturer, double price, double additionalCharge, int quantity) {
         set_serialNumber(serialNumber);
         set_name(name);
         set_manufacturer(manufacturer);
         set_price(price);
         set_additionalCharge(additionalCharge);
-        set_count(count);
+        set_quantity(quantity);
     }
 
     public void set_serialNumber(String serialNumber) {
@@ -37,8 +37,8 @@ public class Part {
         _additionalCharge = additionalCharge;
     }
 
-    public void set_count(int count) {
-        _count = count;
+    public void set_quantity(int quantity) {
+        _quantity = quantity;
     }
 
     public String get_serialNumber() {
@@ -61,7 +61,7 @@ public class Part {
         return _additionalCharge;
     }
 
-    public int get_count() {
-        return _count;
+    public int get_quantity() {
+        return _quantity;
     }
 }

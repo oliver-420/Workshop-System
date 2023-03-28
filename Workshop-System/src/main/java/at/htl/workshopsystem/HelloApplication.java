@@ -19,7 +19,7 @@ public class HelloApplication extends Application {
         stage.show();
 
         try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+            //DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
             //Class.forName("oracle.jdbc.OracleDriver");
 
             Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@student.cloud.htl-leonding.ac.at:31521:ora19db\n", "IF200210", "oracle");

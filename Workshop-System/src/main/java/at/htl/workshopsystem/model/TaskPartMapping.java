@@ -4,13 +4,13 @@ public class TaskPartMapping {
     private Long _id;
     private Task _task;
     private Part _part;
-    private int _partCount;
+    private int _quantity;
     private Double _price;
 
-    public TaskPartMapping(Task task, Part part, int partCount, Double price) {
+    public TaskPartMapping(Task task, Part part, int quantity, Double price) {
         set_task(task);
         set_part(part);
-        set_partCount(partCount);
+        set_quantity(quantity);
         set_price(price);
     }
 
@@ -26,8 +26,8 @@ public class TaskPartMapping {
         _part = part;
     }
 
-    public void set_partCount(int partCount) {
-        _partCount = partCount;
+    public void set_quantity(int quantity) {
+        _quantity = quantity;
     }
 
     public void set_price(Double price) {
@@ -46,8 +46,8 @@ public class TaskPartMapping {
         return _part;
     }
 
-    public int get_partCount() {
-        return _partCount;
+    public int get_quantity() {
+        return _quantity;
     }
 
     public Double get_price() {
