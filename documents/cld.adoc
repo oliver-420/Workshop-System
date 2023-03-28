@@ -74,10 +74,16 @@ class TaskPartMapping {
     price : double
 }
 
+class Work {
+    mechanic : Mechanic
+    task : Task
+}
+
 Part "*" -- "*" Car
 (Car, Part) .. compatibleCars
 CustomerCard "1" -- "1" Customer
-Mechanic "1" -- "*" Task
+Mechanic "*" -- "*" Task
+(Mechanic, Task) .. Work
 Task "*" -- "*" Part
 (Task, Part) .. TaskPartMapping
 Task "1"--"1" Invoice
