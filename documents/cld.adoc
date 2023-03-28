@@ -10,7 +10,6 @@ class Task {
     description : string
     startDate : dateTime
     hours : int
-    mechanic : Mechanic
 }
 
 class Mechanic {
