@@ -1,14 +1,14 @@
 package at.htl.workshopsystem.model;
 
 public class Car {
-    private Long _id;
-    private String _model;
-    private String _manufacturer;
-    private int _productionYear;
-    private int _registrationYear;
-    private String _owner;
-    private String _fuel;
-    private String _numberPlate;
+    private Long id;
+    private String model;
+    private String manufacturer;
+    private int productionYear;
+    private int registrationYear;
+    private String owner;
+    private String fuel;
+    private String numberPlate;
 
     public Car(String model, String manufacturer, int productionYear, int registrationYear, String owner, String fuel, String numberPlate) {
         set_model(model);
@@ -20,65 +20,63 @@ public class Car {
         set_numberPlate(numberPlate);
     }
     public void set_id(Long id) {
-        _id = id;
+        this.id = id;
     }
 
     public void set_model(String model) {
-        _model = model;
+        this.model = model;
     }
 
     public void set_manufacturer(String manufacturer) {
-        _manufacturer = manufacturer;
+        this.manufacturer = manufacturer;
     }
 
-    public void set_productionYear(int productionYear) {
-        _productionYear = productionYear;
-    }
+    public void set_productionYear(int productionYear) { this.productionYear = productionYear; }
 
     public void set_registrationYear(int registrationYear) {
-        _registrationYear = registrationYear;
+        this.registrationYear = registrationYear;
     }
 
     public void set_owner(String owner) {
-        _owner = owner;
+        this.owner = owner;
     }
 
     public void set_fuel(String fuel) {
-        _fuel = fuel;
+        this.fuel = fuel;
     }
 
     public void set_numberPlate(String numberPlate) {
-        _numberPlate = numberPlate;
+        this.numberPlate = numberPlate;
     }
 
     public Long get_id() {
-        return _id;
+        return this.id;
     }
 
     public String get_model() {
-        return _model;
+        return this.model;
     }
 
     public String get_manufacturer() {
-        return _manufacturer;
+        return this.manufacturer;
     }
     public int get_productionYear() {
-        return _productionYear;
+        return this.productionYear;
     }
 
     public int get_registrationYear() {
-        return _registrationYear;
+        return this.registrationYear;
     }
 
     public String get_owner() {
-        return _owner;
+        return this.owner;
     }
 
     public String get_fuel() {
-        return _fuel;
+        return this.fuel;
     }
 
     public String get_numberPlate() {
-        return _numberPlate;
+        return this.numberPlate;
     }
 }

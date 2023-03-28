@@ -1,9 +1,9 @@
 package at.htl.workshopsystem.model;
 
 public class Mechanic {
-    private long _id;
-    private String _name;
-    private Double _hourlyWage;
+    private long id;
+    private String name;
+    private Double hourlyWage;
 
     public Mechanic(String name, Double hourlyWage) {
         set_name(name);
@@ -11,26 +11,26 @@ public class Mechanic {
     }
 
     public void set_id(long id) {
-        _id = id;
+        this.id = id;
     }
 
     public void set_name(String name) {
-        _name = name;
+        this.name = name;
     }
 
     public void set_hourlyWage(Double hourlyWage) {
-        _hourlyWage = hourlyWage;
+        this.hourlyWage = hourlyWage;
     }
 
     public long get_id() {
-        return _id;
+        return this.id;
     }
 
     public String get_name() {
-        return _name;
+        return this.name;
     }
 
     public Double get_hourlyWage() {
-        return _hourlyWage;
+        return this.hourlyWage;
     }
 }

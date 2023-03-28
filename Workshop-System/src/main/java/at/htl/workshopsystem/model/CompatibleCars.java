@@ -1,9 +1,9 @@
 package at.htl.workshopsystem.model;
 
 public class CompatibleCars {
-    private Long _id;
-    private Car _car;
-    private Part _part;
+    private Long id;
+    private Car car;
+    private Part part;
 
     public CompatibleCars(Car car, Part part) {
         set_car(car);
@@ -11,26 +11,26 @@ public class CompatibleCars {
     }
 
     public void set_id(Long id) {
-        _id = id;
+        this.id = id;
     }
 
     public void set_car(Car car) {
-        _car = car;
+        this.car = car;
     }
 
     public void set_part(Part part) {
-        _part = part;
+        this.part = part;
     }
 
     public Long get_id() {
-        return _id;
+        return this.id;
     }
 
     public Car get_car() {
-        return _car;
+        return this.car;
     }
 
     public Part get_part() {
-        return _part;
+        return this.part;
     }
 }
