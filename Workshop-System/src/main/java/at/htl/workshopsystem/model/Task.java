@@ -3,11 +3,11 @@ package at.htl.workshopsystem.model;
 import java.time.LocalDateTime;
 
 public class Task {
-    private Long _id;
-    private String _name;
-    private String _description;
-    private LocalDateTime _startDate;
-    private int _duration;
+    private Long id;
+    private String name;
+    private String description;
+    private LocalDateTime startDate;
+    private int duration;
 
     public Task(String name, String description, LocalDateTime startDate, int duration) {
         set_name(name);
@@ -17,42 +17,42 @@ public class Task {
     }
 
     public void set_id(Long id) {
-        _id = id;
+        this.id = id;
     }
 
     public void set_name(String name) {
-        _name = name;
+        this.name = name;
     }
 
     public void set_description(String description) {
-        _description = description;
+        this.description = description;
     }
 
     public void set_startDate(LocalDateTime startDate) {
-        _startDate = startDate;
+        this.startDate = startDate;
     }
 
     public void set_duration(int duration) {
-        _duration = duration;
+        this.duration = duration;
     }
 
     public Long get_id() {
-        return _id;
+        return this.id;
     }
 
     public String get_name() {
-        return _name;
+        return this.name;
     }
 
     public String get_description() {
-        return _description;
+        return this.description;
     }
 
     public LocalDateTime get_startDate() {
-        return _startDate;
+        return this.startDate;
     }
 
     public int get_duration() {
-        return _duration;
+        return this.duration;
     }
 }

@@ -1,9 +1,9 @@
 package at.htl.workshopsystem.model;
 
 public class MechanicTaskMapping {
-    private Long _id;
-    private Mechanic _mechanic;
-    private Task _task;
+    private Long id;
+    private Mechanic mechanic;
+    private Task task;
 
     public MechanicTaskMapping(Mechanic mechanic, Task task) {
         set_mechanic(mechanic);
@@ -11,26 +11,26 @@ public class MechanicTaskMapping {
     }
 
     public void set_id(Long id) {
-        _id = id;
+        this.id = id;
     }
 
     public void set_mechanic(Mechanic mechanic) {
-        _mechanic = mechanic;
+        this.mechanic = mechanic;
     }
 
     public void set_task(Task task) {
-        _task = task;
+        this.task = task;
     }
 
     public Long get_id() {
-        return _id;
+        return this.id;
     }
 
     public Mechanic get_mechanic() {
-        return _mechanic;
+        return this.mechanic;
     }
 
     public Task get_task() {
-        return _task;
+        return this.task;
     }
 }

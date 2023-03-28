@@ -3,11 +3,11 @@ package at.htl.workshopsystem.model;
 import java.time.LocalDateTime;
 
 public class Invoice {
-    private Long _id;
-    private LocalDateTime _date;
-    private double _price;
-    private Task _task;
-    private Boolean _isPaid;
+    private Long id;
+    private LocalDateTime date;
+    private double price;
+    private Task task;
+    private Boolean isPaid;
 
     public Invoice(LocalDateTime date, double price, Task task, Boolean isPaid) {
         set_date(date);
@@ -17,42 +17,42 @@ public class Invoice {
     }
 
     public void set_id(Long id) {
-        _id = id;
+        this.id = id;
     }
 
     public void set_date(LocalDateTime date) {
-        _date = date;
+        this.date = date;
     }
 
     public void set_price(double price) {
-        _price = price;
+        this.price = price;
     }
 
     public void set_task(Task task) {
-        _task = task;
+        this.task = task;
     }
 
     public void set_isPaid(Boolean isPaid) {
-        _isPaid = isPaid;
+        this.isPaid = isPaid;
     }
 
     public Long get_id() {
-        return _id;
+        return this.id;
     }
 
     public LocalDateTime get_date() {
-        return _date;
+        return this.date;
     }
 
     public double get_price() {
-        return _price;
+        return this.price;
     }
 
     public Task get_task() {
-        return _task;
+        return this.task;
     }
 
     public Boolean get_isPaid() {
-        return _isPaid;
+        return this.isPaid;
     }
 }
