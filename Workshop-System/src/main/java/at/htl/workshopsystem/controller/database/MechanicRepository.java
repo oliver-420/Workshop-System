@@ -12,22 +12,12 @@ public class MechanicRepository {
     public Mechanic insert(Mechanic mechanic) {
         try (Connection connection = database.getConnection()) {
             String sql = "INSERT INTO MECHANIC (NAME, HOURLY_WAGE) VALUES (?,?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, mechanic.get_name());
             statement.setFloat(2, mechanic.get_hourlyWage().floatValue());
 
-            if (statement.executeUpdate() == 0) {
-                throw new SQLException("Update of MECHANIC failed, no rows affected");
-            }
-            try (ResultSet keys = statement.executeQuery()) {
-                if (keys.next()) {
-                    System.out.println(keys.getFloat(1));
-                    System.out.println(keys.getString(1));
-                } else {
-                    throw new SQLException("Insert into MECHANIC failed, no ID obtained");
-                }
-            }
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return mechanic;
