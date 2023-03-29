@@ -1,18 +1,18 @@
 package at.htl.workshopsystem.model;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class CustomerCard {
     private Long id;
-    private LocalDateTime joinedAt;
+    private Date joinedAt;
     private double discount;
 
-    public CustomerCard(LocalDateTime joinedAt, double discount) {
+    public CustomerCard(Date joinedAt, double discount) {
         setJoinedAt(joinedAt);
         setDiscount(discount);
     }
 
-    public CustomerCard(Long id, LocalDateTime joinedAt, double discount) {
+    public CustomerCard(Long id, Date joinedAt, double discount) {
         setId(id);
         setJoinedAt(joinedAt);
         setDiscount(discount);
@@ -26,11 +26,11 @@ public class CustomerCard {
         this.id = id;
     }
 
-    public LocalDateTime getJoinedAt() {
+    public Date getJoinedAt() {
         return joinedAt;
     }
 
-    public void setJoinedAt(LocalDateTime joinedAt) {
+    public void setJoinedAt(Date joinedAt) {
         this.joinedAt = joinedAt;
     }
 

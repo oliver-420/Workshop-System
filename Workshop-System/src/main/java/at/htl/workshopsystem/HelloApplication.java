@@ -1,18 +1,12 @@
 package at.htl.workshopsystem;
 
-import at.htl.workshopsystem.controller.database.MechanicRepository;
 import at.htl.workshopsystem.model.Mechanic;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import oracle.jdbc.replay.driver.ReplayStatisticsMBeanImpl;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class HelloApplication extends Application {
     @Override
