@@ -6,31 +6,37 @@ public class Mechanic {
     private Double hourlyWage;
 
     public Mechanic(String name, Double hourlyWage) {
-        set_name(name);
-        set_hourlyWage(hourlyWage);
+        setName(name);
+        setHourlyWage(hourlyWage);
     }
 
-    public void set_id(long id) {
+    public Mechanic(long id, String name, Double hourlyWage) {
         this.id = id;
-    }
-
-    public void set_name(String name) {
         this.name = name;
-    }
-
-    public void set_hourlyWage(Double hourlyWage) {
         this.hourlyWage = hourlyWage;
     }
 
-    public long get_id() {
-        return this.id;
+    public long getId() {
+        return id;
     }
 
-    public String get_name() {
-        return this.name;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Double get_hourlyWage() {
-        return this.hourlyWage;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getHourlyWage() {
+        return hourlyWage;
+    }
+
+    public void setHourlyWage(Double hourlyWage) {
+        this.hourlyWage = hourlyWage;
     }
 }

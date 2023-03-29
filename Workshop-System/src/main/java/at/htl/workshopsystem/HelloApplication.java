@@ -23,8 +23,21 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
+        Mechanic mechanic = new Mechanic("Test", 10.0);
         MechanicRepository mechanicRepository = new MechanicRepository();
-        System.out.println(mechanicRepository.insert(new Mechanic("Test", 10.0)).get_hourlyWage());
+        System.out.println(mechanicRepository.insert(mechanic).getId());
+
+        mechanic.setName("Test2");
+        mechanicRepository.update(mechanic);
+        System.out.println(mechanic.getName());
+
+        mechanicRepository.delete(1);
+
+        mechanicRepository.getAll().forEach(m -> System.out.println(m.getName() + m.getId()));
+
+        Mechanic mechanic1 = mechanicRepository.getById(19);
+
+        System.out.println(mechanic1.getId());
     }
 
     public static void main(String[] args) {
