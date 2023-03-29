@@ -8,49 +8,56 @@ public class Customer {
     private CustomerCard customerCard;
 
     public Customer(String name, String phoneNumber, String email, CustomerCard customerCard) {
-        set_name(name);
-        set_phoneNumber(phoneNumber);
-        set_email(email);
-        set_customerCard(customerCard);
+        setName(name);
+        setPhoneNumber(phoneNumber);
+        setEmail(email);
+        setCustomerCard(customerCard);
     }
 
-    public void set_id(Long id) {
+    public Customer(Long id, String name, String phoneNumber, String email) {
+        setId(id);
+        setName(name);
+        setPhoneNumber(phoneNumber);
+        setEmail(email);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void set_name(String name) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void set_phoneNumber(String phoneNumber) {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public void set_email(String email) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void set_customerCard(CustomerCard customerCard) {
+    public CustomerCard getCustomerCard() {
+        return customerCard;
+    }
+
+    public void setCustomerCard(CustomerCard customerCard) {
         this.customerCard = customerCard;
-    }
-
-    public Long get_id() {
-        return this.id;
-    }
-
-    public String get_name() {
-        return this.name;
-    }
-
-    public String get_phoneNumber() {
-        return this.phoneNumber;
-    }
-
-    public String get_email() {
-        return this.email;
-    }
-
-    public CustomerCard get_customerCard() {
-        return this.customerCard;
     }
 }

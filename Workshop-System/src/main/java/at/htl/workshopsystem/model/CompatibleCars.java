@@ -6,31 +6,37 @@ public class CompatibleCars {
     private Part part;
 
     public CompatibleCars(Car car, Part part) {
-        set_car(car);
-        set_part(part);
+        setCar(car);
+        setPart(part);
     }
 
-    public void set_id(Long id) {
+    public CompatibleCars(Long id, Car car, Part part) {
+        setId(id);
+        setCar(car);
+        setPart(part);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void set_car(Car car) {
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
         this.car = car;
     }
 
-    public void set_part(Part part) {
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
         this.part = part;
-    }
-
-    public Long get_id() {
-        return this.id;
-    }
-
-    public Car get_car() {
-        return this.car;
-    }
-
-    public Part get_part() {
-        return this.part;
     }
 }

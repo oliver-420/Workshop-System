@@ -6,31 +6,37 @@ public class MechanicTaskMapping {
     private Task task;
 
     public MechanicTaskMapping(Mechanic mechanic, Task task) {
-        set_mechanic(mechanic);
-        set_task(task);
+        setMechanic(mechanic);
+        setTask(task);
     }
 
-    public void set_id(Long id) {
+    public MechanicTaskMapping(Long id, Mechanic mechanic, Task task) {
+        setId(id);
+        setMechanic(mechanic);
+        setTask(task);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void set_mechanic(Mechanic mechanic) {
+    public Mechanic getMechanic() {
+        return mechanic;
+    }
+
+    public void setMechanic(Mechanic mechanic) {
         this.mechanic = mechanic;
     }
 
-    public void set_task(Task task) {
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
         this.task = task;
-    }
-
-    public Long get_id() {
-        return this.id;
-    }
-
-    public Mechanic get_mechanic() {
-        return this.mechanic;
-    }
-
-    public Task get_task() {
-        return this.task;
     }
 }
