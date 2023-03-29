@@ -8,31 +8,37 @@ public class CustomerCard {
     private double discount;
 
     public CustomerCard(LocalDateTime joinedAt, double discount) {
-        set_joinedAt(joinedAt);
-        set_discount(discount);
+        setJoinedAt(joinedAt);
+        setDiscount(discount);
     }
 
-    public void set_id(Long id) {
+    public CustomerCard(Long id, LocalDateTime joinedAt, double discount) {
+        setId(id);
+        setJoinedAt(joinedAt);
+        setDiscount(discount);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void set_joinedAt(LocalDateTime joinedAt) {
+    public LocalDateTime getJoinedAt() {
+        return joinedAt;
+    }
+
+    public void setJoinedAt(LocalDateTime joinedAt) {
         this.joinedAt = joinedAt;
     }
 
-    public void set_discount(double discount) {
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
         this.discount = discount;
-    }
-
-    public Long get_id() {
-        return this.id;
-    }
-
-    public LocalDateTime get_joinedAt() {
-        return this.joinedAt;
-    }
-
-    public double get_discount() {
-        return this.discount;
     }
 }

@@ -10,49 +10,57 @@ public class Invoice {
     private Boolean isPaid;
 
     public Invoice(LocalDateTime date, double price, Task task, Boolean isPaid) {
-        set_date(date);
-        set_price(price);
-        set_task(task);
-        set_isPaid(isPaid);
+        setDate(date);
+        setPrice(price);
+        setTask(task);
+        setPaid(isPaid);
     }
 
-    public void set_id(Long id) {
+    public Invoice(Long id, LocalDateTime date, double price, Task task, Boolean isPaid) {
+        setId(id);
+        setDate(date);
+        setPrice(price);
+        setTask(task);
+        setPaid(isPaid);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void set_date(LocalDateTime date) {
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public void set_price(double price) {
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public void set_task(Task task) {
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
         this.task = task;
     }
 
-    public void set_isPaid(Boolean isPaid) {
-        this.isPaid = isPaid;
+    public Boolean getPaid() {
+        return isPaid;
     }
 
-    public Long get_id() {
-        return this.id;
-    }
-
-    public LocalDateTime get_date() {
-        return this.date;
-    }
-
-    public double get_price() {
-        return this.price;
-    }
-
-    public Task get_task() {
-        return this.task;
-    }
-
-    public Boolean get_isPaid() {
-        return this.isPaid;
+    public void setPaid(Boolean paid) {
+        isPaid = paid;
     }
 }

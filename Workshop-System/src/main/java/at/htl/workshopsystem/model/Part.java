@@ -9,59 +9,61 @@ public class Part {
     private int quantity;
 
     public Part(String serialNumber, String name, String manufacturer, double price, double additionalCharge, int quantity) {
-        set_serialNumber(serialNumber);
-        set_name(name);
-        set_manufacturer(manufacturer);
-        set_price(price);
-        set_additionalCharge(additionalCharge);
-        set_quantity(quantity);
+        setSerialNumber(serialNumber);
+        setName(name);
+        setManufacturer(manufacturer);
+        setPrice(price);
+        setAdditionalCharge(additionalCharge);
+        setQuantity(quantity);
     }
 
-    public void set_serialNumber(String serialNumber) {
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    public void set_name(String name) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void set_manufacturer(String manufacturer) {
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
 
-    public void set_price(double price) {
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public void set_additionalCharge(double additionalCharge) {
+    public double getAdditionalCharge() {
+        return additionalCharge;
+    }
+
+    public void setAdditionalCharge(double additionalCharge) {
         this.additionalCharge = additionalCharge;
     }
 
-    public void set_quantity(int quantity) {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public String get_serialNumber() {
-        return this.serialNumber;
-    }
-
-    public String get_name() {
-        return this.name;
-    }
-
-    public String get_manufacturer() {
-        return this.manufacturer;
-    }
-
-    public double get_price() {
-        return this.price;
-    }
-
-    public double get_additionalCharge() {
-        return this.additionalCharge;
-    }
-
-    public int get_quantity() {
-        return this.quantity;
-    }
 }
+
+
