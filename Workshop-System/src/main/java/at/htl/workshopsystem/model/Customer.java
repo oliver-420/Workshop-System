@@ -14,11 +14,12 @@ public class Customer {
         setCustomerCard(customerCard);
     }
 
-    public Customer(Long id, String name, String phoneNumber, String email) {
+    public Customer(Long id, String name, String phoneNumber, String email, CustomerCard customerCard) {
         setId(id);
         setName(name);
         setPhoneNumber(phoneNumber);
         setEmail(email);
+        setCustomerCard(customerCard);
     }
 
     public Long getId() {
