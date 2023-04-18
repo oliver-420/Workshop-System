@@ -7,16 +7,16 @@ public class Task {
     private String name;
     private String description;
     private LocalDateTime startDate;
-    private int duration;
+    private double duration;
 
-    public Task(String name, String description, LocalDateTime startDate, int duration) {
+    public Task(String name, String description, LocalDateTime startDate, double duration) {
         setName(name);
         setDescription(description);
         setStartDate(startDate);
         setDuration(duration);
     }
 
-    public Task(Long id, String name, String description, LocalDateTime startDate, int duration) {
+    public Task(Long id, String name, String description, LocalDateTime startDate, double duration) {
         setId(id);
         setName(name);
         setDescription(description);
@@ -56,11 +56,11 @@ public class Task {
         this.startDate = startDate;
     }
 
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
 }
