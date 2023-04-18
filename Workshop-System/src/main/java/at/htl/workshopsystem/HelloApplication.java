@@ -1,5 +1,6 @@
 package at.htl.workshopsystem;
 
+import at.htl.workshopsystem.controller.database.MechanicRepository;
 import at.htl.workshopsystem.model.Mechanic;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
