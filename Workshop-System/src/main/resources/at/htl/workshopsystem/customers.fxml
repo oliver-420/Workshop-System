@@ -56,7 +56,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="search_field" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Suchkriterien" style="-fx-alignment: left;">
+                        <TextField fx:id="search_field" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Suchkriterien">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -82,7 +82,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Name" style="-fx-alignment: left;" text="sad">
+                        <TextField fx:id="name_field" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Name" style="-fx-alignment: left;" text="sad">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -105,7 +105,7 @@
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="E-Mail" style="-fx-alignment: left;">
+                        <TextField fx:id="email_field" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="E-Mail" style="-fx-alignment: left;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -125,7 +125,7 @@
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Telefonnummer" style="-fx-alignment: left;">
+                        <TextField fx:id="number_field" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Telefonnummer" style="-fx-alignment: left;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -158,7 +158,7 @@
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Kundenrabatt" style="-fx-alignment: left;">
+                        <TextField fx:id="discount_field" alignment="CENTER" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Kundenrabatt" style="-fx-alignment: left;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -174,9 +174,9 @@
                   <Label prefHeight="182.0" prefWidth="28.0" />
                   <ToolBar accessibleRole="BUTTON" prefHeight="17.0" prefWidth="469.0" style="-fx-background-color: default;">
                     <items>
-                      <Button mnemonicParsing="false" text="Neuer Kunde" />
-                        <Button mnemonicParsing="false" text="Speichern" />
-                        <Button mnemonicParsing="false" text="Kunde löschen" />
+                      <Button fx:id="btn_new_customer" mnemonicParsing="false" text="Neuer Kunde" />
+                        <Button fx:id="btn_save_customer" mnemonicParsing="false" text="Speichern" />
+                        <Button fx:id="btn_delete_customer" mnemonicParsing="false" text="Kunde löschen" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
                     </items>
                      <VBox.margin>
