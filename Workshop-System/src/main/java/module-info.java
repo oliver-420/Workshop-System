@@ -3,6 +3,9 @@ module at.htl.workshopsystem {
     requires javafx.fxml;
     requires java.sql;
     requires com.oracle.database.jdbc;
+    requires itextpdf;
+    requires barcode4j;
+    requires java.desktop;
 
     opens at.htl.workshopsystem to javafx.fxml;
     exports at.htl.workshopsystem;
