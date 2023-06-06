@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="476.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.CustomersController">
+   <children>
+      <VBox prefHeight="66.0" prefWidth="796.0" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label prefHeight="45.0" prefWidth="796.0" style="-fx-alignment: center;" text=" Kundeninformationen">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="23.0" prefWidth="322.0" style="-fx-alignment: center;" text="Angemeldete Kunden">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox layoutX="-1.0" layoutY="83.0" prefHeight="383.0" prefWidth="776.0" style="-fx-alignment: center;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="83.0">
+         <children>
+            <ListView fx:id="lv_customercards" prefHeight="383.0" prefWidth="289.0">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin></ListView>
+            <VBox prefHeight="383.0" prefWidth="89.0">
+               <children>
+                  <Label prefHeight="22.0" prefWidth="73.0" text="Label" />
+               </children>
+            </VBox>
+            <VBox prefHeight="383.0" prefWidth="470.0">
+               <children>
+                  <DatePicker>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></DatePicker>
+                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" text="Button" />
+                  <TextField prefHeight="25.0" prefWidth="479.0" style="-fx-alignment: center;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

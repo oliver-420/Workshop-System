@@ -3,20 +3,31 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.HomeController">
+<VBox alignment="CENTER" prefHeight="227.0" prefWidth="616.0" spacing="20.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.HomeController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText" />
-   <BorderPane prefHeight="200.0" prefWidth="200.0">
-      <center>
-         <CheckBox mnemonicParsing="false" text="CheckBox" BorderPane.alignment="CENTER" />
-      </center>
-      <top>
-         <Circle fill="DODGERBLUE" radius="100.0" stroke="BLACK" strokeType="INSIDE" BorderPane.alignment="CENTER" />
-      </top></BorderPane>
-    <Button onAction="#onHelloButtonClick" text="Welcome!" />
+   <children>
+      <Label prefHeight="35.0" prefWidth="128.0" style="-fx-alignment: center; -fx-background-color: white;" text="Willkommen!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center;">
+         <children>
+            <Button fx:id="btn_tasks" mnemonicParsing="false" prefHeight="100.0" prefWidth="305.0" text="Aufträge">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_customers" layoutX="146.0" layoutY="10.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="305.0" text="Kunden">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
 </VBox>
