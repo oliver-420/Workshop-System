@@ -19,35 +19,6 @@ public class WorkshopSystem extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-
-         Mechanic mechanic = new Mechanic("Test", 10.0);
-        MechanicRepository mechanicRepository = new MechanicRepository();
-        System.out.println(mechanicRepository.insert(mechanic).getId());
-
-        mechanic.setName("Test2");
-        mechanicRepository.update(mechanic);
-
-
-        //mechanicRepository.delete(1);
-
-        mechanicRepository.getAll().forEach(m -> System.out.println(m.getName() + m.getId()));
-
-        Mechanic mechanic1 = mechanicRepository.getById(3);
-
-        System.out.println(mechanic1.getId());
-
-        Car car = new Car("Test", "test", 1, 1, "e", "e", "e");
-
-        CarRepository carRepository = new CarRepository();
-        System.out.println(carRepository.insert(car).getId());
-
-        car.setModel("Test2");
-        carRepository.update(car);
-        System.out.println(carRepository.getById(car.getId()).getModel());
-
-        carRepository.delete(2);
-
-        carRepository.getAll().forEach(c -> System.out.println(c.getModel() + c.getId()));
     }
 
     public static void main(String[] args) {
