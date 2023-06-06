@@ -1,9 +1,9 @@
-package at.htl.workshopsystem;
+package at.htl.workshopsystem.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class HomeController {
     @FXML
     private Label welcomeText;
 

@@ -1,16 +1,8 @@
 package at.htl.workshopsystem;
 
-<<<<<<< HEAD
-import at.htl.workshopsystem.controller.database.MechanicRepository;
-=======
-<<<<<<< HEAD
-import at.htl.workshopsystem.controller.database.MechanicRepository;
-=======
 import at.htl.workshopsystem.controller.database.CarRepository;
 import at.htl.workshopsystem.controller.database.MechanicRepository;
 import at.htl.workshopsystem.model.Car;
->>>>>>> 500d004d49ac247c7dfd73e79461bcaefe1983fb
->>>>>>> c1b1e42ba1487f330518973826c9b9e88f440545
 import at.htl.workshopsystem.model.Mechanic;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,16 +11,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class WorkshopSystem extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WorkshopSystem.class.getResource("home.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
 
-       /* Mechanic mechanic = new Mechanic("Test", 10.0);
+         Mechanic mechanic = new Mechanic("Test", 10.0);
         MechanicRepository mechanicRepository = new MechanicRepository();
         System.out.println(mechanicRepository.insert(mechanic).getId());
 
@@ -42,7 +34,7 @@ public class HelloApplication extends Application {
 
         Mechanic mechanic1 = mechanicRepository.getById(19);
 
-        System.out.println(mechanic1.getId());*/
+        System.out.println(mechanic1.getId());
 
         Car car = new Car("Test", "test", 1, 1, "e", "e", "e");
 

@@ -76,7 +76,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>at.htl.workshopsystem/at.htl.workshopsystem.HelloApplication</mainClass>
+                            <mainClass>at.htl.workshopsystem/at.htl.workshopsystem.WorkshopSystem</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

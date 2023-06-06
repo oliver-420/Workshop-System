@@ -6,4 +6,6 @@ module at.htl.workshopsystem {
 
     opens at.htl.workshopsystem to javafx.fxml;
     exports at.htl.workshopsystem;
+    exports at.htl.workshopsystem.view.controller;
+    opens at.htl.workshopsystem.view.controller to javafx.fxml;
 }
