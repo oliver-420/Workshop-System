@@ -28,11 +28,11 @@ public class WorkshopSystem extends Application {
         mechanicRepository.update(mechanic);
 
 
-        mechanicRepository.delete(1);
+        //mechanicRepository.delete(1);
 
         mechanicRepository.getAll().forEach(m -> System.out.println(m.getName() + m.getId()));
 
-        Mechanic mechanic1 = mechanicRepository.getById(19);
+        Mechanic mechanic1 = mechanicRepository.getById(3);
 
         System.out.println(mechanic1.getId());
 

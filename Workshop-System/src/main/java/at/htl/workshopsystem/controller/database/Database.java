@@ -33,6 +33,7 @@ public class Database {
             conn = DriverManager.getConnection("jdbc:oracle:thin:@student.cloud.htl-leonding.ac.at:31521:ora19db\n", "IF200210", "oracle");
             if (conn != null) {
                 System.out.println("Connected");
+                conn.setAutoCommit(true);
             } else {
                 System.out.println("Not Connected");
             }
