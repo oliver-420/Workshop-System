@@ -1,8 +1,6 @@
 package at.htl.workshopsystem.controller.database;
 
-import at.htl.workshopsystem.model.Car;
 import at.htl.workshopsystem.model.Customer;
-import at.htl.workshopsystem.model.CustomerCard;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -79,8 +77,8 @@ public class CustomerRepository {
         }
     }
 
-    public List<Car> getAll() {
-        List<Car> customerList = new ArrayList<>();
+    public List<Customer> getAll() {
+        List<Customer> customerList = new ArrayList<>();
         try (Connection connection = database.getConnection()) {
             String sql = "SELECT * FROM CUSTOMER";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -103,23 +101,22 @@ public class CustomerRepository {
         return customerList;
     }
 
-    public Car getById(long id) {
+    public Customer getById(long id) {
         try (Connection connection = database.getConnection()) {
-            String sql = "SELECT * FROM CAR WHERE ID=?";
+            String sql = "SELECT * FROM CUSTOMER WHERE ID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setLong(1, id);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 if (id == result.getLong(1)) {
                     System.out.println(result.getLong(1));
-                    return new Car(id,
+                    return new Customer(
+                            result.getLong(1),
                             result.getString(2),
                             result.getString(3),
-                            result.getInt(4),
-                            result.getInt(5),
-                            result.getString(6),
-                            result.getString(7),
-                            result.getString(8));
+                            result.getString(5),
+                            new CustomerCardRepository().getById(result.getLong(6)
+                    ));
                 }
             }
         } catch (SQLException e) {

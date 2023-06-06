@@ -8,20 +8,31 @@ public class Invoice {
     private double price;
     private Task task;
     private Boolean isPaid;
+    private Customer customer;
 
-    public Invoice(LocalDateTime date, double price, Task task, Boolean isPaid) {
+    public Invoice(LocalDateTime date, double price, Task task, Boolean isPaid, Customer customer) {
         setDate(date);
         setPrice(price);
         setTask(task);
         setPaid(isPaid);
+        setCustomer(customer);
     }
 
-    public Invoice(Long id, LocalDateTime date, double price, Task task, Boolean isPaid) {
+    public Invoice(Long id, LocalDateTime date, double price, Task task, Boolean isPaid, Customer customer) {
         setId(id);
         setDate(date);
         setPrice(price);
         setTask(task);
         setPaid(isPaid);
+        setCustomer(customer);
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Long getId() {
