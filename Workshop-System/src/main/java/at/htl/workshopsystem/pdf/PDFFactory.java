@@ -1,4 +1,4 @@
-package at.htl.workshopsystem.pdf;
+/*package at.htl.workshopsystem.pdf;
 
 import at.htl.workshopsystem.model.Customer;
 import at.htl.workshopsystem.model.Invoice;
@@ -89,3 +89,4 @@ public class PDFFactory {
         }
     }
 }
+*/

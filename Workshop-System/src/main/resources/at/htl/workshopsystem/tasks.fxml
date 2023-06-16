@@ -72,11 +72,11 @@
                                 <Insets bottom="25.0" />
                             </VBox.margin>
                         </HBox>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="386.0" style="-fx-alignment: center;" text="Aufgaben">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
+                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="386.0" style="-fx-alignment: center;" text="Aufgaben">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
                     </children>
                 </VBox>
             </children>
