@@ -1,5 +1,6 @@
 package at.htl.workshopsystem.view.controller;
 
+import at.htl.workshopsystem.WorkshopSystem;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -36,32 +37,15 @@ public class HomeController implements Initializable {
         btn_customers.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                changeScene(event, "/customers.fxml", "Customers");
+                WorkshopSystem.changeScene(event, "customers.fxml", "Customers");
             }
         });
 
         btn_tasks.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                changeScene(event, "/tasks.fxml", "Tasks");
+                WorkshopSystem.changeScene(event, "tasks.fxml", "Tasks");
             }
         });
-    }
-
-    //change scene to customers or tasks
-    public void changeScene(ActionEvent event, String fxmlFile, String title){
-        Parent root = null;
-
-        try{
-            FXMLLoader loader = new FXMLLoader(HomeController.class.getResource(fxmlFile));
-            root = loader.load();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle(title);
-        stage.setScene(new Scene(root));
-        stage.show();
     }
 }
