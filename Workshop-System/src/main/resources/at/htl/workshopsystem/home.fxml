@@ -9,25 +9,25 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <children>
-      <Label prefHeight="35.0" prefWidth="128.0" style="-fx-alignment: center; -fx-background-color: white;" text="Willkommen!">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center;">
-         <children>
-            <Button fx:id="btn_tasks" mnemonicParsing="false" prefHeight="100.0" prefWidth="305.0" text="Aufträge">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_customers" layoutX="146.0" layoutY="10.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="305.0" text="Kunden">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-   </children>
+    <children>
+        <Label prefHeight="35.0" prefWidth="128.0" style="-fx-alignment: center; -fx-background-color: white;" text="Willkommen!">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center;">
+            <children>
+                <Button fx:id="btn_tasks" mnemonicParsing="false" prefHeight="100.0" prefWidth="305.0" text="Aufträge">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btn_customers" layoutX="146.0" layoutY="10.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="305.0" text="Kunden">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+    </children>
 </VBox>

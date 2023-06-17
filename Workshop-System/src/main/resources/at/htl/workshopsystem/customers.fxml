@@ -173,12 +173,12 @@
                   </HBox>
                   <Label prefHeight="182.0" prefWidth="28.0" />
                   <ToolBar accessibleRole="BUTTON" prefHeight="17.0" prefWidth="469.0" style="-fx-background-color: default;">
-                    <items>
-                      <Button fx:id="btn_new_customer" mnemonicParsing="false" text="Neuer Kunde" />
+                     <items>
+                        <Button fx:id="btn_new_customer" mnemonicParsing="false" text="Neuer Kunde" />
                         <Button fx:id="btn_save_customer" mnemonicParsing="false" text="Speichern" />
                         <Button fx:id="btn_delete_customer" mnemonicParsing="false" text="Kunde löschen" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
-                    </items>
+                     </items>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
