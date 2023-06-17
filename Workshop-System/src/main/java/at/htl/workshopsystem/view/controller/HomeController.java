@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +17,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class HomeController {
+public class HomeController implements Initializable {
     @FXML
     private Label welcomeText;
 
@@ -35,14 +36,14 @@ public class HomeController {
         btn_customers.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                changeScene(event, "customers.fxml", "Customers");
+                changeScene(event, "/customers.fxml", "Customers");
             }
         });
 
         btn_tasks.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                changeScene(event, "tasks.fxml", "Tasks");
+                changeScene(event, "/tasks.fxml", "Tasks");
             }
         });
     }
