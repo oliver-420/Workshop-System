@@ -19,12 +19,13 @@ public class TasksController {
     public Button finishSubTaskBtn;
     public ListView<Task> lvTasks;
     public ListView<SubTask> lvSubTasks;
+    public Button partRepoBtn;
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
     private final TaskRepository taskRepository = new TaskRepository();
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     public void initialize() {
-        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
+        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
         tasks.addAll(taskRepository.getAll());
 

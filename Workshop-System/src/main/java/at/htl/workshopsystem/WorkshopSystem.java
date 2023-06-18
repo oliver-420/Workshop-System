@@ -68,9 +68,10 @@ public class WorkshopSystem extends Application {
         launch();
     }
 
-    public static void onPageChange(Button homeBtn, Button customersBtn, Button tasksBtn) {
+    public static void onPageChange(Button homeBtn, Button customersBtn, Button tasksBtn, Button partRepoBtn) {
         homeBtn.setOnAction(event -> WorkshopSystem.changeScene(event, "home.fxml", "Home"));
         customersBtn.setOnAction(event -> WorkshopSystem.changeScene(event, "customers.fxml", "Customers"));
         tasksBtn.setOnAction(event -> WorkshopSystem.changeScene(event, "tasks.fxml", "Tasks"));
+        partRepoBtn.setOnAction(event -> WorkshopSystem.changeScene(event, "partRepo.fxml", "Part Repository"));
     }
 }

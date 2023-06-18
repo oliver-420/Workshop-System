@@ -27,13 +27,14 @@ public class CustomersController {
     public Button deleteCustomerBtn;
     public Button saveCustomerBtn;
     public Button newCustomerBtn;
+    public Button partRepoBtn;
 
     FilteredList<Customer> customers;
     ObservableList<Customer> olCustomers = FXCollections.observableArrayList();
 
 
     public void initialize() {
-        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
+        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
         setButtonStyles();
 
         this.lvCustomers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

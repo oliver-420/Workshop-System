@@ -43,6 +43,7 @@ public class CarSearchController {
     public Button homeBtn;
     public Button customersBtn;
     public Button tasksBtn;
+    public Button partRepoBtn;
 
     @FXML
     private TextField searchField;
@@ -51,7 +52,7 @@ public class CarSearchController {
 
     public void initialize() {
 
-        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
+        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
         saveBtn.getStyleClass().addAll(
                 Styles.MEDIUM, Styles.ROUNDED, Styles.BUTTON_OUTLINED, Styles.ACCENT

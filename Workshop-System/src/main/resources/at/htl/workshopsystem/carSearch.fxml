@@ -14,6 +14,7 @@
                 <Button mnemonicParsing="false" text="Home" fx:id="homeBtn"/>
                 <Button mnemonicParsing="false" text="Customers" fx:id="customersBtn"/>
                 <Button mnemonicParsing="false" text="Tasks" fx:id="tasksBtn"/>
+                <Button fx:id="partRepoBtn" mnemonicParsing="false" text="Parts" />
             </items>
         </ToolBar>
     </HBox>
