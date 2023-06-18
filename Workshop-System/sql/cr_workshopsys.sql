@@ -63,7 +63,6 @@ CREATE TABLE Customer
     NAME             varchar(20),
     EMAIL            varchar(20),
     PHONE_NUMBER     varchar(20),
-    DATE_OF_BIRTH    DATE,
     CUSTOMER_CARD_ID INT NULL
         CONSTRAINT C_FR_CK REFERENCES CustomerCard (ID)
 );
