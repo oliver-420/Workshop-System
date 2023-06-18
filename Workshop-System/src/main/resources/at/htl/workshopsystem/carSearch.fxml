@@ -9,8 +9,22 @@
    <children>
       <VBox layoutX="14.0" layoutY="35.0" prefHeight="360.0" prefWidth="230.0">
          <children>
-            <Label text="Search For a Car" />
-            <TextField fx:id="searchField" />
+            <HBox prefHeight="59.0" prefWidth="139.0">
+               <children>
+                  <VBox prefHeight="35.0" prefWidth="194.0">
+                     <children>
+                        <Label text="Model" />
+                        <TextField fx:id="searchField" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="51.0" prefWidth="120.0">
+                     <children>
+                        <Label text="Year " />
+                        <TextField fx:id="yearSearchField" prefHeight="25.0" prefWidth="85.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
             <ListView fx:id="lvCars" prefHeight="318.0" prefWidth="230.0" />
          </children>
       </VBox>
@@ -48,7 +62,7 @@
                   <TextField fx:id="numberPlateField" />
                   <Label text="Registration Year" />
                   <TextField fx:id="registrationField" prefHeight="25.0" prefWidth="244.0" />
-                  <Button fx:id="saveBtn" mnemonicParsing="false" text="Button">
+                  <Button fx:id="saveBtn" mnemonicParsing="false" text="Save">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>

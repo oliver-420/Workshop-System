@@ -2,9 +2,11 @@ package at.htl.workshopsystem.view.controller;
 
 
 import at.htl.workshopsystem.PropertiesReader;
+import at.htl.workshopsystem.controller.database.CarRepository;
 import at.htl.workshopsystem.model.Car;
 import at.htl.workshopsystem.model.factory.CarFactory;
 import at.htl.workshopsystem.webCrawler.WebCrawler;
+import atlantafx.base.theme.Styles;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
@@ -37,6 +39,7 @@ public class CarSearchController {
     public Button saveBtn;
     public Image carImg;
     public ImageView carImgView;
+    public TextField yearSearchField;
 
     @FXML
     private TextField searchField;
@@ -44,6 +47,11 @@ public class CarSearchController {
     private ObservableList<Car> carList = FXCollections.observableArrayList();
 
     public void initialize() {
+
+        saveBtn.getStyleClass().addAll(
+                Styles.MEDIUM, Styles.ROUNDED, Styles.BUTTON_OUTLINED, Styles.ACCENT
+        );
+
         this.lvCars.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 this.modelField.setText(newValue.getModel());
@@ -59,7 +67,15 @@ public class CarSearchController {
 
         this.searchField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                searchCars(searchField.getText());
+                if(validateInput())
+                    searchCars(searchField.getText(), Integer.parseInt(yearSearchField.getText()));
+            }
+        });
+
+        this.yearSearchField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                if(validateInput())
+                    searchCars(searchField.getText(), Integer.parseInt(yearSearchField.getText()));
             }
         });
 
@@ -91,6 +107,16 @@ public class CarSearchController {
             currentCar.setOwner(ownerField.getText());
             currentCar.setNumberPlate(numberPlateField.getText());
             currentCar.setRegistrationYear(Integer.parseInt(registrationField.getText()));
+
+            CarRepository carRepository = new CarRepository();
+            carRepository.insert(currentCar);
+            if(currentCar.getId() != null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Car saved");
+                alert.setContentText("Car saved successfully");
+                alert.showAndWait();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -101,9 +127,9 @@ public class CarSearchController {
         }
     }
 
-    private void searchCars(String query) {
+    private void searchCars(String query, int year) {
         try {
-            URL url = new URL(API_ENDPOINT + "/cars?limit=50&model=" + query);
+            URL url = new URL(API_ENDPOINT + "/cars?limit=50&year=" + year + "&model=" + query);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("accept", "application/json");
             connection.setRequestProperty("X-Api-Key", PropertiesReader.getProperty("apininja_api_key"));
@@ -125,6 +151,31 @@ public class CarSearchController {
 
         if (carList != null) {
             lvCars.setItems(carList);
+        }
+    }
+
+    private boolean validateInput() {
+        if(searchField.getText().length() == 0 || yearSearchField.getText().length() == 0){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Search");
+            alert.setContentText("Please fill out both fields");
+            alert.showAndWait();
+            return false;
+        }
+
+        try {
+
+            Integer.parseInt(yearSearchField.getText());
+            return true;
+        }
+        catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Search");
+            alert.setContentText("Please enter a valid year");
+            alert.showAndWait();
+            return false;
         }
     }
 }
