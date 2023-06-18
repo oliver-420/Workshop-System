@@ -14,16 +14,12 @@ public class TaskRepository {
     public Task insert(Task task) {
         try (Connection connection = database.getConnection()) {
             String sql = "INSERT INTO TASK (NAME, " +
-                    "DESCRIPTION, " +
                     "START_DATE, " +
-                    "DURATION " +
-                    ") VALUES (?,?,?,?)";
+                    ") VALUES (?,?)";
 
             PreparedStatement statement = connection.prepareStatement(sql, new String[]{"ID"});
             statement.setString(1, task.getName());
-            statement.setString(2, task.getDescription());
-            statement.setTimestamp(3, Timestamp.valueOf(task.getStartDate()));
-            statement.setDouble(4, task.getDuration());
+            statement.setTimestamp(2, Timestamp.valueOf(task.getStartDate()));
 
             int affectedRows = statement.executeUpdate();
 
@@ -49,17 +45,13 @@ public class TaskRepository {
     public void update(Task task) {
         try (Connection connection = database.getConnection()) {
             String sql = "UPDATE TASK SET NAME=?, " +
-                    "DESCRIPTIO =?, " +
                     "START_DATE=?, " +
-                    "DURATIOM=? " +
                     "WHERE ID=?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, task.getName());
-            statement.setString(2, task.getDescription());
-            statement.setTimestamp(3, Timestamp.valueOf(task.getStartDate()));
-            statement.setDouble(4, task.getDuration());
-            statement.setLong(5, task.getId());
+            statement.setTimestamp(2, Timestamp.valueOf(task.getStartDate()));
+            statement.setLong(3, task.getId());
 
             if (statement.executeUpdate() == 0) {
                 throw new SQLException("Update of task failed, no rows affected");
@@ -91,10 +83,8 @@ public class TaskRepository {
             while (result.next()) {
                 long id = result.getLong(1);
                 String name = result.getString(2);
-                String description = result.getString(3);
-                LocalDateTime startDate = result.getTimestamp(4).toLocalDateTime();
-                double duration = result.getDouble(5);
-                Task newTask = new Task(id, name, description, startDate, duration);
+                LocalDateTime startDate = result.getTimestamp(3).toLocalDateTime();
+                Task newTask = new Task(id, name, startDate);
                 taskList.add(newTask);
             }
         } catch (SQLException e) {
@@ -113,10 +103,8 @@ public class TaskRepository {
                 if (id == result.getLong(1)) {
                     {
                         String name = result.getString(2);
-                        String description = result.getString(3);
-                        LocalDateTime startDate = result.getTimestamp(4).toLocalDateTime();
-                        double duration = result.getDouble(5);
-                        return new Task(id, name, description, startDate, duration);
+                        LocalDateTime startDate = result.getTimestamp(3).toLocalDateTime();
+                        return new Task(id, name, startDate);
                     }
                 }
             }
