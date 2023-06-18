@@ -64,6 +64,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return this.name + " " + this.email;
+        return this.name + " Email:" + this.email;
     }
 }

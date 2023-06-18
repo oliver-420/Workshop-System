@@ -8,90 +8,86 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
             prefWidth="686.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="at.htl.workshopsystem.view.controller.CarSearchController">
-    <children>
-        <HBox fillHeight="false" prefHeight="38.0" prefWidth="686.0" spacing="5.0">
-            <children>
-                <ToolBar prefHeight="2.0" prefWidth="686.0">
-                    <items>
-                        <Button mnemonicParsing="false" text="Home" fx:id="homeBtn"/>
-                        <Button mnemonicParsing="false" text="Customers" fx:id="customersBtn"/>
-                        <Button mnemonicParsing="false" text="Tasks" fx:id="tasksBtn"/>
-                    </items>
-                </ToolBar>
-            </children>
-        </HBox>
-        <HBox layoutY="47.0" prefHeight="453.0" prefWidth="686.0" spacing="20.0">
-            <children>
-                <VBox prefHeight="453.0" prefWidth="312.0">
-                    <children>
-                        <HBox prefHeight="59.0" prefWidth="139.0">
-                            <children>
-                                <VBox prefHeight="35.0" prefWidth="194.0">
-                                    <children>
-                                        <Label text="Model"/>
-                                        <TextField fx:id="searchField"/>
-                                    </children>
-                                </VBox>
-                                <VBox prefHeight="51.0" prefWidth="120.0">
-                                    <children>
-                                        <Label text="Year "/>
-                                        <TextField fx:id="yearSearchField" prefHeight="25.0" prefWidth="85.0"/>
-                                    </children>
-                                </VBox>
-                            </children>
-                        </HBox>
-                        <ListView fx:id="lvCars" prefHeight="318.0" prefWidth="250.0"/>
-                    </children>
-                </VBox>
-                <HBox prefHeight="453.0" prefWidth="391.0">
-                    <children>
-                        <VBox prefHeight="360.0" prefWidth="327.0">
-                            <children>
-                                <HBox prefHeight="100.0" prefWidth="200.0">
-                                    <children>
-                                        <VBox prefHeight="203.0" prefWidth="145.0">
-                                            <children>
-                                                <Label text="Model"/>
-                                                <TextField fx:id="modelField" prefHeight="25.0" prefWidth="123.0"/>
-                                                <Label text="Manufacturer"/>
-                                                <TextField fx:id="manufacturerField"/>
-                                                <Label text="Production Year"/>
-                                                <TextField fx:id="prodYearField"/>
-                                                <Label text="Fuel"/>
-                                                <TextField fx:id="fuelTypeField"/>
-                                            </children>
-                                        </VBox>
-                                        <ImageView fx:id="carImgView" fitHeight="192.0" fitWidth="167.0"
-                                                   pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image fx:id="carImg"
-                                                       url="https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"/>
-                                            </image>
-                                            <HBox.margin>
-                                                <Insets left="40.0"/>
-                                            </HBox.margin>
-                                        </ImageView>
-                                    </children>
-                                </HBox>
-                                <Label text="Owner"/>
-                                <TextField fx:id="ownerField"/>
-                                <Label text="Number Plate"/>
-                                <TextField fx:id="numberPlateField"/>
-                                <Label text="Registration Year"/>
-                                <TextField fx:id="registrationField" prefHeight="25.0" prefWidth="244.0"/>
-                                <Button fx:id="saveBtn" mnemonicParsing="false" text="Save">
-                                    <VBox.margin>
-                                        <Insets top="10.0"/>
-                                    </VBox.margin>
-                                </Button>
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-            </children>
-            <padding>
-                <Insets left="20.0"/>
-            </padding>
-        </HBox>
-    </children>
+    <HBox fillHeight="false" prefHeight="38.0" prefWidth="686.0" spacing="5.0">
+        <ToolBar prefHeight="2.0" prefWidth="686.0">
+            <items>
+                <Button mnemonicParsing="false" text="Home" fx:id="homeBtn"/>
+                <Button mnemonicParsing="false" text="Customers" fx:id="customersBtn"/>
+                <Button mnemonicParsing="false" text="Tasks" fx:id="tasksBtn"/>
+            </items>
+        </ToolBar>
+    </HBox>
+    <HBox layoutY="47.0" prefHeight="453.0" prefWidth="686.0" spacing="20.0">
+        <children>
+            <VBox prefHeight="453.0" prefWidth="312.0">
+                <children>
+                    <HBox prefHeight="59.0" prefWidth="139.0">
+                        <children>
+                            <VBox prefHeight="35.0" prefWidth="194.0">
+                                <children>
+                                    <Label text="Model"/>
+                                    <TextField fx:id="searchField"/>
+                                </children>
+                            </VBox>
+                            <VBox prefHeight="51.0" prefWidth="120.0">
+                                <children>
+                                    <Label text="Year "/>
+                                    <TextField fx:id="yearSearchField" prefHeight="25.0" prefWidth="85.0"/>
+                                </children>
+                            </VBox>
+                        </children>
+                    </HBox>
+                    <ListView fx:id="lvCars" prefHeight="318.0" prefWidth="250.0"/>
+                </children>
+            </VBox>
+            <HBox prefHeight="453.0" prefWidth="391.0">
+                <children>
+                    <VBox prefHeight="360.0" prefWidth="327.0">
+                        <children>
+                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                <children>
+                                    <VBox prefHeight="203.0" prefWidth="145.0">
+                                        <children>
+                                            <Label text="Model"/>
+                                            <TextField fx:id="modelField" prefHeight="25.0" prefWidth="123.0"/>
+                                            <Label text="Manufacturer"/>
+                                            <TextField fx:id="manufacturerField"/>
+                                            <Label text="Production Year"/>
+                                            <TextField fx:id="prodYearField"/>
+                                            <Label text="Fuel"/>
+                                            <TextField fx:id="fuelTypeField"/>
+                                        </children>
+                                    </VBox>
+                                    <ImageView fx:id="carImgView" fitHeight="192.0" fitWidth="167.0"
+                                               pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image fx:id="carImg"
+                                                   url="https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"/>
+                                        </image>
+                                        <HBox.margin>
+                                            <Insets left="40.0"/>
+                                        </HBox.margin>
+                                    </ImageView>
+                                </children>
+                            </HBox>
+                            <Label text="Owner"/>
+                            <TextField fx:id="ownerField"/>
+                            <Label text="Number Plate"/>
+                            <TextField fx:id="numberPlateField"/>
+                            <Label text="Registration Year"/>
+                            <TextField fx:id="registrationField" prefHeight="25.0" prefWidth="244.0"/>
+                            <Button fx:id="saveBtn" mnemonicParsing="false" text="Save">
+                                <VBox.margin>
+                                    <Insets top="10.0"/>
+                                </VBox.margin>
+                            </Button>
+                        </children>
+                    </VBox>
+                </children>
+            </HBox>
+        </children>
+        <padding>
+            <Insets left="20.0"/>
+        </padding>
+    </HBox>
 </AnchorPane>
