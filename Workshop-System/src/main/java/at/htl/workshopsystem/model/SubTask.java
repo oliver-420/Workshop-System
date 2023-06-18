@@ -5,14 +5,15 @@ import java.time.LocalDateTime;
 public class SubTask {
     private Long id;
     private String description;
-    private int duration;
+    private double duration;
+    private boolean isDone;
 
     public SubTask(String description, int duration) {
         setDescription(description);
         setDuration(duration);
     }
 
-    public SubTask(Long id, String description, int duration) {
+    public SubTask(Long id, String description, double duration) {
         setId(id);
         setDescription(description);
         setDuration(duration);
@@ -34,11 +35,19 @@ public class SubTask {
         this.description = name;
     }
 
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
+    }
+
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    public void setIsDone(boolean isDone) {
+        this.isDone = isDone;
     }
 }

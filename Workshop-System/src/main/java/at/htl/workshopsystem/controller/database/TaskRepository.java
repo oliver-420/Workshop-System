@@ -80,6 +80,7 @@ public class TaskRepository {
             String sql = "SELECT * FROM Task";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
+
             while (result.next()) {
                 long id = result.getLong(1);
                 String name = result.getString(2);

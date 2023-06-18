@@ -25,7 +25,7 @@
         </HBox>
         <VBox alignment="CENTER" prefHeight="56.0" prefWidth="686.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
             <children>
-                <Label prefHeight="0.0" prefWidth="686.0" style="-fx-alignment: center;" text="Aufträge">
+                <Label prefHeight="0.0" prefWidth="686.0" style="-fx-alignment: center;" text="Tasks">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
@@ -35,7 +35,7 @@
                 </Label>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Label alignment="CENTER" prefHeight="36.0" prefWidth="289.0" style="-fx-alignment: center;" text="Laufend">
+                        <Label alignment="CENTER" prefHeight="36.0" prefWidth="289.0" style="-fx-alignment: center;" text="Running">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -43,7 +43,7 @@
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="498.0" style="-fx-alignment: center;" text="Informationen">
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="22.0" prefWidth="389.0" style="-fx-alignment: center;" text="Information">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -54,23 +54,19 @@
         </VBox>
         <HBox layoutX="-1.0" layoutY="83.0" prefHeight="383.0" prefWidth="776.0" style="-fx-alignment: center;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
             <children>
-                <ListView fx:id="lv_customercards" prefHeight="383.0" prefWidth="289.0" style="-fx-border-color: black;">
-                    <HBox.margin>
-                        <Insets right="10.0" />
-                    </HBox.margin></ListView>
-                <VBox prefHeight="383.0" prefWidth="470.0" style="-fx-border-color: black;">
-                    <children>
-                        <HBox layoutX="21.0" layoutY="11.0" prefHeight="28.0" prefWidth="470.0">
+            <VBox prefHeight="383.0" prefWidth="353.0" style="-fx-border-color: black;">
+               <children>
+                        <HBox prefHeight="28.0" prefWidth="470.0">
                             <children>
-                                <Label prefHeight="26.0" prefWidth="100.0" text="Suchen">
+                                <Label prefHeight="26.0" prefWidth="100.0" text="Search">
                                     <font>
                                         <Font name="System Bold Italic" size="12.0" />
                                     </font>
                                     <HBox.margin>
-                                        <Insets left="10.0" top="10.0" />
+                                        <Insets left="5.0" top="10.0" />
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="search_field" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Suchkriterien">
+                                <TextField fx:id="searchTaskField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="220.0" promptText="Suchkriterien" text="search criteria">
                                     <cursor>
                                         <Cursor fx:constant="TEXT" />
                                     </cursor>
@@ -78,29 +74,49 @@
                                         <Glow />
                                     </effect>
                                     <HBox.margin>
-                                        <Insets bottom="5.0" top="10.0" />
+                                        <Insets bottom="5.0" right="5.0" top="10.0" />
                                     </HBox.margin>
                                 </TextField>
                             </children>
                             <VBox.margin>
-                                <Insets bottom="25.0" />
+                                <Insets bottom="5.0" />
                             </VBox.margin>
                         </HBox>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="386.0" style="-fx-alignment: center;" text="Aufgaben">
+                      <ListView fx:id="lvTasks" prefHeight="383.0" prefWidth="289.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </VBox.margin></ListView>
+               </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </VBox>
+                <VBox prefHeight="383.0" prefWidth="470.0" style="-fx-border-color: black;">
+                    <children>
+                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="385.0" style="-fx-alignment: center;" text="Subtasks">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
-                  </Label>
-                  <ListView prefHeight="205.0" prefWidth="383.0">
                      <VBox.margin>
-                        <Insets left="5.0" right="5.0" />
+                        <Insets bottom="12.0" top="14.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ListView fx:id="lvSubTasks" prefHeight="451.0" prefWidth="375.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
                      </VBox.margin>
                   </ListView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button fx:id="finishTaskBtn" mnemonicParsing="false" text="Finish Task">
+                           <HBox.margin>
+                              <Insets bottom="5.0" right="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="finishSubTaskBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Finish Subtask" />
                      </children>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
                   </HBox>
                     </children>
                 </VBox>
