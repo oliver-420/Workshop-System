@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -59,7 +57,7 @@
                <children>
                         <HBox prefHeight="28.0" prefWidth="470.0">
                             <children>
-                                <Label prefHeight="26.0" prefWidth="100.0" text="Search">
+                                <Label prefHeight="26.0" prefWidth="100.0" text="Mechanic">
                                     <font>
                                         <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -67,17 +65,11 @@
                                         <Insets left="5.0" top="10.0" />
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="searchTaskField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="220.0" promptText="Suchkriterien" text="search criteria">
-                                    <cursor>
-                                        <Cursor fx:constant="TEXT" />
-                                    </cursor>
-                                    <effect>
-                                        <Glow />
-                                    </effect>
-                                    <HBox.margin>
-                                        <Insets bottom="5.0" right="5.0" top="10.0" />
-                                    </HBox.margin>
-                                </TextField>
+                        <ComboBox fx:id="mechanicsDrd" prefHeight="26.0" prefWidth="200.0">
+                           <HBox.margin>
+                              <Insets right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ComboBox>
                             </children>
                             <VBox.margin>
                                 <Insets bottom="5.0" />

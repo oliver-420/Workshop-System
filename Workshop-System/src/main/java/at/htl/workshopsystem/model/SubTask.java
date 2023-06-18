@@ -8,15 +8,17 @@ public class SubTask {
     private double duration;
     private boolean isDone;
 
-    public SubTask(String description, int duration) {
+    public SubTask(String description, int duration, boolean isDone) {
         setDescription(description);
         setDuration(duration);
+        setIsDone(isDone);
     }
 
-    public SubTask(Long id, String description, double duration) {
+    public SubTask(Long id, String description, double duration, boolean isDone) {
         setId(id);
         setDescription(description);
         setDuration(duration);
+        setIsDone(isDone);
     }
 
     public Long getId() {
