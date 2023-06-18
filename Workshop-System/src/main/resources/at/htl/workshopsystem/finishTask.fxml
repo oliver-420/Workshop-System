@@ -36,6 +36,11 @@
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" />
                      </VBox.margin></Label>
+                  <Label layoutX="15.0" layoutY="76.0" prefHeight="25.6" prefWidth="96.0" text="Total Duration">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" />
+                     </VBox.margin>
+                  </Label>
                   <Label prefHeight="25.6" prefWidth="96.0" text="Used Parts">
                      <VBox.margin>
                         <Insets bottom="177.0" left="5.0" />
@@ -56,10 +61,15 @@
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin></TextField>
-                  <TextField fx:id="CarTf" editable="false">
+                  <TextField fx:id="carTf" editable="false">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin></TextField>
+                  <TextField fx:id="durationTf" editable="false" layoutX="10.0" layoutY="76.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </TextField>
                   <ListView fx:id="usedPartsLv" prefHeight="200.0" prefWidth="213.0">
                      <VBox.margin>
                         <Insets bottom="5.0" />

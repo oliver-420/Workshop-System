@@ -110,6 +110,7 @@ public class TasksController {
 
     public void finishTask() {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
+        FinishTaskId.getInstance(task.getId());
         taskRepository.delete(task.getId());
         //change scene to pdfsite
     }

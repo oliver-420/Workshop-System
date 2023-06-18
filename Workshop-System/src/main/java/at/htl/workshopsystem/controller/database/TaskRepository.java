@@ -1,6 +1,5 @@
 package at.htl.workshopsystem.controller.database;
 
-import at.htl.workshopsystem.model.Car;
 import at.htl.workshopsystem.model.Task;
 
 import java.sql.*;
@@ -15,11 +14,16 @@ public class TaskRepository {
         try (Connection connection = database.getConnection()) {
             String sql = "INSERT INTO TASK (NAME, " +
                     "START_DATE, " +
-                    ") VALUES (?,?)";
+                    "MECHANIC_ID, " +
+                    "CAR_ID, " +
+                    "CUSTOMER_ID) VALUES (?,?,?,?,?)";
 
             PreparedStatement statement = connection.prepareStatement(sql, new String[]{"ID"});
             statement.setString(1, task.getName());
             statement.setTimestamp(2, Timestamp.valueOf(task.getStartDate()));
+            statement.setLong(3, task.getFkMechanic());
+            statement.setLong(4, task.getFkCar());
+            statement.setLong(5, task.getFkCustomer());
 
             int affectedRows = statement.executeUpdate();
 
@@ -46,12 +50,18 @@ public class TaskRepository {
         try (Connection connection = database.getConnection()) {
             String sql = "UPDATE TASK SET NAME=?, " +
                     "START_DATE=?, " +
+                    "MECHANIC_ID=?, " +
+                    "CAR_ID=?, " +
+                    "CUSTOMER_ID=? " +
                     "WHERE ID=?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, task.getName());
             statement.setTimestamp(2, Timestamp.valueOf(task.getStartDate()));
-            statement.setLong(3, task.getId());
+            statement.setLong(3, task.getFkMechanic());
+            statement.setLong(4, task.getFkCar());
+            statement.setLong(5, task.getFkCustomer());
+            statement.setLong(6, task.getId());
 
             if (statement.executeUpdate() == 0) {
                 throw new SQLException("Update of task failed, no rows affected");
@@ -85,7 +95,10 @@ public class TaskRepository {
                 long id = result.getLong(1);
                 String name = result.getString(2);
                 LocalDateTime startDate = result.getTimestamp(3).toLocalDateTime();
-                Task newTask = new Task(id, name, startDate);
+                Long fk_mechanic = result.getLong(4);
+                Long fk_car = result.getLong(5);
+                Long fk_customer = result.getLong(6);
+                Task newTask = new Task(id, name, startDate, fk_mechanic, fk_car, fk_customer);
                 taskList.add(newTask);
             }
         } catch (SQLException e) {
@@ -105,7 +118,10 @@ public class TaskRepository {
                     {
                         String name = result.getString(2);
                         LocalDateTime startDate = result.getTimestamp(3).toLocalDateTime();
-                        return new Task(id, name, startDate);
+                        Long fk_mechanic = result.getLong(4);
+                        Long fk_car = result.getLong(5);
+                        Long fk_customer = result.getLong(6);
+                        return new Task(id, name, startDate, fk_mechanic, fk_car, fk_customer);
                     }
                 }
             }
