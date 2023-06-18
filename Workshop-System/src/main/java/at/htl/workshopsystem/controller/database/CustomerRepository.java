@@ -88,12 +88,9 @@ public class CustomerRepository {
                 String name = result.getString(2);
                 String email = result.getString(3);
                 String phoneNumber = result.getString(4);
-                Date birthdate = result.getDate(5);
-                //int customerCardId = result.getInt(6);
+                long customerCardId = result.getLong(5);
 
-                //Car newCar = new Car(id, model, manufacturer, prod_yr, reg_yr, owner, fueltype, numberplate);
-                //Customer newCustomer = new Customer(id, name, phoneNumber, email, customerCardId)
-                //carList.add(newCar);
+                customerList.add(new Customer(id, name, email, phoneNumber, new CustomerCardRepository().getById(customerCardId)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
