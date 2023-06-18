@@ -34,8 +34,9 @@ public class WorkshopSystem extends Application {
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title){
         Parent root = null;
+        Application.setUserAgentStylesheet(new CupertinoLight().getUserAgentStylesheet());
 
-        if (fxmlFile.equals("carSearch.fxml")) {
+       /*if (fxmlFile.equals("carSearch.fxml")) {
 
             //Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
             //Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
@@ -45,7 +46,7 @@ public class WorkshopSystem extends Application {
             //Application.setUserAgentStylesheet(new CupertinoDark().getUserAgentStylesheet());
             Application.setUserAgentStylesheet(new CupertinoLight().getUserAgentStylesheet());
 
-        }
+        }*/
 
         try{
             FXMLLoader loader = new FXMLLoader(HomeController.class.getResource("/at/htl/workshopsystem/" + fxmlFile));
