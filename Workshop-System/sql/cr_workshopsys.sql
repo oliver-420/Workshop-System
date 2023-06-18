@@ -33,6 +33,7 @@ CREATE TABLE SubTask
     DESCRIPTION varchar(100),
     DURATION    NUMERIC,
     TASK_ID     Number NOT NULL,
+    IS_DONE     NUMBER(1),
     CONSTRAINT SUBTASK_TASK_FK FOREIGN KEY (TASK_ID) REFERENCES Task (ID)
         on delete cascade
 );

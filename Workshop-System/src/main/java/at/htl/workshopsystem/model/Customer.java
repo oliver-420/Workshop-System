@@ -61,4 +61,9 @@ public class Customer {
     public void setCustomerCard(CustomerCard customerCard) {
         this.customerCard = customerCard;
     }
+
+    @Override
+    public String toString() {
+        return this.name + " " + this.email;
+    }
 }
