@@ -6,6 +6,7 @@ import atlantafx.base.theme.Styles;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import at.htl.workshopsystem.WorkshopSystem;
 import javafx.scene.input.KeyCode;
@@ -43,7 +44,7 @@ public class CustomersController {
                 if (newValue.getCustomerCard() != null) {
                     this.discountField.setDisable(false);
                     this.discountField.setEditable(false);
-                    this.discountField.setText(String.valueOf(newValue.getCustomerCard().getDiscount()) + "%");
+                    this.discountField.setText(newValue.getCustomerCard().getDiscount() + "%");
                 } else {
                     this.discountField.setDisable(true);
                     this.discountField.setEditable(false);
@@ -60,15 +61,9 @@ public class CustomersController {
             }
         });
 
-        this.newCustomerBtn.setOnAction(event -> {
-            addCustomer();
-        });
-        this.deleteCustomerBtn.setOnAction(event -> {
-            deleteCustomer();
-        });
-        this.saveCustomerBtn.setOnAction(event -> {
-            saveCustomer();
-        });
+        this.newCustomerBtn.setOnAction(event -> addCustomer());
+        this.deleteCustomerBtn.setOnAction((ActionEvent event) -> deleteCustomer());
+        this.saveCustomerBtn.setOnAction(event -> saveCustomer());
     }
 
 

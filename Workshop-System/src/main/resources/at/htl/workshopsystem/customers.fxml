@@ -7,168 +7,155 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="476.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.CustomersController">
-   <children>
-      <HBox fillHeight="false" prefHeight="38.0" prefWidth="686.0" spacing="5.0">
-         <children>
-            <ToolBar prefHeight="2.0" prefWidth="686.0">
-               <items>
-                  <Button fx:id="homeBtn" mnemonicParsing="false" text="Home" />
-                  <Button fx:id="customersBtn" mnemonicParsing="false" text="Customers" />
-                  <Button fx:id="tasksBtn" mnemonicParsing="false" text="Tasks" />
-               </items>
-            </ToolBar>
-         </children>
+<AnchorPane prefHeight="476.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="at.htl.workshopsystem.view.controller.CustomersController">
+   <HBox fillHeight="false" prefHeight="38.0" prefWidth="686.0" spacing="5.0">
+      <ToolBar prefHeight="2.0" prefWidth="686.0">
+         <Button fx:id="homeBtn" mnemonicParsing="false" text="Home"/>
+         <Button fx:id="customersBtn" mnemonicParsing="false" text="Customers"/>
+         <Button fx:id="tasksBtn" mnemonicParsing="false" text="Tasks"/>
+      </ToolBar>
+   </HBox>
+   <VBox alignment="CENTER" prefHeight="66.0" prefWidth="796.0" style="-fx-background-color: gray;"
+         AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+         AnchorPane.topAnchor="35.0">
+      <Label alignment="CENTER" prefHeight="42.0" prefWidth="796.0" text="Customers">
+         <font>
+            <Font name="System Bold" size="20.0"/>
+         </font>
+         <VBox.margin>
+            <Insets top="5.0"/>
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <Label alignment="CENTER" prefHeight="36.0" prefWidth="289.0" style="-fx-alignment: center;" text="All">
+            <font>
+               <Font name="System Bold" size="15.0"/>
+            </font>
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </Label>
+         <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="498.0"
+                style="-fx-alignment: center;" text="Info">
+            <font>
+               <Font name="System Bold" size="15.0"/>
+            </font>
+         </Label>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="66.0" prefWidth="796.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="796.0" text="Customers">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="36.0" prefWidth="289.0" style="-fx-alignment: center;" text="All">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="498.0" style="-fx-alignment: center;" text="Info">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
+   </VBox>
+   <HBox layoutX="-1.0" layoutY="83.0" prefHeight="383.0" prefWidth="776.0" spacing="20.0"
+         style="-fx-alignment: center;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+         AnchorPane.rightAnchor="10.0">
+      <VBox prefHeight="383.0" prefWidth="220.0" spacing="10.0">
+         <Label prefHeight="26.0" prefWidth="100.0" text="Suchen"/>
+         <TextField fx:id="searchField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                    prefHeight="26.0" prefWidth="264.0" promptText="Suchkriterien">
+            <cursor>
+               <Cursor fx:constant="TEXT"/>
+            </cursor>
+            <effect>
+               <Glow/>
+            </effect>
+         </TextField>
+         <ListView fx:id="lvCustomers" prefHeight="358.0" prefWidth="249.0"/>
       </VBox>
-      <HBox layoutX="-1.0" layoutY="83.0" prefHeight="383.0" prefWidth="776.0" spacing="20.0" style="-fx-alignment: center;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-         <children>
-            <VBox prefHeight="383.0" prefWidth="220.0" spacing="10.0">
-               <children>
-                  <Label prefHeight="26.0" prefWidth="100.0" text="Suchen" />
-                  <TextField fx:id="searchField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Suchkriterien">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <effect>
-                        <Glow />
-                     </effect>
-                  </TextField>
-                  <ListView fx:id="lvCustomers" prefHeight="358.0" prefWidth="249.0" />
-               </children>
-            </VBox>
-            <VBox prefHeight="383.0" prefWidth="402.0">
-               <children>
-                  <HBox prefHeight="28.0" prefWidth="470.0">
-                     <children>
-                        <Label prefHeight="26.0" prefWidth="100.0" text="Name">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="nameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Name">
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <Glow />
-                           </effect>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="470.0">
-                     <children>
-                        <Label prefHeight="26.0" prefWidth="100.0" text="E-Mail">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="emailField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="E-Mail" >
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <Glow />
-                           </effect>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="470.0">
-                     <children>
-                        <Label prefHeight="26.0" prefWidth="100.0" text="Phone">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="numberField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Telefonnummer" >
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <Glow />
-                           </effect>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="20.0" layoutY="76.0" prefHeight="28.0" prefWidth="470.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="21.0" layoutY="84.0" prefHeight="28.0" prefWidth="470.0">
-                     <children>
-                        <Label prefHeight="26.0" prefWidth="100.0" text="Discount">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="discountField" alignment="CENTER" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Kundenrabatt" >
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <Glow />
-                           </effect>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Label prefHeight="182.0" prefWidth="28.0" />
-                  <HBox prefHeight="15.0" prefWidth="400.0" spacing="10.0">
-                     <children>
-                        <Button fx:id="newCustomerBtn" mnemonicParsing="false" text="New" />
-                        <Button fx:id="saveCustomerBtn" mnemonicParsing="false" text="Save" />
-                        <Button fx:id="deleteCustomerBtn" mnemonicParsing="false" text="Delete" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </children>
+      <VBox prefHeight="383.0" prefWidth="402.0">
+         <HBox prefHeight="28.0" prefWidth="470.0">
+            <VBox.margin>
+               <Insets bottom="5.0" left="10.0"/>
+            </VBox.margin>
+            <Label prefHeight="26.0" prefWidth="100.0" text="Name">
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0"/>
+               </font>
+            </Label>
+            <TextField fx:id="nameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                       prefHeight="26.0" prefWidth="264.0" promptText="Name">
+               <cursor>
+                  <Cursor fx:constant="TEXT"/>
+               </cursor>
+               <effect>
+                  <Glow/>
+               </effect>
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+            </TextField>
+         </HBox>
+         <HBox layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="470.0">
+            <VBox.margin>
+               <Insets bottom="5.0" left="10.0"/>
+            </VBox.margin>
+            <Label prefHeight="26.0" prefWidth="100.0" text="E-Mail">
+               <font>
+                  <Font name="System Bold" size="12.0"/>
+               </font>
+            </Label>
+            <TextField fx:id="emailField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                       prefHeight="26.0" prefWidth="264.0" promptText="E-Mail">
+               <cursor>
+                  <Cursor fx:constant="TEXT"/>
+               </cursor>
+               <effect>
+                  <Glow/>
+               </effect>
+            </TextField>
+         </HBox>
+         <HBox layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="470.0">
+            <VBox.margin>
+               <Insets bottom="5.0" left="10.0"/>
+            </VBox.margin>
+            <Label prefHeight="26.0" prefWidth="100.0" text="Phone">
+               <font>
+                  <Font name="System Bold" size="12.0"/>
+               </font>
+            </Label>
+            <TextField fx:id="numberField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                       prefHeight="26.0" prefWidth="264.0" promptText="Telefonnummer">
+               <cursor>
+                  <Cursor fx:constant="TEXT"/>
+               </cursor>
+               <effect>
+                  <Glow/>
+               </effect>
+            </TextField>
+         </HBox>
+         <HBox layoutX="20.0" layoutY="76.0" prefHeight="28.0" prefWidth="470.0">
+            <VBox.margin>
+               <Insets bottom="5.0" left="10.0"/>
+            </VBox.margin>
+         </HBox>
+         <HBox layoutX="21.0" layoutY="84.0" prefHeight="28.0" prefWidth="470.0">
+            <VBox.margin>
+               <Insets left="10.0"/>
+            </VBox.margin>
+            <Label prefHeight="26.0" prefWidth="100.0" text="Discount">
+               <font>
+                  <Font name="System Bold" size="12.0"/>
+               </font>
+            </Label>
+            <TextField fx:id="discountField" alignment="CENTER" disable="true" editable="false"
+                       maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0"
+                       promptText="Kundenrabatt">
+               <cursor>
+                  <Cursor fx:constant="TEXT"/>
+               </cursor>
+               <effect>
+                  <Glow/>
+               </effect>
+            </TextField>
+         </HBox>
+         <Label prefHeight="182.0" prefWidth="28.0"/>
+         <HBox prefHeight="15.0" prefWidth="400.0" spacing="10.0">
+            <Button fx:id="newCustomerBtn" mnemonicParsing="false" text="New"/>
+            <Button fx:id="saveCustomerBtn" mnemonicParsing="false" text="Save"/>
+            <Button fx:id="deleteCustomerBtn" mnemonicParsing="false" text="Delete"/>
+         </HBox>
+      </VBox>
+   </HBox>
 </AnchorPane>

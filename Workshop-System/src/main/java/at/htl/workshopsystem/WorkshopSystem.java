@@ -1,13 +1,7 @@
 package at.htl.workshopsystem;
 
-import at.htl.workshopsystem.controller.database.CarRepository;
-import at.htl.workshopsystem.controller.database.MechanicRepository;
-import at.htl.workshopsystem.model.Car;
-import at.htl.workshopsystem.model.Mechanic;
 import at.htl.workshopsystem.view.controller.HomeController;
-import atlantafx.base.theme.PrimerLight;
-import atlantafx.base.theme.PrimerDark;
-import atlantafx.base.theme.*;
+import atlantafx.base.theme.CupertinoLight;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
 import java.io.IOException;
 
 public class WorkshopSystem extends Application {
@@ -27,7 +21,7 @@ public class WorkshopSystem extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("Home");
         stage.setScene(scene);
-        this.stage = stage;
+        WorkshopSystem.stage = stage;
         //MetaData.parent = root;
         stage.show();
     }
@@ -66,14 +60,8 @@ public class WorkshopSystem extends Application {
     }
 
     public static void onPageChange(Button homeBtn, Button customersBtn, Button tasksBtn) {
-        homeBtn.setOnAction(event -> {
-            WorkshopSystem.changeScene(event, "home.fxml", "Home");
-        });
-        customersBtn.setOnAction(event -> {
-            WorkshopSystem.changeScene(event, "customers.fxml", "Customers");
-        });
-        tasksBtn.setOnAction(event -> {
-            WorkshopSystem.changeScene(event, "tasks.fxml", "Tasks");
-        });
+        homeBtn.setOnAction(event -> WorkshopSystem.changeScene(event, "home.fxml", "Home"));
+        customersBtn.setOnAction(event -> WorkshopSystem.changeScene(event, "customers.fxml", "Customers"));
+        tasksBtn.setOnAction(event -> WorkshopSystem.changeScene(event, "tasks.fxml", "Tasks"));
     }
 }

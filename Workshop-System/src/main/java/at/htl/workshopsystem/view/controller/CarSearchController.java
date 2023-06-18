@@ -13,18 +13,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.util.Callback;
 
-import java.awt.event.KeyEvent;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class CarSearchController {
 
@@ -85,9 +84,7 @@ public class CarSearchController {
             }
         });
 
-        this.saveBtn.setOnAction(event -> {
-            saveCar();
-        });
+        this.saveBtn.setOnAction(event -> saveCar());
     }
 
     private void setImage(int year, String make, String model) {
@@ -151,9 +148,7 @@ public class CarSearchController {
     private void createCarList(JsonNode root) {
         carList.clear();
 
-        root.elements().forEachRemaining(c -> {
-            carList.add(CarFactory.createCarFromJsonNode(c));
-        });
+        root.elements().forEachRemaining(c -> carList.add(CarFactory.createCarFromJsonNode(c)));
 
         if (carList != null) {
             lvCars.setItems(carList);

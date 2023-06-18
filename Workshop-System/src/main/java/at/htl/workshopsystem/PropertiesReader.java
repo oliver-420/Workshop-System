@@ -1,13 +1,9 @@
 package at.htl.workshopsystem;
 
-import java.io.Console;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 /**
  * The class Properties reader.
@@ -33,7 +29,6 @@ public final class PropertiesReader {
 
     static {
         PROPERTIES = new Properties();
-        final URL props = PropertiesReader.class.getResource(PROP_FILE);
         final Path path = Path.of("api/" + PROP_FILE);
         try {
             PROPERTIES.load(new FileReader(path.toFile()));

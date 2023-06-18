@@ -7,8 +7,6 @@ import at.htl.workshopsystem.model.SubTask;
 import at.htl.workshopsystem.model.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -23,14 +21,12 @@ public class TasksController {
     public ListView<SubTask> lvSubTasks;
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
-    private TaskRepository taskRepository = new TaskRepository();
-    private SubTaskRepository subTaskRepository = new SubTaskRepository();
+    private final TaskRepository taskRepository = new TaskRepository();
+    private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     public void initialize() {
         WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
 
-        taskRepository.getAll().forEach(task -> {
-            tasks.add(task);
-        });
+        tasks.addAll(taskRepository.getAll());
 
         lvTasks.setItems(tasks);
 
@@ -54,9 +50,7 @@ public class TasksController {
 
                 subTasks.clear();
 
-                subTaskRepository.getByTaskId(newValue.getId()).forEach(subTask -> {
-                    subTasks.add(subTask);
-                });
+                subTasks.addAll(subTaskRepository.getByTaskId(newValue.getId()));
 
                 lvSubTasks.setItems(subTasks);
 
@@ -77,11 +71,8 @@ public class TasksController {
                 this.finishSubTaskBtn.setDisable(true);
             }
         });
-        finishSubTaskBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        finishSubTaskBtn.setOnAction(event -> {
 
-            }
         });
     }
 }
