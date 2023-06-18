@@ -22,7 +22,7 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="66.0" prefWidth="796.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
          <children>
-            <Label prefHeight="42.0" prefWidth="796.0" style="-fx-alignment: center;" text=" Kundeninformationen">
+            <Label alignment="CENTER" prefHeight="42.0" prefWidth="796.0" text="Customers">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -32,7 +32,7 @@
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="36.0" prefWidth="289.0" style="-fx-alignment: center;" text="Angemeldete Kunden">
+                  <Label alignment="CENTER" prefHeight="36.0" prefWidth="289.0" style="-fx-alignment: center;" text="All">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -40,7 +40,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="498.0" style="-fx-alignment: center;" text="Informationen">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="498.0" style="-fx-alignment: center;" text="Info">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -62,22 +62,22 @@
                         <Glow />
                      </effect>
                   </TextField>
-                  <ListView fx:id="lvCustomers" prefHeight="358.0" prefWidth="249.0" style="-fx-border-color: black;" />
+                  <ListView fx:id="lvCustomers" prefHeight="358.0" prefWidth="249.0" />
                </children>
             </VBox>
-            <VBox prefHeight="383.0" prefWidth="402.0" style="-fx-border-color: black;">
+            <VBox prefHeight="383.0" prefWidth="402.0">
                <children>
                   <HBox prefHeight="28.0" prefWidth="470.0">
                      <children>
                         <Label prefHeight="26.0" prefWidth="100.0" text="Name">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <TextField fx:id="nameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Name" style="-fx-alignment: left;">
+                        <TextField fx:id="nameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Name">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -97,10 +97,10 @@
                      <children>
                         <Label prefHeight="26.0" prefWidth="100.0" text="E-Mail">
                            <font>
-                              <Font name="System Bold Italic" size="12.0" />
+                              <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="emailField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="E-Mail" style="-fx-alignment: left;">
+                        <TextField fx:id="emailField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="E-Mail" >
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -115,12 +115,12 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="470.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="100.0" text="Telefonnummer">
+                        <Label prefHeight="26.0" prefWidth="100.0" text="Phone">
                            <font>
-                              <Font name="System Bold Italic" size="12.0" />
+                              <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="numberField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Telefonnummer" style="-fx-alignment: left;">
+                        <TextField fx:id="numberField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Telefonnummer" >
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -140,12 +140,12 @@
                   </HBox>
                   <HBox layoutX="21.0" layoutY="84.0" prefHeight="28.0" prefWidth="470.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="100.0" text="Rabatt in %">
+                        <Label prefHeight="26.0" prefWidth="100.0" text="Discount">
                            <font>
-                              <Font name="System Bold Italic" size="12.0" />
+                              <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="discountField" alignment="CENTER" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Kundenrabatt" style="-fx-alignment: left;">
+                        <TextField fx:id="discountField" alignment="CENTER" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="264.0" promptText="Kundenrabatt" >
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
