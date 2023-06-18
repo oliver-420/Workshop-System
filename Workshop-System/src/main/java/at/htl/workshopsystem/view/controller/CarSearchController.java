@@ -2,6 +2,7 @@ package at.htl.workshopsystem.view.controller;
 
 
 import at.htl.workshopsystem.PropertiesReader;
+import at.htl.workshopsystem.WorkshopSystem;
 import at.htl.workshopsystem.controller.database.CarRepository;
 import at.htl.workshopsystem.model.Car;
 import at.htl.workshopsystem.model.factory.CarFactory;
@@ -40,6 +41,9 @@ public class CarSearchController {
     public Image carImg;
     public ImageView carImgView;
     public TextField yearSearchField;
+    public Button homeBtn;
+    public Button customersBtn;
+    public Button tasksBtn;
 
     @FXML
     private TextField searchField;
@@ -47,6 +51,8 @@ public class CarSearchController {
     private ObservableList<Car> carList = FXCollections.observableArrayList();
 
     public void initialize() {
+
+        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
 
         saveBtn.getStyleClass().addAll(
                 Styles.MEDIUM, Styles.ROUNDED, Styles.BUTTON_OUTLINED, Styles.ACCENT

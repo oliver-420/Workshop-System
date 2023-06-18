@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
@@ -61,5 +62,17 @@ public class WorkshopSystem extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static void onPageChange(Button homeBtn, Button customersBtn, Button tasksBtn) {
+        homeBtn.setOnAction(event -> {
+            WorkshopSystem.changeScene(event, "home.fxml", "Home");
+        });
+        customersBtn.setOnAction(event -> {
+            WorkshopSystem.changeScene(event, "customers.fxml", "Customers");
+        });
+        tasksBtn.setOnAction(event -> {
+            WorkshopSystem.changeScene(event, "tasks.fxml", "Tasks");
+        });
     }
 }
