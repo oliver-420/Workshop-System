@@ -24,7 +24,8 @@ public class SubTaskRepository {
                 Long subTaskId = result.getLong("ID");
                 String description = result.getString("DESCRIPTION");
                 double duration = result.getDouble("DURATION");
-                SubTask subTask = new SubTask(subTaskId, description, duration);
+                boolean isDone = result.getInt("IS_DONE") == 0 ? false : true;
+                SubTask subTask = new SubTask(subTaskId, description, duration, isDone);
                 subTasks.add(subTask);
             }
             return subTasks;
@@ -42,6 +43,8 @@ public class SubTaskRepository {
             statement.setLong(2, task.getId());
             if(statement.executeUpdate() == 0){
                 throw new Exception("Update of subtask failed, no rows affected");
+            }else {
+                System.out.println("Update of subtask successful");
             }
         } catch(Exception e){
             e.printStackTrace();

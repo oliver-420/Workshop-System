@@ -1,15 +1,20 @@
 package at.htl.workshopsystem.view.controller;
 
 import at.htl.workshopsystem.WorkshopSystem;
+import at.htl.workshopsystem.controller.database.MechanicRepository;
 import at.htl.workshopsystem.controller.database.SubTaskRepository;
 import at.htl.workshopsystem.controller.database.TaskRepository;
+import at.htl.workshopsystem.model.Mechanic;
 import at.htl.workshopsystem.model.SubTask;
 import at.htl.workshopsystem.model.Task;
+import at.htl.workshopsystem.model.factory.CarFactory;
+import com.fasterxml.jackson.databind.JsonNode;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.control.skin.ChoiceBoxSkin;
+
+import java.util.List;
 
 public class TasksController {
     public Button homeBtn;
@@ -17,18 +22,26 @@ public class TasksController {
     public Button tasksBtn;
     public Button finishTaskBtn;
     public Button finishSubTaskBtn;
+    public ComboBox mechanicsDrd;
     public ListView<Task> lvTasks;
     public ListView<SubTask> lvSubTasks;
+    private ObservableList<Mechanic> mechanics = FXCollections.observableArrayList();
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
     private final TaskRepository taskRepository = new TaskRepository();
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
+    private final MechanicRepository mechanicRepository = new MechanicRepository();
     public void initialize() {
         WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
 
         tasks.addAll(taskRepository.getAll());
-
         lvTasks.setItems(tasks);
+
+        mechanics.addAll(mechanicRepository.getAll());
+        mechanicsDrd.setItems(mechanics);
+
+        finishTaskBtn.setDisable(true);
+        finishSubTaskBtn.setDisable(true);
 
         lvTasks.setCellFactory(param -> new ListCell<Task>() {
             @Override
@@ -45,9 +58,6 @@ public class TasksController {
 
         this.lvTasks.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                this.finishTaskBtn.setDisable(false);
-                this.finishSubTaskBtn.setDisable(false);
-
                 subTasks.clear();
 
                 subTasks.addAll(subTaskRepository.getByTaskId(newValue.getId()));
@@ -61,18 +71,46 @@ public class TasksController {
 
                         if (empty || item == null || item.getDescription() == null) {
                             setText(null);
+                            finishSubTaskBtn.setDisable(true);
                         } else {
-                            setText(item.getDescription());
+                            setText(item.getDescription() + " - " + (item.getIsDone() ? "Done" : "Not done"));
+                            finishSubTaskBtn.setDisable(false);
+
+                            if(subTasks.stream().allMatch(subTask -> subTask.getIsDone())) {
+                                finishTaskBtn.setDisable(false);
+                            }else {
+                                finishTaskBtn.setDisable(true);
+                            }
                         }
                     }
                 });
-            } else {
-                this.finishTaskBtn.setDisable(true);
-                this.finishSubTaskBtn.setDisable(true);
             }
         });
-        finishSubTaskBtn.setOnAction(event -> {
 
+        finishSubTaskBtn.setOnAction(event -> {
+            finishSubTask();
+            subTasks.clear();
+            subTasks.addAll(subTaskRepository.getByTaskId(lvTasks.getSelectionModel().getSelectedItem().getId()));
+            lvSubTasks.setItems(subTasks);
         });
+
+        finishTaskBtn.setOnAction(event -> {
+            finishTask();
+            tasks.clear();
+            tasks.addAll(taskRepository.getAll());
+            lvTasks.setItems(tasks);
+        });
+    }
+
+    public void finishSubTask() {
+        SubTask subTask = lvSubTasks.getSelectionModel().getSelectedItem();
+        subTask.setIsDone(true);
+        subTaskRepository.updateIsDone(subTask);
+    }
+
+    public void finishTask() {
+        Task task = lvTasks.getSelectionModel().getSelectedItem();
+        taskRepository.delete(task.getId());
+        //change scene to pdfsite
     }
 }

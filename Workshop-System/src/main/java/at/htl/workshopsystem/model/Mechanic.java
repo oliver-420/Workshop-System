@@ -39,4 +39,9 @@ public class Mechanic {
     public void setHourlyWage(Double hourlyWage) {
         this.hourlyWage = hourlyWage;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
