@@ -31,6 +31,13 @@ public class Car {
         setNumberPlate(numberPlate);
     }
 
+    public Car(String model, String manufacturer, int productionYear, String fuel) {
+        setModel(model);
+        setManufacturer(manufacturer);
+        setProductionYear(productionYear);
+        setFuel(fuel);
+    }
+
     public Long getId() {
         return id;
     }
@@ -93,5 +100,10 @@ public class Car {
 
     public void setNumberPlate(String numberPlate) {
         this.numberPlate = numberPlate;
+    }
+
+    @Override
+    public String toString() {
+        return getProductionYear() + " " + getManufacturer() + " " + getModel();
     }
 }

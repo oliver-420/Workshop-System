@@ -6,6 +6,7 @@ module at.htl.workshopsystem {
     //requires itextpdf;
     //requires barcode4j;
     requires java.desktop;
+    requires com.fasterxml.jackson.databind;
 
     opens at.htl.workshopsystem to javafx.fxml;
     exports at.htl.workshopsystem;

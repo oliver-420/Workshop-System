@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="at.htl.workshopsystem.view.controller.CarSearchController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="14.0" layoutY="35.0" prefHeight="360.0" prefWidth="230.0" style="-fx-background-color: grey;">
+         <children>
+            <Label text="Search For a Car" />
+            <TextField fx:id="searchField"/>
+            <ListView prefHeight="318.0" prefWidth="230.0" fx:id="lvCars"/>
+         </children>
+      </VBox>
+      <HBox layoutX="271.0" layoutY="35.0" prefHeight="360.0" prefWidth="321.0" style="-fx-background-color: grey;">
+         <children>
+            <VBox prefHeight="360.0" prefWidth="327.0">
+               <children>
+                  <Label text="Model" />
+                  <TextField fx:id="modelField" />
+                  <Label text="Manufacturer" />
+                  <TextField fx:id="manufacturerField"/>
+                  <Label text="Production Year" />
+                  <TextField fx:id="prodYearField"/>
+                  <Label text="Fuel" />
+                  <TextField fx:id="fuelTypeField"/>
+                  <Label text="Owner" />
+                  <TextField fx:id="ownerField"/>
+                  <Label text="Number Plate" />
+                  <TextField fx:id="numberPlateField"/>
+                  <Label text="Registration Year" />
+                  <TextField prefHeight="25.0" prefWidth="244.0" fx:id="registrationField"/>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

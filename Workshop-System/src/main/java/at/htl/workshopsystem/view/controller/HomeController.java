@@ -19,6 +19,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
+    public Button btn_carSearchTest;
     @FXML
     private Label welcomeText;
 
@@ -38,6 +39,13 @@ public class HomeController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 WorkshopSystem.changeScene(event, "customers.fxml", "Customers");
+            }
+        });
+
+        btn_carSearchTest.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                WorkshopSystem.changeScene(event, "carSearch.fxml", "Car Search Test");
             }
         });
 

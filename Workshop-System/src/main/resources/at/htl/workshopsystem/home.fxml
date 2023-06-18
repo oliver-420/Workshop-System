@@ -27,6 +27,11 @@
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Button>
+                <Button fx:id="btn_carSearchTest" layoutX="146.0" layoutY="10.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="305.0" text="CarSearchTest">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font>
+                </Button>
             </children>
         </HBox>
     </children>
