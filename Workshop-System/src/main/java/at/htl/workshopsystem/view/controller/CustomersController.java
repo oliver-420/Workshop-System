@@ -10,6 +10,9 @@ import javafx.scene.control.*;
 import at.htl.workshopsystem.WorkshopSystem;
 import javafx.scene.input.KeyCode;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CustomersController {
     public Button homeBtn;
     public Button customersBtn;
@@ -72,6 +75,8 @@ public class CustomersController {
     private void saveCustomer() {
         if (checkIfFieldsAreFull()) return;
         if (checkIfCustomerIsSelected()) return;
+        if (checkEmailAndPhone()) return;
+
         Customer customer = new Customer(
                 this.lvCustomers.getSelectionModel().getSelectedItem().getId(),
                 this.nameField.getText(),
@@ -84,32 +89,9 @@ public class CustomersController {
         olCustomers.set(olCustomers.indexOf(this.lvCustomers.getSelectionModel().getSelectedItem()), customer);
     }
 
-    private boolean checkIfFieldsAreFull() {
-        if(this.nameField.getText().isEmpty() || this.numberField.getText().isEmpty() || this.emailField.getText().isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Empty fields");
-            alert.setContentText("Please fill out all fields");
-            alert.showAndWait();
-            return true;
-        }
-        return false;
-    }
-
-    private boolean checkIfCustomerIsSelected() {
-        if (this.lvCustomers.getSelectionModel().getSelectedItem() == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No customer selected");
-            alert.setContentText("Please select a customer to delete");
-            alert.showAndWait();
-            return true;
-        }
-        return false;
-    }
-
     private void addCustomer() {
         if (checkIfFieldsAreFull()) return;
+        if (checkEmailAndPhone()) return;
 
         Customer customer = new Customer(
                 this.nameField.getText(),
@@ -136,6 +118,64 @@ public class CustomersController {
         olCustomers.setAll(customerRepository.getAll());
         customers = new FilteredList<>(olCustomers);
         lvCustomers.setItems(customers);
+    }
+
+    private boolean checkIfFieldsAreFull() {
+        if (this.nameField.getText().isEmpty() || this.numberField.getText().isEmpty() || this.emailField.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Empty fields");
+            alert.setContentText("Please fill out all fields");
+            alert.showAndWait();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkIfCustomerIsSelected() {
+        if (this.lvCustomers.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No customer selected");
+            alert.setContentText("Please select a customer");
+            alert.showAndWait();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkEmailAndPhone() {
+        if (!validateEmail(this.emailField.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid email");
+            alert.setContentText("Please enter a valid email");
+            alert.showAndWait();
+            return true;
+        }
+        if (!validatePhoneNumber(this.numberField.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid phone number");
+            alert.setContentText("Please enter a valid phone number");
+            alert.showAndWait();
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean validateEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private static boolean validatePhoneNumber(String phoneNumber) {
+        String regex = "^[+]?[0-9]{1,3}-?[0-9]{1,14}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
     }
 
     private void setButtonStyles() {
