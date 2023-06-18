@@ -31,6 +31,9 @@ public class Car {
         setNumberPlate(numberPlate);
     }
 
+    public Car() {
+    }
+
     public Car(String model, String manufacturer, int productionYear, String fuel) {
         setModel(model);
         setManufacturer(manufacturer);

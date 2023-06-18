@@ -1,35 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:controller="at.htl.workshopsystem.view.controller.CarSearchController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.CarSearchController">
    <children>
-      <VBox layoutX="14.0" layoutY="35.0" prefHeight="360.0" prefWidth="230.0" style="-fx-background-color: grey;">
+      <VBox layoutX="14.0" layoutY="35.0" prefHeight="360.0" prefWidth="230.0">
          <children>
             <Label text="Search For a Car" />
-            <TextField fx:id="searchField"/>
-            <ListView prefHeight="318.0" prefWidth="230.0" fx:id="lvCars"/>
+            <TextField fx:id="searchField" />
+            <ListView fx:id="lvCars" prefHeight="318.0" prefWidth="230.0" />
          </children>
       </VBox>
-      <HBox layoutX="271.0" layoutY="35.0" prefHeight="360.0" prefWidth="321.0" style="-fx-background-color: grey;">
+      <HBox layoutX="271.0" layoutY="35.0" prefHeight="360.0" prefWidth="321.0">
          <children>
             <VBox prefHeight="360.0" prefWidth="327.0">
                <children>
-                  <Label text="Model" />
-                  <TextField fx:id="modelField" />
-                  <Label text="Manufacturer" />
-                  <TextField fx:id="manufacturerField"/>
-                  <Label text="Production Year" />
-                  <TextField fx:id="prodYearField"/>
-                  <Label text="Fuel" />
-                  <TextField fx:id="fuelTypeField"/>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="172.0">
+                           <children>
+                              <Label text="Model" />
+                              <TextField fx:id="modelField" prefHeight="25.0" prefWidth="123.0" />
+                              <Label text="Manufacturer" />
+                              <TextField fx:id="manufacturerField" />
+                              <Label text="Production Year" />
+                              <TextField fx:id="prodYearField" />
+                              <Label text="Fuel" />
+                              <TextField fx:id="fuelTypeField" />
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="carImgView" fitHeight="192.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image fx:id="carImg" url="https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
                   <Label text="Owner" />
-                  <TextField fx:id="ownerField"/>
+                  <TextField fx:id="ownerField" />
                   <Label text="Number Plate" />
-                  <TextField fx:id="numberPlateField"/>
+                  <TextField fx:id="numberPlateField" />
                   <Label text="Registration Year" />
-                  <TextField prefHeight="25.0" prefWidth="244.0" fx:id="registrationField"/>
+                  <TextField fx:id="registrationField" prefHeight="25.0" prefWidth="244.0" />
+                  <Button fx:id="saveBtn" mnemonicParsing="false" text="Button">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
          </children>
