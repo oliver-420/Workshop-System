@@ -23,6 +23,7 @@ public class WorkshopSystem extends Application {
         Scene scene = new Scene(root);
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
+        Application.setUserAgentStylesheet(new CupertinoLight().getUserAgentStylesheet());
 
         /*stage.setX(bounds.getMinX());
         stage.setY(bounds.getMinY());
@@ -37,7 +38,6 @@ public class WorkshopSystem extends Application {
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title){
         Parent root = null;
-        Application.setUserAgentStylesheet(new CupertinoLight().getUserAgentStylesheet());
 
        /*if (fxmlFile.equals("carSearch.fxml")) {
 
@@ -63,6 +63,24 @@ public class WorkshopSystem extends Application {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    public static void changeScene(String fxmlFile, String title){
+        Parent root = null;
+
+
+        try{
+            FXMLLoader loader = new FXMLLoader(HomeController.class.getResource("/at/htl/workshopsystem/" + fxmlFile));
+            root = loader.load();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage sstage = stage;
+        sstage.setTitle(title);
+        sstage.setScene(new Scene(root));
+        sstage.show();
+    }
+
 
     public static void main(String[] args) {
         launch();
