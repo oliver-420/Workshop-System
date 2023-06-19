@@ -50,16 +50,15 @@ public class TaskRepository {
         try (Connection connection = database.getConnection()) {
             String sql = "UPDATE TASK SET NAME=?, " +
                     "START_DATE=?, " +
-                    "MECHANIC_ID=?, " +
                     "CAR_ID=?, " +
+                    "MECHANIC_ID=?, " +
                     "CUSTOMER_ID=? " +
                     "WHERE ID=?";
-
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, task.getName());
             statement.setTimestamp(2, Timestamp.valueOf(task.getStartDate()));
-            statement.setLong(3, task.getFkMechanic());
-            statement.setLong(4, task.getFkCar());
+            statement.setLong(3, task.getFkCar());
+            statement.setLong(4, task.getFkMechanic());
             statement.setLong(5, task.getFkCustomer());
             statement.setLong(6, task.getId());
 
@@ -95,8 +94,8 @@ public class TaskRepository {
                 long id = result.getLong(1);
                 String name = result.getString(2);
                 LocalDateTime startDate = result.getTimestamp(3).toLocalDateTime();
-                Long fk_mechanic = result.getLong(4);
-                Long fk_car = result.getLong(5);
+                Long fk_car = result.getLong(4);
+                Long fk_mechanic = result.getLong(5);
                 Long fk_customer = result.getLong(6);
                 Task newTask = new Task(id, name, startDate, fk_mechanic, fk_car, fk_customer);
                 taskList.add(newTask);

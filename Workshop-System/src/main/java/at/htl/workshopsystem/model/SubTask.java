@@ -2,6 +2,8 @@ package at.htl.workshopsystem.model;
 
 import java.time.LocalDateTime;
 
+import static java.awt.SystemColor.text;
+
 public class SubTask {
     private Long id;
     private String description;
@@ -56,8 +58,8 @@ public class SubTask {
     @Override
     public String toString() {
         if(isDone)
-            return description + " - " + isDone + " - " + duration + "h - DONE";
+            return description  + " - " + duration + "h - DONE";
         else
-            return description + " - " + isDone + " - " + duration + "h - NOT DONE";
+            return description  + " - " + duration + "h - NOT DONE";
     }
 }

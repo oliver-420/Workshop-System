@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.skin.ChoiceBoxSkin;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,11 +65,11 @@ public class TasksController {
                 lvSubTasks.setItems(subTasks);
 
                 mechanicsDrd.getSelectionModel().select(mechanics.stream().filter(mechanic -> mechanic.getId() == newValue.getFkMechanic()).findFirst().orElse(null));
+
                 finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
 
                 lvSubTasks.getSelectionModel().selectedItemProperty().addListener((observable1, oldValueSubTask, newValueSubTask) -> {
                     if (newValueSubTask != null) {
-                        finishSubTaskBtn.setDisable(false);
                         durationTf.setDisable(false);
 
                         if(newValueSubTask.getIsDone()){
@@ -77,20 +78,20 @@ public class TasksController {
                         }
                         else{
                             durationTf.setDisable(false);
-                            if(durationTf.getText().isEmpty()) {
-                                finishSubTaskBtn.setDisable(true);
-                            }
 
                             durationTf.setOnKeyPressed(event -> {
-                                if(!durationTf.getText().isEmpty() || !durationTf.getText().equals("")) {
+                                if(!durationTf.getText().isEmpty()) {
                                     finishSubTaskBtn.setDisable(false);
                                 }
-                                //if its not a number disable durationTf
-                                if(!durationTf.getText().matches("[0-9]+([,.][0-9]{1,2})?")) {
+                                else{
+                                    finishSubTaskBtn.setDisable(true);
+                                }
+                                if(!durationTf.getText().matches("[0-9]+(\\.[0-9]+)?") || newValueSubTask.getIsDone()){
                                     finishSubTaskBtn.setDisable(true);
                                 }
                             });
                         }
+                        finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
                     } else {
                         finishSubTaskBtn.setDisable(true);
                         durationTf.setDisable(true);
@@ -111,6 +112,8 @@ public class TasksController {
             tasks.clear();
             tasks.addAll(taskRepository.getAll());
             lvTasks.setItems(tasks);
+
+            WorkshopSystem.changeScene(event,"finishTask.fxml", "Finish Task");
         });
     }
 
@@ -124,9 +127,9 @@ public class TasksController {
 
     public void finishTask() {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
-        task.setFkMechanic(((Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem()).getId());
-        taskRepository.update(task);
-        //change scene to
+        Mechanic mechanic = (Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem();
+        task.setFkMechanic(mechanic.getId());
 
+        taskRepository.update(task);
     }
 }

@@ -8,8 +8,8 @@ import at.htl.workshopsystem.model.Mechanic;
 import at.htl.workshopsystem.model.Task;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
-import java.awt.*;
 
 public class FinishTaskController {
     public javafx.scene.control.Button homeBtn;
@@ -22,7 +22,7 @@ public class FinishTaskController {
     public TextField totalPriceTf;
     public TextField durationTf;
     public ListView usedPartsLv;
-    private Long taskId = FinishTaskId.getId();
+    private final Long taskId = FinishTaskId.getId();
     private final TaskRepository taskRepository = new TaskRepository();
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     private final MechanicRepository mechanicRepository = new MechanicRepository();
@@ -32,14 +32,16 @@ public class FinishTaskController {
     public void initialize() {
         WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
-        Task task = taskRepository.getById(taskId);
+       // System.out.println(mechanicRepository.getById(taskRepository.getById(taskId).getFkMechanic()).getName());
+
+        /*Task task = taskRepository.getById(taskId);
         Mechanic mechanic = mechanicRepository.getById(task.getFkMechanic());
         Car car = carRepository.getById(task.getFkCar());
         Customer customer = customerRepository.getById(task.getFkCustomer());
 
         mechanicTf.setText(mechanic.getName());
         customerTf.setText(customer.getName());
-        carTf.setText(car.getManufacturer() + " " + car.getModel());
+        carTf.setText(car.getManufacturer() + " " + car.getModel());*/
 
     }
 }
