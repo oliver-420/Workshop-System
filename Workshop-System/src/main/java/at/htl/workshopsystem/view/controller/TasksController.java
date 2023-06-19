@@ -3,10 +3,12 @@ package at.htl.workshopsystem.view.controller;
 import at.htl.workshopsystem.WorkshopSystem;
 import at.htl.workshopsystem.controller.database.MechanicRepository;
 import at.htl.workshopsystem.controller.database.SubTaskRepository;
+import at.htl.workshopsystem.controller.database.TaskPartMappingRepository;
 import at.htl.workshopsystem.controller.database.TaskRepository;
 import at.htl.workshopsystem.model.Mechanic;
 import at.htl.workshopsystem.model.SubTask;
 import at.htl.workshopsystem.model.Task;
+import at.htl.workshopsystem.model.TaskPartMapping;
 import at.htl.workshopsystem.model.factory.CarFactory;
 import atlantafx.base.theme.Styles;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -31,12 +33,18 @@ public class TasksController {
     public ListView<Task> lvTasks;
     public ListView<SubTask> lvSubTasks;
     public Button newTaskBtn;
+    public TextField quantityField;
+    public Button deletePartBtn;
+    public Button addPartBtn;
+    public ListView taskPartMapLv;
     private ObservableList<Mechanic> mechanics = FXCollections.observableArrayList();
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
+    private ObservableList<TaskPartMapping> taskPartMappings = FXCollections.observableArrayList();
     private final TaskRepository taskRepository = new TaskRepository();
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     private final MechanicRepository mechanicRepository = new MechanicRepository();
+    private final TaskPartMappingRepository taskPartMappingRepository = new TaskPartMappingRepository();
     public void initialize() {
         WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
@@ -64,9 +72,14 @@ public class TasksController {
                 subTasks.addAll(subTaskRepository.getByTaskId(newValue.getId()));
                 lvSubTasks.setItems(subTasks);
 
-                finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
+                taskPartMappings.clear();
+                taskPartMappings.addAll(taskPartMappingRepository.getByTaskId(newValue.getId()));
+                taskPartMapLv.setItems(taskPartMappings);
+
 
                 mechanicsDrd.getSelectionModel().select(mechanics.stream().filter(mechanic -> mechanic.getId() == newValue.getFkMechanic()).findFirst().orElse(null));
+
+                finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
 
                 lvSubTasks.getSelectionModel().selectedItemProperty().addListener((observable1, oldValueSubTask, newValueSubTask) -> {
                     if (newValueSubTask != null) {
@@ -79,20 +92,19 @@ public class TasksController {
                         else{
                             durationTf.setDisable(false);
 
-                            durationTf.textProperty().addListener((observable2, oldValueDuration, newValueDuration) -> {
-                                if (newValueDuration.matches("\\d*\\.?\\d*") || newValueDuration.matches("\\d*\\,?\\d*") && !newValueDuration.isEmpty()) {
+                            durationTf.setOnKeyPressed(event -> {
+                                if(!durationTf.getText().isEmpty()) {
                                     finishSubTaskBtn.setDisable(false);
-                                } else {
+                                }
+                                else{
+                                    finishSubTaskBtn.setDisable(true);
+                                }
+                                if(!durationTf.getText().matches("[0-9]+(\\.[0-9]+)?") || newValueSubTask.getIsDone()){
                                     finishSubTaskBtn.setDisable(true);
                                 }
                             });
                         }
-                        if(subTasks.stream().allMatch(SubTask::getIsDone)){
-                            finishTaskBtn.setDisable(false);
-                        }
-                        else{
-                            finishTaskBtn.setDisable(true);
-                        }
+                        finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
                     } else {
                         finishSubTaskBtn.setDisable(true);
                         durationTf.setDisable(true);
@@ -130,7 +142,6 @@ public class TasksController {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
         Mechanic mechanic = (Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem();
         task.setFkMechanic(mechanic.getId());
-        FinishTaskId.getInstance(task.getId());
 
         taskRepository.update(task);
     }

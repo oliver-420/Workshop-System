@@ -60,7 +60,7 @@
             <artifactId>ojdbc8</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/oracle/ojdbc14.jar</systemPath>
+            <systemPath>${basedir}/oracle/ojdbc8.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
