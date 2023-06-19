@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.skin.ChoiceBoxSkin;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,6 +65,7 @@ public class TasksController {
                 lvSubTasks.setItems(subTasks);
 
                 mechanicsDrd.getSelectionModel().select(mechanics.stream().filter(mechanic -> mechanic.getId() == newValue.getFkMechanic()).findFirst().orElse(null));
+
                 finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
 
                 lvSubTasks.getSelectionModel().selectedItemProperty().addListener((observable1, oldValueSubTask, newValueSubTask) -> {
@@ -85,7 +87,6 @@ public class TasksController {
                                 if(!durationTf.getText().isEmpty() || !durationTf.getText().equals("")) {
                                     finishSubTaskBtn.setDisable(false);
                                 }
-                                //if its not a number disable durationTf
                                 if(!durationTf.getText().matches("[0-9]+([,.][0-9]{1,2})?")) {
                                     finishSubTaskBtn.setDisable(true);
                                 }
@@ -107,7 +108,7 @@ public class TasksController {
         });
 
         finishTaskBtn.setOnAction(event -> {
-            finishTask();
+            finishTask(event);
             tasks.clear();
             tasks.addAll(taskRepository.getAll());
             lvTasks.setItems(tasks);
@@ -122,11 +123,15 @@ public class TasksController {
         subTaskRepository.update(subTask);
     }
 
-    public void finishTask() {
+    public void finishTask(javafx.event.ActionEvent event) {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
-        task.setFkMechanic(((Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem()).getId());
-        taskRepository.update(task);
-        //change scene to
+        System.out.println("Task" + task.getId());
+        Mechanic mechanic = (Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem();
+        task.setFkMechanic(mechanic.getId());
 
+        taskRepository.update(task);
+
+        //taskRepository.update(task);
+        //WorkshopSystem.changeScene(event,"finishTask.fxml", "Finish Task");
     }
 }
