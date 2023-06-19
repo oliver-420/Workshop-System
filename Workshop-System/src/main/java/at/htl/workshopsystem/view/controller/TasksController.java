@@ -27,7 +27,6 @@ public class TasksController {
     public ComboBox mechanicsDrd;
     public ListView<Task> lvTasks;
     public ListView<SubTask> lvSubTasks;
-    public Button partRepoBtn;
     private ObservableList<Mechanic> mechanics = FXCollections.observableArrayList();
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
@@ -60,6 +59,7 @@ public class TasksController {
             }
         });
 
+
         this.lvTasks.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 subTasks.clear();
@@ -86,11 +86,18 @@ public class TasksController {
                                 setTextFill(javafx.scene.paint.Color.RED);
                             }
 
-                            if(!durationTf.getText().isEmpty()) {
-                                finishSubTaskBtn.setDisable(item.getIsDone());
+                            if(item.getIsDone()){
+                                durationTf.setDisable(true);
+                                finishSubTaskBtn.setDisable(true);
                             }
+                            else{
+                                durationTf.setDisable(false);
+                                durationTf.setOnKeyPressed(event -> {
 
-                            durationTf.setDisable(false);
+                                        finishSubTaskBtn.setDisable(false);
+
+                                });
+                            }
 
                             finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
                         }
