@@ -52,4 +52,12 @@ public class SubTask {
     public void setIsDone(boolean isDone) {
         this.isDone = isDone;
     }
+
+    @Override
+    public String toString() {
+        if(isDone)
+            return description + " - " + isDone + " - " + duration + "h - DONE";
+        else
+            return description + " - " + isDone + " - " + duration + "h - NOT DONE";
+    }
 }

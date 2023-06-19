@@ -74,4 +74,9 @@ public class Task {
     public void setFkCustomer(Long fk_customer) {
         this.fk_customer = fk_customer;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
