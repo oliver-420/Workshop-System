@@ -3,11 +3,14 @@ package at.htl.workshopsystem.view.controller;
 import at.htl.workshopsystem.WorkshopSystem;
 import at.htl.workshopsystem.controller.database.*;
 import at.htl.workshopsystem.model.*;
+import at.htl.workshopsystem.pdf.PDFFactory;
+import com.itextpdf.text.DocumentException;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -44,7 +47,7 @@ public class FinishTaskController {
         carTf.setText(car.getManufacturer() + " " + car.getModel());
         durationTf.setText(Math.round(subTaskRepository.getAll().stream().mapToDouble(SubTask::getDuration).sum()) + "h");
 
-        totalPriceTf.setText("3424 €");
+        totalPriceTf.setText("3424" + "€");
 
         backBtn.setOnAction(event -> {
             FinishTaskId.cleanTaskSession();
@@ -52,7 +55,24 @@ public class FinishTaskController {
         });
 
         saveAndPrintBtn.setOnAction(event -> {
+            try {
+                PDFFactory.CreateInvoicePDF(new Invoice(
+                        task.getStartDate().toString(),
+                        mechanic.getName(),
+                        customer.getName(),
+                        car.getManufacturer() + " " + car.getModel(),
+                        durationTf.getText(),
+                        totalPriceTf.getText()
+                ));
+            } catch (IOException e) {
+                System.out.println("IOException");
+            } catch (DocumentException e) {
+                System.out.println("DocumentException");
+            }
 
+            taskRepository.delete(taskId);
+            FinishTaskId.cleanTaskSession();
+            WorkshopSystem.changeScene(event,"tasks.fxml", "Tasks");
         });
     }
 }

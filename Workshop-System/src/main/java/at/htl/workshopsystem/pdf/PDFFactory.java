@@ -15,14 +15,17 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public final class PDFFactory {
-    //invoice id muss noch besser durchdacht werden, weil es sollte mindestens eine 5-Stellige id sein!!!
     public static void CreateInvoicePDF(Invoice invoice) throws IOException, DocumentException {
-        String pdfName = "invoice_" + invoice.getId() + ".pdf";
+        //invoice with leading zeros, e.g. 0000001, max is 9999999
+        String invoiceId = String.format("%07d", invoice.getId());
+        String pdfName = "invoice_" + invoiceId + ".pdf";
         //Image barcode = CreateBarcodeImage(invoice.getId().toString());
 
-        //Create PDF
+        //Create and save PDF
         var doc = new Document();
-        PdfWriter.getInstance(doc, new FileOutputStream(pdfName));
+        String home = System.getProperty("user.home");
+        String path = home + "/Downloads/" + pdfName + ".pdf";
+        PdfWriter.getInstance(doc, new FileOutputStream(path));
         doc.open();
 
         var bold = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
@@ -31,6 +34,8 @@ public final class PDFFactory {
         doc.add(paragraph);
         //doc.add(barcode);
         doc.close();
+
+        OpenPDF(pdfName);
     }
     /*public static Image CreateBarcodeImage(String barcodeText) throws IOException, DocumentException {
         Code39Bean bean = new Code39Bean();
@@ -65,10 +70,10 @@ public final class PDFFactory {
         return image;
     }*/
 
-    public static void OpenPDF() throws IOException {
-        File pdfFile = new File("duHs.pdf");
+    public static void OpenPDF(String pdfName) throws IOException {
+        String home = System.getProperty("user.home");
+        File pdfFile = new File(home + pdfName);
         if (pdfFile.exists()) {
-
             if (Desktop.isDesktopSupported()) {
                 Desktop.getDesktop().open(pdfFile);
             } else {
@@ -76,16 +81,7 @@ public final class PDFFactory {
             }
 
         } else {
-            System.out.println("File is not exists!");
-        }
-    }
-
-    public static void DeletePDF() {
-        File pdfFile = new File("duHs.pdf");
-        if (pdfFile.delete()) {
-            System.out.println("File deleted successfully");
-        } else {
-            System.out.println("Failed to delete the file");
+            System.out.println("File is not existing!");
         }
     }
 }
