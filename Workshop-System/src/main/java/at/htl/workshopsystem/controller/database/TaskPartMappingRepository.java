@@ -131,12 +131,12 @@ public class TaskPartMappingRepository {
         return null;
     }
 
-    public List<TaskPartMapping> getByTaskId(String serialNumber) {
+    public List<TaskPartMapping> getByTaskId(Long id) {
         List<TaskPartMapping> taskPartMappings = new ArrayList<>();
         try (Connection connection = database.getConnection()) {
             String sql = "SELECT * FROM TaskPartMapping WHERE Task_ID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, serialNumber);
+            statement.setLong(1, id);
             ResultSet result = statement.executeQuery();
             TaskRepository taskRepository = new TaskRepository();
             PartRepository partRepository = new PartRepository();

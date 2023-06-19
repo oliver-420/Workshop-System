@@ -64,12 +64,7 @@ public class TaskPartMapping {
 
     @Override
     public String toString() {
-        return "TaskPartMapping{" +
-                "id=" + id +
-                ", task=" + task +
-                ", part=" + part +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                '}';
+        //return part.getName();
+        return "";
     }
 }
