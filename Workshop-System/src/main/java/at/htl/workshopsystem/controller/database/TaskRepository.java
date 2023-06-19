@@ -50,11 +50,10 @@ public class TaskRepository {
         try (Connection connection = database.getConnection()) {
             String sql = "UPDATE TASK SET NAME=?, " +
                     "START_DATE=?, " +
-                    "MECHANIC_ID=?, " +
                     "CAR_ID=?, " +
+                    "MECHANIC_ID=?, " +
                     "CUSTOMER_ID=? " +
                     "WHERE ID=?";
-
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, task.getName());
             statement.setTimestamp(2, Timestamp.valueOf(task.getStartDate()));

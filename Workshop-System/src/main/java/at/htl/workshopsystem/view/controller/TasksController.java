@@ -92,6 +92,7 @@ public class TasksController {
                                 }
                             });
                         }
+                        finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
                     } else {
                         finishSubTaskBtn.setDisable(true);
                         durationTf.setDisable(true);
@@ -108,10 +109,12 @@ public class TasksController {
         });
 
         finishTaskBtn.setOnAction(event -> {
-            finishTask(event);
+            finishTask();
             tasks.clear();
             tasks.addAll(taskRepository.getAll());
             lvTasks.setItems(tasks);
+
+            WorkshopSystem.changeScene(event,"finishTask.fxml", "Finish Task");
         });
     }
 
@@ -123,15 +126,11 @@ public class TasksController {
         subTaskRepository.update(subTask);
     }
 
-    public void finishTask(javafx.event.ActionEvent event) {
+    public void finishTask() {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
-        System.out.println("Task" + task.getId());
         Mechanic mechanic = (Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem();
         task.setFkMechanic(mechanic.getId());
 
         taskRepository.update(task);
-
-        //taskRepository.update(task);
-        //WorkshopSystem.changeScene(event,"finishTask.fxml", "Finish Task");
     }
 }
