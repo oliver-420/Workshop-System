@@ -25,6 +25,7 @@ public class TasksController {
     public ComboBox mechanicsDrd;
     public ListView<Task> lvTasks;
     public ListView<SubTask> lvSubTasks;
+    public Button partRepoBtn;
     private ObservableList<Mechanic> mechanics = FXCollections.observableArrayList();
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
@@ -32,7 +33,7 @@ public class TasksController {
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     private final MechanicRepository mechanicRepository = new MechanicRepository();
     public void initialize() {
-        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
+        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
         tasks.addAll(taskRepository.getAll());
         lvTasks.setItems(tasks);

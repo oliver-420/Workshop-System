@@ -25,18 +25,23 @@
             </HBox.margin>
         </Label>
       <Label id="upcharge" prefHeight="17.0" prefWidth="76.0" />
-      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="120.0">
+      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="160.0">
          <children>
-            <Button id="raiseQuantityBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="11.0" text="+">
+            <Button id="raiseQuantityBtn" maxHeight="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="11.0" text="+">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <TextField id="quantity" alignment="CENTER" prefHeight="25.0" prefWidth="49.0">
+            <TextField id="quantity" alignment="CENTER" prefHeight="25.0" prefWidth="46.0">
                <font>
                   <Font size="11.0" />
                </font></TextField>
-            <Button id="lowerQuantityBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="19.0" text="-" />
+            <Button id="lowerQuantityBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="19.0" text="-" />
+            <Button id="deleteBtn" mnemonicParsing="false" text="X">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
     </children>

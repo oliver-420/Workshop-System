@@ -21,7 +21,7 @@
     <Pane fx:id="pnlOverview" layoutX="4.0" layoutY="63.0" prefHeight="94.0" prefWidth="915.0" AnchorPane.topAnchor="63.0">
         <children>
             <TextField fx:id="searchField" layoutX="681.0" layoutY="14.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-            <HBox alignment="CENTER_LEFT" layoutX="46.0" layoutY="63.0" prefHeight="35.0" prefWidth="811.0" spacing="80.0" style="-fx-background-color: grey;">
+            <HBox alignment="CENTER_LEFT" layoutX="46.0" layoutY="63.0" prefHeight="35.0" prefWidth="818.0" spacing="80.0" style="-fx-background-color: grey;">
                 <children>
                     <Label prefHeight="17.0" prefWidth="102.0" text="Part Name">
                         <HBox.margin>
@@ -59,17 +59,42 @@
     </Pane>
       <ScrollPane layoutX="53.0" layoutY="205.0" prefHeight="409.0" prefWidth="818.0">
           <content>
-              <VBox fx:id="pnItems" prefHeight="400.0" prefWidth="820.0" spacing="5.0">
+              <VBox fx:id="pnItems" prefHeight="400.0" prefWidth="838.0" spacing="5.0">
                   <padding>
                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                   </padding>
               </VBox>
           </content>
       </ScrollPane>
-   <HBox layoutX="53.0" layoutY="167.0" prefHeight="27.0" prefWidth="621.0" spacing="10.0">
+   <HBox alignment="CENTER" layoutX="53.0" layoutY="167.0" prefHeight="27.0" prefWidth="818.0" style="-fx-background-color: #C0C0C0;" AnchorPane.leftAnchor="53.0">
       <children>
-         <Button mnemonicParsing="false" text="Add" />
-         <Button mnemonicParsing="false" text="Delete" />
+         <TextField fx:id="nameField" prefHeight="25.0" prefWidth="170.0" promptText="Name">
+            <HBox.margin>
+               <Insets left="40.0" />
+            </HBox.margin>
+         </TextField>
+         <TextField fx:id="manufacturerField" prefHeight="25.0" prefWidth="142.0" promptText="Manufactorer">
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+         </TextField>
+         <TextField fx:id="priceField" prefHeight="25.0" prefWidth="80.0" promptText="Buing Price">
+            <HBox.margin>
+               <Insets left="30.0" />
+            </HBox.margin></TextField>
+         <TextField fx:id="upchargeField" prefHeight="25.0" prefWidth="80.0" promptText="Upcharge">
+            <HBox.margin>
+               <Insets left="50.0" />
+            </HBox.margin>
+         </TextField>
+         <TextField fx:id="quantityField" prefHeight="25.0" prefWidth="80.0" promptText="Quantity">
+            <HBox.margin>
+               <Insets left="70.0" />
+            </HBox.margin></TextField>
+         <Button fx:id="newPartBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="43.0" text="Add">
+            <HBox.margin>
+               <Insets left="5.0" />
+            </HBox.margin></Button>
       </children>
    </HBox>
 </AnchorPane>

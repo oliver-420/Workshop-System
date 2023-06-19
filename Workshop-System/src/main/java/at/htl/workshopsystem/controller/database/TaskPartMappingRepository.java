@@ -115,13 +115,13 @@ public class TaskPartMappingRepository {
             while (result.next()) {
                 if (id == result.getLong(1)) {
                     {
-                          return   new TaskPartMapping(
-                                    result.getLong(1),
-                                    taskRepository.getById(result.getLong(2)),
-                                    partRepository.getById(result.getString(3)),
-                                    result.getInt(4),
-                                    result.getDouble(5)
-                            );
+                        return new TaskPartMapping(
+                                result.getLong(1),
+                                taskRepository.getById(result.getLong(2)),
+                                partRepository.getById(result.getString(3)),
+                                result.getInt(4),
+                                result.getDouble(5)
+                        );
                     }
                 }
             }
@@ -129,5 +129,30 @@ public class TaskPartMappingRepository {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<TaskPartMapping> getByTaskId(String serialNumber) {
+        List<TaskPartMapping> taskPartMappings = new ArrayList<>();
+        try (Connection connection = database.getConnection()) {
+            String sql = "SELECT * FROM TaskPartMapping WHERE Task_ID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, serialNumber);
+            ResultSet result = statement.executeQuery();
+            TaskRepository taskRepository = new TaskRepository();
+            PartRepository partRepository = new PartRepository();
+            while (result.next()) {
+                taskPartMappings.add(
+                        new TaskPartMapping(
+                                result.getLong(1),
+                                taskRepository.getById(result.getLong(2)),
+                                partRepository.getById(result.getString(3)),
+                                result.getInt(4),
+                                result.getDouble(5)
+                        ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return taskPartMappings;
     }
 }
