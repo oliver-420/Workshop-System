@@ -80,7 +80,7 @@ public class TasksController {
                             durationTf.setDisable(false);
 
                             durationTf.textProperty().addListener((observable2, oldValueDuration, newValueDuration) -> {
-                                if (newValueDuration.matches("\\d*\\.?\\d*") && !newValueDuration.isEmpty()) {
+                                if (newValueDuration.matches("\\d*\\.?\\d*") || newValueDuration.matches("\\d*\\,?\\d*") && !newValueDuration.isEmpty()) {
                                     finishSubTaskBtn.setDisable(false);
                                 } else {
                                     finishSubTaskBtn.setDisable(true);

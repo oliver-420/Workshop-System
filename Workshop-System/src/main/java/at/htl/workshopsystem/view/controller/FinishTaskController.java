@@ -67,10 +67,10 @@ public class FinishTaskController {
             } catch (IOException e) {
                 System.out.println("IOException");
             } catch (DocumentException e) {
-                System.out.println("DocumentException");
+                e.printStackTrace();
             }
 
-            taskRepository.delete(taskId);
+            //taskRepository.delete(taskId);
             FinishTaskId.cleanTaskSession();
             WorkshopSystem.changeScene(event,"tasks.fxml", "Tasks");
         });
