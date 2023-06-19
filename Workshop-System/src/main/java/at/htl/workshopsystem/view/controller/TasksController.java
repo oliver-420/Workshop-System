@@ -27,6 +27,7 @@ public class TasksController {
     public ComboBox mechanicsDrd;
     public ListView<Task> lvTasks;
     public ListView<SubTask> lvSubTasks;
+    public Button partRepoBtn;
     private ObservableList<Mechanic> mechanics = FXCollections.observableArrayList();
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();

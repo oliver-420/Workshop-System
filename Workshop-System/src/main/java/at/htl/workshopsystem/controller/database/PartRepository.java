@@ -14,33 +14,27 @@ public class PartRepository {
 
     public Part insert(Part part) {
         try (Connection connection = database.getConnection()) {
-            String sql = "INSERT INTO PART (NAME, " +
+            String sql = "INSERT INTO PART (" +
+                    "SERIAL_NUMBER," +
+                    "NAME, " +
                     "MANUFACTURER, " +
                     "PRICE, " +
                     "ADDITIONAL_CHARGE, " +
                     "QUANTITY) VALUES (?,?,?,?,?,?)";
 
-            PreparedStatement statement = connection.prepareStatement(sql, new String[]{"ID"});
-            statement.setString(1, part.getName());
-            statement.setString(2, part.getManufacturer());
-            statement.setDouble(3, part.getPrice());
-            statement.setDouble(4, part.getAdditionalCharge());
-            statement.setFloat(5, part.getQuantity());
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, part.getSerialNumber());
+            statement.setString(2, part.getName());
+            statement.setString(3, part.getManufacturer());
+            statement.setDouble(4, part.getPrice());
+            statement.setDouble(5, part.getAdditionalCharge());
+            statement.setFloat(6, part.getQuantity());
 
             int affectedRows = statement.executeUpdate();
 
             if (affectedRows == 0) {
                 throw new SQLException("Creating part failed, no rows affected.");
             }
-
-            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    part.setSerialNumber(generatedKeys.getString(1));
-                } else {
-                    throw new SQLException("Creating part failed, no ID obtained.");
-                }
-            }
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,11 +44,12 @@ public class PartRepository {
 
     public void update(Part part) {
         try (Connection connection = database.getConnection()) {
-            String sql = "UPDATE PART SET NAME=?, " +
+            String sql = "UPDATE PART " +
+                    "SET Name=?, " +
                     "MANUFACTURER=?, " +
                     "PRICE=?, " +
                     "ADDITIONAL_CHARGE=?, " +
-                    "QUANTITY=?";
+                    "QUANTITY=? where SERIAL_NUMBER=?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, part.getName());
@@ -62,6 +57,7 @@ public class PartRepository {
             statement.setDouble(3, part.getPrice());
             statement.setDouble(4, part.getAdditionalCharge());
             statement.setFloat(5, part.getQuantity());
+            statement.setString(6, part.getSerialNumber());
 
             if (statement.executeUpdate() == 0) {
                 throw new SQLException("Update of part failed, no rows affected");
@@ -71,11 +67,11 @@ public class PartRepository {
         }
     }
 
-    public void delete(long id) {
+    public void delete(String serialNumber) {
         try (Connection connection = database.getConnection()) {
             String sql = "DELETE FROM PART WHERE SERIAL_NUMBER=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setLong(1, id);
+            statement.setString(1, serialNumber);
             if (statement.executeUpdate() == 0) {
                 throw new SQLException("Delete from part failed, no rows affected");
             }
