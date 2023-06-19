@@ -17,9 +17,11 @@ import javafx.scene.control.skin.ChoiceBoxSkin;
 import java.util.List;
 
 public class TasksController {
-    public Button homeBtn;
-    public Button customersBtn;
-    public Button tasksBtn;
+    public javafx.scene.control.Button homeBtn;
+    public javafx.scene.control.Button customersBtn;
+    public javafx.scene.control.Button tasksBtn;
+    public javafx.scene.control.Button partRepoBtn;
+    public TextField durationTf;
     public Button finishTaskBtn;
     public Button finishSubTaskBtn;
     public ComboBox mechanicsDrd;
@@ -32,7 +34,7 @@ public class TasksController {
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     private final MechanicRepository mechanicRepository = new MechanicRepository();
     public void initialize() {
-        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn);
+        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
         tasks.addAll(taskRepository.getAll());
         lvTasks.setItems(tasks);
@@ -42,6 +44,7 @@ public class TasksController {
 
         finishTaskBtn.setDisable(true);
         finishSubTaskBtn.setDisable(true);
+        durationTf.setDisable(true);
 
         lvTasks.setCellFactory(param -> new ListCell<Task>() {
             @Override
@@ -72,15 +75,23 @@ public class TasksController {
                         if (empty || item == null || item.getDescription() == null) {
                             setText(null);
                             finishSubTaskBtn.setDisable(true);
+                            durationTf.setDisable(true);
                         } else {
                             setText(item.getDescription() + " - " + (item.getIsDone() ? "Done" : "Not done"));
-                            finishSubTaskBtn.setDisable(false);
 
-                            if(subTasks.stream().allMatch(subTask -> subTask.getIsDone())) {
-                                finishTaskBtn.setDisable(false);
-                            }else {
-                                finishTaskBtn.setDisable(true);
+                            if(item.getIsDone()) {
+                                setTextFill(javafx.scene.paint.Color.GREEN);
+                            } else {
+                                setTextFill(javafx.scene.paint.Color.RED);
                             }
+
+                            if(!durationTf.getText().isEmpty()) {
+                                finishSubTaskBtn.setDisable(item.getIsDone());
+                            }
+
+                            durationTf.setDisable(false);
+
+                            finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
                         }
                     }
                 });
@@ -105,13 +116,15 @@ public class TasksController {
     public void finishSubTask() {
         SubTask subTask = lvSubTasks.getSelectionModel().getSelectedItem();
         subTask.setIsDone(true);
-        subTaskRepository.updateIsDone(subTask);
+        subTask.setDuration(Double.parseDouble(durationTf.getText().replace(',', '.')));
+        durationTf.clear();
+        subTaskRepository.update(subTask);
     }
 
     public void finishTask() {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
-        FinishTaskId.getInstance(task.getId());
-        taskRepository.delete(task.getId());
+        task.setFkMechanic(((Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem()).getId());
+        taskRepository.update(task);
         //change scene to pdfsite
     }
 }

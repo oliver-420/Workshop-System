@@ -35,12 +35,14 @@ public class SubTaskRepository {
         }
     }
 
-    public void updateIsDone(SubTask task){
+    public void update(SubTask task){
         try(Connection connection = database.getConnection()){
-            String sql = "UPDATE SUBTASK SET IS_DONE=? WHERE ID=?";
+            String sql = "UPDATE SUBTASK SET IS_DONE=?, DURATION=? WHERE ID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, task.getIsDone() ? 1 : 0);
-            statement.setLong(2, task.getId());
+            //round up to full hours
+            statement.setDouble(2, Math.ceil(task.getDuration()));
+            statement.setLong(3, task.getId());
             if(statement.executeUpdate() == 0){
                 throw new Exception("Update of subtask failed, no rows affected");
             }else {
