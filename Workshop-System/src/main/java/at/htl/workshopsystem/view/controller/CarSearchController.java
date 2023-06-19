@@ -52,7 +52,7 @@ public class CarSearchController {
 
     public void initialize() {
 
-        WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
+        //WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
         saveBtn.getStyleClass().addAll(
                 Styles.MEDIUM, Styles.ROUNDED, Styles.BUTTON_OUTLINED, Styles.ACCENT
