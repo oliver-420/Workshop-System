@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.skin.ChoiceBoxSkin;
 
 import java.util.List;
+import java.util.Objects;
 
 public class TasksController {
     public javafx.scene.control.Button homeBtn;
@@ -46,61 +47,43 @@ public class TasksController {
         finishSubTaskBtn.setDisable(true);
         durationTf.setDisable(true);
 
-        lvTasks.setCellFactory(param -> new ListCell<Task>() {
-            @Override
-            protected void updateItem(Task item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty || item == null || item.getName() == null) {
-                    setText(null);
-                } else {
-                    setText(item.getName());
-                }
-            }
-        });
-
-
         this.lvTasks.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 subTasks.clear();
-
                 subTasks.addAll(subTaskRepository.getByTaskId(newValue.getId()));
-
                 lvSubTasks.setItems(subTasks);
 
-                lvSubTasks.setCellFactory(param -> new ListCell<SubTask>() {
-                    @Override
-                    protected void updateItem(SubTask item, boolean empty) {
-                        super.updateItem(item, empty);
+                mechanicsDrd.getSelectionModel().select(mechanics.stream().filter(mechanic -> mechanic.getId() == newValue.getFkMechanic()).findFirst().orElse(null));
+                finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
 
-                        if (empty || item == null || item.getDescription() == null) {
-                            setText(null);
-                            finishSubTaskBtn.setDisable(true);
+                lvSubTasks.getSelectionModel().selectedItemProperty().addListener((observable1, oldValueSubTask, newValueSubTask) -> {
+                    if (newValueSubTask != null) {
+                        finishSubTaskBtn.setDisable(false);
+                        durationTf.setDisable(false);
+
+                        if(newValueSubTask.getIsDone()){
                             durationTf.setDisable(true);
-                        } else {
-                            setText(item.getDescription() + " - " + (item.getIsDone() ? "Done" : "Not done"));
-
-                            if(item.getIsDone()) {
-                                setTextFill(javafx.scene.paint.Color.GREEN);
-                            } else {
-                                setTextFill(javafx.scene.paint.Color.RED);
-                            }
-
-                            if(item.getIsDone()){
-                                durationTf.setDisable(true);
+                            finishSubTaskBtn.setDisable(true);
+                        }
+                        else{
+                            durationTf.setDisable(false);
+                            if(durationTf.getText().isEmpty()) {
                                 finishSubTaskBtn.setDisable(true);
                             }
-                            else{
-                                durationTf.setDisable(false);
-                                durationTf.setOnKeyPressed(event -> {
 
-                                        finishSubTaskBtn.setDisable(false);
-
-                                });
-                            }
-
-                            finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
+                            durationTf.setOnKeyPressed(event -> {
+                                if(!durationTf.getText().isEmpty() || !durationTf.getText().equals("")) {
+                                    finishSubTaskBtn.setDisable(false);
+                                }
+                                //if its not a number disable durationTf
+                                if(!durationTf.getText().matches("[0-9]+([,.][0-9]{1,2})?")) {
+                                    finishSubTaskBtn.setDisable(true);
+                                }
+                            });
                         }
+                    } else {
+                        finishSubTaskBtn.setDisable(true);
+                        durationTf.setDisable(true);
                     }
                 });
             }
@@ -133,6 +116,7 @@ public class TasksController {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
         task.setFkMechanic(((Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem()).getId());
         taskRepository.update(task);
-        //change scene to pdfsite
+        //change scene to
+
     }
 }
