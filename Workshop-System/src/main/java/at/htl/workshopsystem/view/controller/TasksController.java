@@ -70,7 +70,6 @@ public class TasksController {
 
                 lvSubTasks.getSelectionModel().selectedItemProperty().addListener((observable1, oldValueSubTask, newValueSubTask) -> {
                     if (newValueSubTask != null) {
-                        finishSubTaskBtn.setDisable(false);
                         durationTf.setDisable(false);
 
                         if(newValueSubTask.getIsDone()){
@@ -79,15 +78,15 @@ public class TasksController {
                         }
                         else{
                             durationTf.setDisable(false);
-                            if(durationTf.getText().isEmpty()) {
-                                finishSubTaskBtn.setDisable(true);
-                            }
 
                             durationTf.setOnKeyPressed(event -> {
-                                if(!durationTf.getText().isEmpty() || !durationTf.getText().equals("")) {
+                                if(!durationTf.getText().isEmpty()) {
                                     finishSubTaskBtn.setDisable(false);
                                 }
-                                if(!durationTf.getText().matches("[0-9]+([,.][0-9]{1,2})?")) {
+                                else{
+                                    finishSubTaskBtn.setDisable(true);
+                                }
+                                if(!durationTf.getText().matches("[0-9]+(\\.[0-9]+)?") || newValueSubTask.getIsDone()){
                                     finishSubTaskBtn.setDisable(true);
                                 }
                             });
