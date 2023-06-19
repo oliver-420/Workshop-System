@@ -15,7 +15,7 @@
                         <Button fx:id="customersBtn" mnemonicParsing="false" text="Customers" />
                         <Button fx:id="tasksBtn" mnemonicParsing="false" text="Tasks" />
                         <Button fx:id="partRepoBtn" mnemonicParsing="false" text="Parts" />
-                        <Button fx:id="newTaskBtn" mnemonicParsing="false" text="New Part" />
+                        <Button fx:id="newTaskBtn" mnemonicParsing="false" text="New Task" />
                     </items>
                 </ToolBar>
             </children>
