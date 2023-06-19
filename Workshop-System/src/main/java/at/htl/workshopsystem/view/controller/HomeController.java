@@ -19,7 +19,7 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_customers.setOnAction(event -> WorkshopSystem.changeScene(event, "customers.fxml", "Customers"));
 
-        btn_carSearchTest.setOnAction(event -> WorkshopSystem.changeScene(event, "carSearch.fxml", "Car Search Test"));
+        btn_carSearchTest.setOnAction(event -> WorkshopSystem.changeScene(event, "addTask.fxml", "Car Search Test"));
 
         btn_tasks.setOnAction(event -> WorkshopSystem.changeScene(event, "tasks.fxml", "Tasks"));
     }

@@ -15,12 +15,44 @@
     </HBox>
    <HBox fx:id="testCarHB" layoutY="36.0" prefHeight="664.0" prefWidth="1207.0">
       <children>
-         <VBox prefHeight="664.0" prefWidth="198.0">
+         <VBox prefHeight="664.0" prefWidth="389.0">
             <children>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label text="Customer" />
+                  </children>
+               </HBox>
+               <ListView prefHeight="200.0" prefWidth="397.0" />
+            </children>
+         </VBox>
+         <VBox prefHeight="664.0" prefWidth="440.0">
+            <children>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label text="New Task" />
+                  </children>
+               </HBox>
+               <Label text="Label" />
                <TextField promptText="Name" />
-               <TextField />
+               <Label text="Label" />
+               <TextField text="Name" />
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Button mnemonicParsing="false" text="Search Car"  fx:id="searchCarBtn"/>
+                  </children></HBox>
+            </children>
+         </VBox>
+         <VBox prefHeight="664.0" prefWidth="321.0">
+            <children>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label text="Mechanic" />
+                  </children>
+               </HBox>
+               <ListView prefHeight="200.0" prefWidth="200.0" />
             </children>
          </VBox>
       </children></HBox>
+   <HBox prefHeight="100.0" prefWidth="200.0" />
 
 </AnchorPane>
