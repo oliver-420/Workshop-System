@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
             prefWidth="686.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="at.htl.workshopsystem.view.controller.CarSearchController">
-    <HBox fillHeight="false" prefHeight="38.0" prefWidth="686.0" spacing="5.0">
+    <HBox fillHeight="false" prefHeight="38.0" prefWidth="686.0" spacing="5.0" fx:id="navBar">
         <ToolBar prefHeight="2.0" prefWidth="686.0">
             <items>
                 <Button mnemonicParsing="false" text="Home" fx:id="homeBtn"/>
@@ -18,7 +18,7 @@
             </items>
         </ToolBar>
     </HBox>
-    <HBox layoutY="47.0" prefHeight="453.0" prefWidth="686.0" spacing="20.0">
+    <HBox layoutY="47.0" prefHeight="453.0" prefWidth="686.0" spacing="20.0" fx:id="mainPage">
         <children>
             <VBox prefHeight="453.0" prefWidth="312.0">
                 <children>

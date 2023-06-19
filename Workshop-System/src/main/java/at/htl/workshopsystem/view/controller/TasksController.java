@@ -8,6 +8,7 @@ import at.htl.workshopsystem.model.Mechanic;
 import at.htl.workshopsystem.model.SubTask;
 import at.htl.workshopsystem.model.Task;
 import at.htl.workshopsystem.model.factory.CarFactory;
+import atlantafx.base.theme.Styles;
 import com.fasterxml.jackson.databind.JsonNode;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +28,7 @@ public class TasksController {
     public ComboBox mechanicsDrd;
     public ListView<Task> lvTasks;
     public ListView<SubTask> lvSubTasks;
+    public Button newTaskBtn;
     private ObservableList<Mechanic> mechanics = FXCollections.observableArrayList();
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
@@ -35,6 +37,14 @@ public class TasksController {
     private final MechanicRepository mechanicRepository = new MechanicRepository();
     public void initialize() {
         WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
+
+        newTaskBtn.setOnAction(event -> {
+            WorkshopSystem.changeScene(event,"addTask.fxml", "New Task");
+        });
+        newTaskBtn.getStyleClass().addAll(
+                Styles.MEDIUM, Styles.ACCENT, Styles.BUTTON_OUTLINED
+        );
+
 
         tasks.addAll(taskRepository.getAll());
         lvTasks.setItems(tasks);
