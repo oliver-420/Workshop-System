@@ -70,7 +70,7 @@ public class SubTaskRepository {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, task.getIsDone() ? 1 : 0);
             //round up to full hours
-            statement.setDouble(2, Math.ceil(task.getDuration()));
+            statement.setDouble(2, task.getDuration());
             statement.setLong(3, task.getId());
             if(statement.executeUpdate() == 0){
                 throw new Exception("Update of subtask failed, no rows affected");
@@ -79,6 +79,29 @@ public class SubTaskRepository {
             }
         } catch(Exception e){
             e.printStackTrace();
+        }
+    }
+
+    public List<SubTask> getAll() {
+        List<SubTask> subTasks = new ArrayList<>();
+
+        try (Connection connection = database.getConnection()) {
+            String sql = "SELECT * FROM SUBTASK";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                Long subTaskId = result.getLong("ID");
+                String description = result.getString("DESCRIPTION");
+                double duration = result.getDouble("DURATION");
+                boolean isDone = result.getInt("IS_DONE") == 0 ? false : true;
+                SubTask subTask = new SubTask(subTaskId, description, duration, isDone);
+                subTasks.add(subTask);
+            }
+            return subTasks;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

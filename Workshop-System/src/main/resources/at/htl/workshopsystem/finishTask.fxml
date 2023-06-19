@@ -4,85 +4,116 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="422.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.FinishTaskController">
+<AnchorPane prefHeight="424.0" prefWidth="350.0" style="-fx-border-color: black; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.FinishTaskController">
     <children>
-        <HBox prefHeight="35.0" prefWidth="922.0" spacing="10.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <ToolBar prefHeight="35.0" prefWidth="922.0">
-                    <items>
-                        <Button fx:id="homeBtn" mnemonicParsing="false" text="Home" />
-                        <Button fx:id="customersBtn" mnemonicParsing="false" text="Customers" />
-                        <Button fx:id="tasksBtn" mnemonicParsing="false" text="Tasks" />
-                        <Button fx:id="partRepoBtn" mnemonicParsing="false" text="Parts" />
-                    </items>
-                </ToolBar>
-            </children>
-        </HBox>
-      <HBox layoutY="35.0" prefHeight="387.0" prefWidth="350.0">
+      <VBox prefHeight="433.0" prefWidth="350.0">
          <children>
-            <VBox prefHeight="366.0" prefWidth="94.0">
+              <HBox prefHeight="35.0" prefWidth="350.0" spacing="10.0">
+                  <children>
+                      <ToolBar prefHeight="35.0" prefWidth="350.0">
+                          <items>
+                              <Button fx:id="homeBtn" mnemonicParsing="false" text="Home" />
+                              <Button fx:id="customersBtn" mnemonicParsing="false" text="Customers" />
+                              <Button fx:id="tasksBtn" mnemonicParsing="false" text="Tasks" />
+                              <Button fx:id="partRepoBtn" mnemonicParsing="false" text="Parts" />
+                          </items>
+                     <HBox.margin>
+                        <Insets left="2.0" top="2.0" />
+                     </HBox.margin>
+                      </ToolBar>
+                  </children>
+              </HBox>
+            <HBox prefHeight="363.0" prefWidth="350.0">
                <children>
-                  <Label prefHeight="26.0" prefWidth="96.0" text="Mechanic">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" top="5.0" />
-                     </VBox.margin></Label>
-                  <Label prefHeight="25.6" prefWidth="96.0" text="Customer">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" />
-                     </VBox.margin></Label>
-                  <Label prefHeight="25.6" prefWidth="96.0" text="Car">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" />
-                     </VBox.margin></Label>
-                  <Label layoutX="15.0" layoutY="76.0" prefHeight="25.6" prefWidth="96.0" text="Total Duration">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="25.6" prefWidth="96.0" text="Used Parts">
-                     <VBox.margin>
-                        <Insets bottom="177.0" left="5.0" />
-                     </VBox.margin></Label>
-                  <Label layoutX="10.0" layoutY="107.0" prefHeight="25.6" prefWidth="96.0" text="Total Price">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" />
-                     </VBox.margin>
-                  </Label>
-               </children></VBox>
-            <VBox prefHeight="387.0" prefWidth="260.0">
-               <children>
-                  <TextField fx:id="mechanicTf" editable="false">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin></TextField>
-                  <TextField fx:id="customerTf" editable="false">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin></TextField>
-                  <TextField fx:id="carTf" editable="false">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin></TextField>
-                  <TextField fx:id="durationTf" editable="false" layoutX="10.0" layoutY="76.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <ListView fx:id="usedPartsLv" prefHeight="200.0" prefWidth="213.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin></ListView>
-                  <TextField fx:id="totalPriceTf" editable="false">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin></TextField>
+                  <VBox prefHeight="362.0" prefWidth="128.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="96.0" text="Mechanic">
+                           <VBox.margin>
+                              <Insets left="5.0" top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="25.6" prefWidth="96.0" text="Customer">
+                           <VBox.margin>
+                              <Insets bottom="12.0" left="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="25.6" prefWidth="96.0" text="Car">
+                           <VBox.margin>
+                              <Insets bottom="12.0" left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="15.0" layoutY="76.0" prefHeight="25.6" prefWidth="96.0" text="Total Duration">
+                           <VBox.margin>
+                              <Insets bottom="7.0" left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="25.6" prefWidth="96.0" text="Used Parts">
+                           <VBox.margin>
+                              <Insets bottom="136.0" left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="107.0" prefHeight="25.6" prefWidth="96.0" text="Total Price">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="362.0" prefWidth="253.0">
+                     <children>
+                        <TextField fx:id="mechanicTf" editable="false">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="customerTf" editable="false">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="carTf" editable="false">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="durationTf" editable="false" layoutX="10.0" layoutY="76.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <ListView fx:id="usedPartsLv" prefHeight="200.0" prefWidth="213.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </ListView>
+                        <TextField fx:id="totalPriceTf" editable="false">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </VBox>
                </children>
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </VBox>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="374.0">
+               <children>
+                  <Button fx:id="saveAndPrintBtn" mnemonicParsing="false" text="Save &amp; Print">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="186.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="backBtn" mnemonicParsing="false" text="Back">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
     </children>
 
 </AnchorPane>

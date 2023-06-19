@@ -14,14 +14,11 @@ public class InvoiceRepository {
 
     public Invoice insert(Invoice invoice) {
         try (Connection connection = database.getConnection()) {
-            String sql = "INSERT INTO INVOICE (ISSUE_DATE, AMOUNT, IS_PAID, TASK_ID, CUSTOMER_ID)" +
-                    " VALUES (?,?, ?, ?, ?)";
+            String sql = "INSERT INTO INVOICE (ISSUE_DATE, AMOUNT)" +
+                    " VALUES (?,?)";
             PreparedStatement statement = connection.prepareStatement(sql, new String[]{"ID"});
             statement.setString(1, invoice.getDate().toString());
             statement.setDouble(2, invoice.getPrice());
-            statement.setBoolean(3, invoice.getPaid());
-            statement.setLong(4, invoice.getTask().getId());
-            statement.setLong(5, invoice.getCustomer().getId());
 
             int affectedRows = statement.executeUpdate();
 
@@ -45,13 +42,10 @@ public class InvoiceRepository {
 
     public void update(Invoice invoice) {
         try (Connection connection = database.getConnection()) {
-            String sql = "UPDATE INVOICE SET ISSUE_DATE=?, AMOUNT=?, IS_PAID=?, TASK_ID=?, CUSTOMER_ID=? WHERE ID=?";
+            String sql = "UPDATE INVOICE SET ISSUE_DATE=?, AMOUNT=? WHERE ID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, invoice.getDate().toString());
             statement.setDouble(2, invoice.getPrice());
-            statement.setBoolean(3, invoice.getPaid());
-            statement.setLong(4, invoice.getTask().getId());
-            statement.setLong(5, invoice.getCustomer().getId());
 
             if (statement.executeUpdate() == 0) {
                 throw new SQLException("Update of invoice failed, no rows affected");
@@ -87,10 +81,7 @@ public class InvoiceRepository {
                 invoices.add(new Invoice(
                         result.getLong("ID"),
                         result.getTimestamp("ISSUE_DATE").toLocalDateTime(),
-                        result.getDouble("AMOUNT"),
-                        new TaskRepository().getById(result.getLong("TASK_ID")),
-                        result.getBoolean("IS_PAID"),
-                        new CustomerRepository().getById(result.getLong("CUSTOMER_ID"))
+                        result.getDouble("AMOUNT")
                 ));
             }
         } catch (SQLException e) {
@@ -110,10 +101,7 @@ public class InvoiceRepository {
                 invoice = new Invoice(
                         result.getLong("ID"),
                         result.getTimestamp("ISSUE_DATE").toLocalDateTime(),
-                        result.getDouble("AMOUNT"),
-                        new TaskRepository().getById(result.getLong("TASK_ID")),
-                        result.getBoolean("IS_PAID"),
-                        new CustomerRepository().getById(result.getLong("CUSTOMER_ID"))
+                        result.getDouble("AMOUNT")
                 );
             }
         } catch (SQLException e) {

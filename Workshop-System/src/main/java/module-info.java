@@ -10,6 +10,7 @@ module at.htl.workshopsystem {
     requires atlantafx.base;
     requires org.jsoup;
     requires com.google.gson;
+    requires itextpdf;
 
     opens at.htl.workshopsystem to javafx.fxml;
     exports at.htl.workshopsystem;

@@ -64,9 +64,9 @@ public class TasksController {
                 subTasks.addAll(subTaskRepository.getByTaskId(newValue.getId()));
                 lvSubTasks.setItems(subTasks);
 
-                mechanicsDrd.getSelectionModel().select(mechanics.stream().filter(mechanic -> mechanic.getId() == newValue.getFkMechanic()).findFirst().orElse(null));
-
                 finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
+
+                mechanicsDrd.getSelectionModel().select(mechanics.stream().filter(mechanic -> mechanic.getId() == newValue.getFkMechanic()).findFirst().orElse(null));
 
                 lvSubTasks.getSelectionModel().selectedItemProperty().addListener((observable1, oldValueSubTask, newValueSubTask) -> {
                     if (newValueSubTask != null) {
@@ -79,19 +79,20 @@ public class TasksController {
                         else{
                             durationTf.setDisable(false);
 
-                            durationTf.setOnKeyPressed(event -> {
-                                if(!durationTf.getText().isEmpty()) {
+                            durationTf.textProperty().addListener((observable2, oldValueDuration, newValueDuration) -> {
+                                if (newValueDuration.matches("\\d*\\.?\\d*") && !newValueDuration.isEmpty()) {
                                     finishSubTaskBtn.setDisable(false);
-                                }
-                                else{
-                                    finishSubTaskBtn.setDisable(true);
-                                }
-                                if(!durationTf.getText().matches("[0-9]+(\\.[0-9]+)?") || newValueSubTask.getIsDone()){
+                                } else {
                                     finishSubTaskBtn.setDisable(true);
                                 }
                             });
                         }
-                        finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
+                        if(subTasks.stream().allMatch(SubTask::getIsDone)){
+                            finishTaskBtn.setDisable(false);
+                        }
+                        else{
+                            finishTaskBtn.setDisable(true);
+                        }
                     } else {
                         finishSubTaskBtn.setDisable(true);
                         durationTf.setDisable(true);
@@ -129,6 +130,7 @@ public class TasksController {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
         Mechanic mechanic = (Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem();
         task.setFkMechanic(mechanic.getId());
+        FinishTaskId.getInstance(task.getId());
 
         taskRepository.update(task);
     }

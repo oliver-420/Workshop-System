@@ -1,4 +1,4 @@
-/*package at.htl.workshopsystem.pdf;
+package at.htl.workshopsystem.pdf;
 
 import at.htl.workshopsystem.model.Customer;
 import at.htl.workshopsystem.model.Invoice;
@@ -6,19 +6,19 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.krysalis.barcode4j.impl.code39.Code39Bean;
+/*import org.krysalis.barcode4j.impl.code39.Code39Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
-import org.krysalis.barcode4j.tools.UnitConv;
+import org.krysalis.barcode4j.tools.UnitConv;*/
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-public class PDFFactory {
+public final class PDFFactory {
     //invoice id muss noch besser durchdacht werden, weil es sollte mindestens eine 5-Stellige id sein!!!
     public static void CreateInvoicePDF(Invoice invoice) throws IOException, DocumentException {
         String pdfName = "invoice_" + invoice.getId() + ".pdf";
-        Image barcode = CreateBarcodeImage(invoice.getId().toString());
+        //Image barcode = CreateBarcodeImage(invoice.getId().toString());
 
         //Create PDF
         var doc = new Document();
@@ -29,10 +29,10 @@ public class PDFFactory {
         var paragraph = new Paragraph("Test", bold);
 
         doc.add(paragraph);
-        doc.add(barcode);
+        //doc.add(barcode);
         doc.close();
     }
-    public static Image CreateBarcodeImage(String barcodeText) throws IOException, DocumentException {
+    /*public static Image CreateBarcodeImage(String barcodeText) throws IOException, DocumentException {
         Code39Bean bean = new Code39Bean();
 
         final int dpi = 100;
@@ -63,7 +63,7 @@ public class PDFFactory {
 
         Image image = Image.getInstance("barcode.png");
         return image;
-    }
+    }*/
 
     public static void OpenPDF() throws IOException {
         File pdfFile = new File("duHs.pdf");
@@ -89,4 +89,3 @@ public class PDFFactory {
         }
     }
 }
-*/

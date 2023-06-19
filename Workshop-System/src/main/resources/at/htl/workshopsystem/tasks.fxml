@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="476.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.TasksController">
+<AnchorPane prefHeight="476.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.TasksController">
     <children>
         <HBox prefHeight="31.0" prefWidth="686.0" spacing="10.0">
             <children>
@@ -15,7 +15,7 @@
                         <Button fx:id="customersBtn" mnemonicParsing="false" text="Customers" />
                         <Button fx:id="tasksBtn" mnemonicParsing="false" text="Tasks" />
                         <Button fx:id="partRepoBtn" mnemonicParsing="false" text="Parts" />
-                        <Button fx:id="newTaskBtn" mnemonicParsing="false" text="New Part" />
+                        <Button fx:id="newTaskBtn" mnemonicParsing="false" text="Add New Task" />
                     </items>
                 </ToolBar>
             </children>
@@ -87,12 +87,12 @@
             </VBox>
                 <VBox prefHeight="383.0" prefWidth="534.0" style="-fx-border-color: black;">
                     <children>
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="385.0" style="-fx-alignment: center;" text="Subtasks">
+                  <Label alignment="CENTER" prefHeight="22.0" prefWidth="412.0" style="-fx-alignment: center;" text="Subtasks">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="12.0" top="14.0" />
+                        <Insets bottom="6.0" top="7.0" />
                      </VBox.margin>
                   </Label>
                   <ListView fx:id="lvSubTasks" prefHeight="451.0" prefWidth="391.0">
@@ -102,22 +102,25 @@
                   </ListView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="finishTaskBtn" mnemonicParsing="false" text="Finish Task">
+                        <Button fx:id="finishTaskBtn" mnemonicParsing="false" text="Complete">
                            <HBox.margin>
                               <Insets bottom="5.0" right="5.0" />
                            </HBox.margin></Button>
-                        <Button fx:id="finishSubTaskBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Finish Subtask" />
-                        <Label prefHeight="25.0" prefWidth="65.0" text="Duration (h)">
+                        <Button fx:id="finishSubTaskBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Finish" />
+                        <Label prefHeight="25.0" prefWidth="65.0" text="Duration:">
                            <HBox.margin>
-                              <Insets left="15.0" />
+                              <Insets left="67.0" top="2.5" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
                         </Label>
-                        <TextField fx:id="durationTf" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="119.0">
+                        <TextField fx:id="durationTf" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="119.0" promptText="eg. 1.3">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets left="5.0" />
+                              <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </TextField>
                      </children>

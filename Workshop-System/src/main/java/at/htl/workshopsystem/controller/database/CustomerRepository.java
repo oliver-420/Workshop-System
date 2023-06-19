@@ -118,9 +118,9 @@ public class CustomerRepository {
                             result.getLong(1),
                             result.getString(2),
                             result.getString(3),
-                            result.getString(5),
-                            new CustomerCardRepository().getById(result.getLong(6)
-                    ));
+                            result.getString(4),
+                            null
+                    );
                 }
             }
         } catch (SQLException e) {

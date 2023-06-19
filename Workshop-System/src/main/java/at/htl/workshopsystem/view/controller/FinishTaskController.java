@@ -2,13 +2,13 @@ package at.htl.workshopsystem.view.controller;
 
 import at.htl.workshopsystem.WorkshopSystem;
 import at.htl.workshopsystem.controller.database.*;
-import at.htl.workshopsystem.model.Car;
-import at.htl.workshopsystem.model.Customer;
-import at.htl.workshopsystem.model.Mechanic;
-import at.htl.workshopsystem.model.Task;
+import at.htl.workshopsystem.model.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+
+import java.util.List;
 
 
 public class FinishTaskController {
@@ -21,6 +21,8 @@ public class FinishTaskController {
     public TextField carTf;
     public TextField totalPriceTf;
     public TextField durationTf;
+    public Button backBtn;
+    public Button saveAndPrintBtn;
     public ListView usedPartsLv;
     private final Long taskId = FinishTaskId.getId();
     private final TaskRepository taskRepository = new TaskRepository();
@@ -32,16 +34,25 @@ public class FinishTaskController {
     public void initialize() {
         WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
 
-       // System.out.println(mechanicRepository.getById(taskRepository.getById(taskId).getFkMechanic()).getName());
-
-        /*Task task = taskRepository.getById(taskId);
-        Mechanic mechanic = mechanicRepository.getById(task.getFkMechanic());
-        Car car = carRepository.getById(task.getFkCar());
+        Task task = taskRepository.getById(taskId);
+        Mechanic mechanic = mechanicRepository.getById(task.getFkCar());
+        Car car = carRepository.getById(task.getFkMechanic());
         Customer customer = customerRepository.getById(task.getFkCustomer());
 
         mechanicTf.setText(mechanic.getName());
         customerTf.setText(customer.getName());
-        carTf.setText(car.getManufacturer() + " " + car.getModel());*/
+        carTf.setText(car.getManufacturer() + " " + car.getModel());
+        durationTf.setText(Math.round(subTaskRepository.getAll().stream().mapToDouble(SubTask::getDuration).sum()) + "h");
 
+        totalPriceTf.setText("3424 €");
+
+        backBtn.setOnAction(event -> {
+            FinishTaskId.cleanTaskSession();
+            WorkshopSystem.changeScene(event,"tasks.fxml", "Tasks");
+        });
+
+        saveAndPrintBtn.setOnAction(event -> {
+
+        });
     }
 }
