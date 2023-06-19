@@ -1,58 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="696.0" prefWidth="1194.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.AddTaskController">
+<AnchorPane prefHeight="668.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.workshopsystem.view.controller.AddTaskController">
 
-    <HBox fillHeight="false" prefHeight="38.0" prefWidth="1206.0" spacing="5.0">
-        <ToolBar prefHeight="35.0" prefWidth="1207.0">
+    <HBox fillHeight="false" prefHeight="38.0" prefWidth="626.0" spacing="5.0">
+        <ToolBar prefHeight="35.0" prefWidth="623.0">
             <Button fx:id="homeBtn" mnemonicParsing="false" text="Home" />
             <Button fx:id="customersBtn" mnemonicParsing="false" text="Customers" />
             <Button fx:id="tasksBtn" mnemonicParsing="false" text="Tasks" />
             <Button fx:id="partRepoBtn" mnemonicParsing="false" text="Parts" />
         </ToolBar>
     </HBox>
-   <HBox fx:id="testCarHB" layoutY="36.0" prefHeight="664.0" prefWidth="1207.0">
+   <HBox fx:id="testCarHB" alignment="CENTER" layoutX="94.0" layoutY="32.0" prefHeight="530.0" prefWidth="460.0">
       <children>
-         <VBox prefHeight="664.0" prefWidth="389.0">
+         <VBox alignment="CENTER" prefHeight="532.0" prefWidth="376.0">
             <children>
-               <HBox prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Label text="Customer" />
-                  </children>
-               </HBox>
-               <ListView prefHeight="200.0" prefWidth="397.0" />
-            </children>
-         </VBox>
-         <VBox prefHeight="664.0" prefWidth="440.0">
-            <children>
-               <HBox prefHeight="100.0" prefWidth="200.0">
+               <HBox prefHeight="22.0" prefWidth="440.0">
                   <children>
                      <Label text="New Task" />
                   </children>
+                  <VBox.margin>
+                     <Insets top="20.0" />
+                  </VBox.margin>
                </HBox>
-               <Label text="Label" />
-               <TextField promptText="Name" />
-               <Label text="Label" />
-               <TextField text="Name" />
-               <HBox prefHeight="100.0" prefWidth="200.0">
+               <Label text="Name" />
+               <TextField fx:id="nameField" promptText="e.g. Change Oil" />
+               <Label text="Start Date" />
+               <DatePicker fx:id="startDate" />
+               <HBox alignment="CENTER" prefHeight="34.0" prefWidth="376.0">
                   <children>
-                     <Button mnemonicParsing="false" text="Search Car"  fx:id="searchCarBtn"/>
+                     <Button fx:id="searchCarBtn" mnemonicParsing="false" text="Search Car">
+                        <HBox.margin>
+                           <Insets top="5.0" />
+                        </HBox.margin></Button>
                   </children></HBox>
-            </children>
-         </VBox>
-         <VBox prefHeight="664.0" prefWidth="321.0">
-            <children>
-               <HBox prefHeight="100.0" prefWidth="200.0">
+               <HBox alignment="CENTER" prefHeight="49.0" prefWidth="376.0" spacing="80.0">
                   <children>
-                     <Label text="Mechanic" />
+                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <Label text="Model" />
+                           <TextField fx:id="modelField" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <Label contentDisplay="CENTER" text="Maker" />
+                           <TextField fx:id="makerField" />
+                        </children>
+                     </VBox>
                   </children>
                </HBox>
-               <ListView prefHeight="200.0" prefWidth="200.0" />
+               <Label text="Customer" />
+               <ComboBox fx:id="cbCustomer" prefWidth="150.0" />
+               <Label text="Mechanic" />
+               <ComboBox fx:id="cbMechanic" prefWidth="150.0" />
+               <Label text="Subtasks">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+               </Label>
+               <HBox prefHeight="43.0" prefWidth="376.0">
+                  <children>
+                     <TextField fx:id="subTaskDescField" prefHeight="25.0" prefWidth="304.0" promptText="e.g. Buy Oil" />
+                     <Button fx:id="addSubTaskBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Add SubTask">
+                        <HBox.margin>
+                           <Insets left="10.0" />
+                        </HBox.margin>
+                     </Button>
+                  </children>
+               </HBox>
+               <ListView fx:id="subTaskLv" minHeight="150.0" prefHeight="154.0" prefWidth="376.0">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin></ListView>
+               <Button fx:id="addTaskBtn" mnemonicParsing="false" text="Add">
+                  <VBox.margin>
+                     <Insets top="50.0" />
+                  </VBox.margin>
+               </Button>
             </children>
          </VBox>
       </children></HBox>
-   <HBox prefHeight="100.0" prefWidth="200.0" />
 
 </AnchorPane>

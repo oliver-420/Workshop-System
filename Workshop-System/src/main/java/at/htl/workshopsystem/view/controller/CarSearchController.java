@@ -45,6 +45,8 @@ public class CarSearchController {
     public Button tasksBtn;
     public Button partRepoBtn;
 
+    public static Car car = null;
+
     @FXML
     private TextField searchField;
 
@@ -98,7 +100,7 @@ public class CarSearchController {
         }
     }
 
-    private void saveCar() {
+    private Car saveCar() {
         Car currentCar = lvCars.getSelectionModel().getSelectedItem();
         if (currentCar == null) {
             currentCar = new Car();
@@ -115,12 +117,15 @@ public class CarSearchController {
             CarRepository carRepository = new CarRepository();
             carRepository.insert(currentCar);
             if(currentCar.getId() != null){
+                car = currentCar;
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText("Car saved");
                 alert.setContentText("Car saved successfully");
                 alert.showAndWait();
             }
+
+            return currentCar;
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -129,6 +134,8 @@ public class CarSearchController {
             alert.setContentText("Please check your input");
             alert.showAndWait();
         }
+
+        return null;
     }
 
     private void searchCars(String query, int year) {

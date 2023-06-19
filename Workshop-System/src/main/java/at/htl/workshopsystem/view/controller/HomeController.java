@@ -21,6 +21,6 @@ public class HomeController implements Initializable {
 
         btn_carSearchTest.setOnAction(event -> WorkshopSystem.changeScene(event, "addTask.fxml", "Car Search Test"));
 
-        btn_tasks.setOnAction(event -> WorkshopSystem.changeScene(event, "tasks.fxml", "Tasks"));
+        btn_tasks.setOnAction(event -> WorkshopSystem.changeScene( "tasks.fxml", "Tasks"));
     }
 }
