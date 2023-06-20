@@ -2,6 +2,7 @@ package at.htl.workshopsystem.pdf;
 
 import at.htl.workshopsystem.model.Customer;
 import at.htl.workshopsystem.model.Invoice;
+import at.htl.workshopsystem.view.controller.FinishTaskId;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
@@ -9,9 +10,9 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-/*import org.krysalis.barcode4j.impl.code39.Code39Bean;
+import org.krysalis.barcode4j.impl.code39.Code39Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
-import org.krysalis.barcode4j.tools.UnitConv;*/
+import org.krysalis.barcode4j.tools.UnitConv;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -22,10 +23,10 @@ import static java.awt.SystemColor.text;
 public final class PDFFactory {
     public static void CreateInvoicePDF(Invoice invoice) throws IOException, DocumentException {
         // Invoice with leading zeros, e.g. 0000001, max is 9999999
-        invoice.setId(1L);
+        invoice.setId(FinishTaskId.getId());
         String invoiceId = String.format("%07d", invoice.getId());
         String pdfName = "invoice_" + invoiceId + ".pdf";
-        // Image barcode = CreateBarcodeImage(invoice.getId().toString());
+        Image barcode = CreateBarcodeImage(invoiceId);
 
         // Create and save PDF
         var doc = new Document();
@@ -92,6 +93,7 @@ public final class PDFFactory {
         doc.add(durationParagraph);
         doc.add(totalParagraph);
         doc.add(table);
+        doc.add(barcode);
         // doc.add(barcode);
         doc.close();
 
@@ -110,7 +112,7 @@ public final class PDFFactory {
         cell.setHorizontalAlignment(alignment);
         return cell;
     }
-    /*public static Image CreateBarcodeImage(String barcodeText) throws IOException, DocumentException {
+    public static Image CreateBarcodeImage(String barcodeText) throws IOException, DocumentException {
         Code39Bean bean = new Code39Bean();
 
         final int dpi = 100;
@@ -141,7 +143,7 @@ public final class PDFFactory {
 
         Image image = Image.getInstance("barcode.png");
         return image;
-    }*/
+    }
 
     public static void OpenPDF(String pdfName) throws IOException {
         String home = System.getProperty("user.home");

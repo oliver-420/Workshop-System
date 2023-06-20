@@ -11,6 +11,7 @@ module at.htl.workshopsystem {
     requires org.jsoup;
     requires com.google.gson;
     requires itextpdf;
+    requires barcode4j;
 
     opens at.htl.workshopsystem to javafx.fxml;
     exports at.htl.workshopsystem;

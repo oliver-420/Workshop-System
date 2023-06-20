@@ -11,17 +11,19 @@ public class Invoice {
     private String totalDuration;
     private String totalCost;
     private String date;
+    private Long FK_TASK_ID;
 
-    public Invoice(String date, String mechanic, String customer, String car, String totalDuration, String totalCost) {
+    public Invoice(String date, String mechanic, String customer, String car, String totalDuration, String totalCost, Long taskId) {
         setDate(date);
         setMechanic(mechanic);
         setCustomer(customer);
         setCar(car);
         setTotalDuration(totalDuration);
         setTotalCost(totalCost);
+        setFkTask(taskId);
     }
 
-    public Invoice(Long id, String date, String mechanic, String customer, String car, String totalDuration, String totalCost) {
+    public Invoice(Long id, String date, String mechanic, String customer, String car, String totalDuration, String totalCost, Long taskId) {
         setId(id);
         setDate(date);
         setMechanic(mechanic);
@@ -29,6 +31,7 @@ public class Invoice {
         setCar(car);
         setTotalDuration(totalDuration);
         setTotalCost(totalCost);
+        setFkTask(taskId);
     }
     public Long getId() {
         return id;
@@ -84,5 +87,13 @@ public class Invoice {
 
     public void setTotalCost(String totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public Long getFkTask() {
+        return FK_TASK_ID;
+    }
+
+    public void setFkTask(Long taskId) {
+        this.FK_TASK_ID = taskId;
     }
 }

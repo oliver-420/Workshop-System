@@ -31,6 +31,7 @@ public class FinishTaskController {
     private final TaskRepository taskRepository = new TaskRepository();
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     private final MechanicRepository mechanicRepository = new MechanicRepository();
+    private final InvoiceRepository invoiceRepository = new InvoiceRepository();
     private final CarRepository carRepository = new CarRepository();
     private final CustomerRepository customerRepository = new CustomerRepository();
 
@@ -55,15 +56,20 @@ public class FinishTaskController {
         });
 
         saveAndPrintBtn.setOnAction(event -> {
+            Invoice invoice = new Invoice(
+                    task.getStartDate().toString(),
+                    mechanic.getName(),
+                    customer.getName(),
+                    car.getManufacturer() + " " + car.getModel(),
+                    durationTf.getText(),
+                    totalPriceTf.getText(),
+                    taskId
+            );
+
+            invoiceRepository.insert(invoice);
+
             try {
-                PDFFactory.CreateInvoicePDF(new Invoice(
-                        task.getStartDate().toString(),
-                        mechanic.getName(),
-                        customer.getName(),
-                        car.getManufacturer() + " " + car.getModel(),
-                        durationTf.getText(),
-                        totalPriceTf.getText()
-                ));
+                PDFFactory.CreateInvoicePDF(invoiceRepository.getByTaskId(taskId));
             } catch (IOException e) {
                 System.out.println("IOException");
             } catch (DocumentException e) {
