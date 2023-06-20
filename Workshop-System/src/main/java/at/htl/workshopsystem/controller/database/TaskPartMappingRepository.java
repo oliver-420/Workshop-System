@@ -155,4 +155,44 @@ public class TaskPartMappingRepository {
         }
         return taskPartMappings;
     }
+
+    public List<Part> getPartsByTaskId(Long taskId) {
+        List<Part> parts = new ArrayList<>();
+        try (Connection connection = database.getConnection()) {
+            String sql = "SELECT * FROM Part WHERE SERIAL_NUMBER in (select PART_ID from TaskpartMapping where TASK_ID =?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, taskId);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                parts.add(
+                        new Part(
+                                result.getString(1),
+                                result.getString(2),
+                                result.getString(3),
+                                result.getDouble(4),
+                                result.getDouble(5),
+                                result.getInt(6)
+                        )
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return parts;
+    }
+
+    public void deleteByTaskIdAndPartId(Long taskId, String partId) {
+        try (Connection connection = database.getConnection()) {
+            String sql = "DELETE FROM TASKPARTMAPPING WHERE TASK_ID=? AND PART_ID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, taskId);
+            statement.setString(2, partId);
+            if (statement.executeUpdate() == 0) {
+                throw new SQLException("Delete from TASKPARTMAPPING failed, no rows affected");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
