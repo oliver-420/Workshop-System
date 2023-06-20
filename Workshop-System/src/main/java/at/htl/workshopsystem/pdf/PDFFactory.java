@@ -1,5 +1,7 @@
 package at.htl.workshopsystem.pdf;
 
+import at.htl.workshopsystem.controller.database.PartRepository;
+import at.htl.workshopsystem.controller.database.TaskPartMappingRepository;
 import at.htl.workshopsystem.model.Customer;
 import at.htl.workshopsystem.model.Invoice;
 import at.htl.workshopsystem.view.controller.FinishTaskId;
@@ -21,6 +23,8 @@ import java.io.*;
 import static java.awt.SystemColor.text;
 
 public final class PDFFactory {
+    static PartRepository partRepository = new PartRepository();
+    static TaskPartMappingRepository taskPartMappingRepository = new TaskPartMappingRepository();
     public static void CreateInvoicePDF(Invoice invoice) throws IOException, DocumentException {
         // Invoice with leading zeros, e.g. 0000001, max is 9999999
         invoice.setId(FinishTaskId.getId());
@@ -77,13 +81,14 @@ public final class PDFFactory {
         table.addCell(createCell("Description", bold, Element.ALIGN_LEFT));
         table.addCell(createCell("Amount", bold, Element.ALIGN_RIGHT));
 
-        // Sample items (replace with your actual invoice items)
-        table.addCell(createCell("1", null, Element.ALIGN_LEFT));
-        table.addCell(createCell("Item 1 description", null, Element.ALIGN_LEFT));
-        table.addCell(createCell("$100.00", null, Element.ALIGN_RIGHT));
-        table.addCell(createCell("2", null, Element.ALIGN_LEFT));
-        table.addCell(createCell("Item 2 description", null, Element.ALIGN_LEFT));
-        table.addCell(createCell("$50.00", null, Element.ALIGN_RIGHT));
+        // Invoice used Parts, id got from taskpartmappingrepository, then get the part from partrepository
+
+        /*for (int i = 0; i < taskPartMappingRepository.getPartsByTaskId(invoice.getFkTask()).size(); i++) {
+            table.addCell(createCell(partRepository.g(taskPartMappingRepository.GetTaskPartMappingByTaskId(invoice.getTask().getId()).get(i).getPartId()).getName(), null, Element.ALIGN_LEFT));
+            table.addCell(createCell(partRepository.GetPartById(taskPartMappingRepository.GetTaskPartMappingByTaskId(invoice.getTask().getId()).get(i).getPartId()).getDescription(), null, Element.ALIGN_LEFT));
+            table.addCell(createCell(String.valueOf(partRepository.GetPartById(taskPartMappingRepository.GetTaskPartMappingByTaskId(invoice.getTask().getId()).get(i).getPartId()).getPrice()), null, Element.ALIGN_RIGHT));
+        }*/
+
         // Add more rows as needed for your invoice items
 
         doc.add(title);

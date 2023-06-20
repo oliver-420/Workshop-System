@@ -104,4 +104,22 @@ public class SubTaskRepository {
             return null;
         }
     }
+
+    public double getDurationByTaskId(Long id) {
+        double duration = 0;
+
+        try (Connection connection = database.getConnection()) {
+            String sql = "SELECT SUM(DURATION) AS DURATION FROM SUBTASK WHERE TASK_ID=" + id;
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                duration += result.getDouble("DURATION");
+            }
+            return duration;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

@@ -5,6 +5,9 @@ import at.htl.workshopsystem.controller.database.*;
 import at.htl.workshopsystem.model.*;
 import at.htl.workshopsystem.pdf.PDFFactory;
 import com.itextpdf.text.DocumentException;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -34,6 +37,10 @@ public class FinishTaskController {
     private final InvoiceRepository invoiceRepository = new InvoiceRepository();
     private final CarRepository carRepository = new CarRepository();
     private final CustomerRepository customerRepository = new CustomerRepository();
+    private final TaskPartMappingRepository taskPartMappingRepository = new TaskPartMappingRepository();
+    private final PartRepository partRepository = new PartRepository();
+    private ObservableList<Part> parts = FXCollections.observableArrayList();
+
 
     public void initialize() {
         WorkshopSystem.onPageChange(this.homeBtn, this.customersBtn, this.tasksBtn, this.partRepoBtn);
@@ -42,13 +49,22 @@ public class FinishTaskController {
         Mechanic mechanic = mechanicRepository.getById(task.getFkCar());
         Car car = carRepository.getById(task.getFkMechanic());
         Customer customer = customerRepository.getById(task.getFkCustomer());
+        List<TaskPartMapping> partIds = taskPartMappingRepository.getByTaskId(taskId);
+        int totalPrice = 0;
+
+        for (TaskPartMapping partId : partIds) {
+            parts.add(partRepository.getById(String.valueOf(partId.getId())));
+            totalPrice += partRepository.getById(String.valueOf(partId.getId())).getPrice();
+        }
 
         mechanicTf.setText(mechanic.getName());
         customerTf.setText(customer.getName());
         carTf.setText(car.getManufacturer() + " " + car.getModel());
-        durationTf.setText(Math.round(subTaskRepository.getAll().stream().mapToDouble(SubTask::getDuration).sum()) + "h");
+        //set duration of task, it is calculatet by adding the duration of the subtasks of the task
+        durationTf.setText(String.valueOf(subTaskRepository.getDurationByTaskId(taskId)));
+        usedPartsLv.setItems(parts);
 
-        totalPriceTf.setText("3424" + "€");
+        totalPriceTf.setText(String.valueOf(totalPrice));
 
         backBtn.setOnAction(event -> {
             FinishTaskId.cleanTaskSession();
