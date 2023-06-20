@@ -54,7 +54,7 @@ public class FinishTaskController {
 
         for (TaskPartMapping partId : partIds) {
             parts.add(partRepository.getById(String.valueOf(partId.getId())));
-            totalPrice += partRepository.getById(String.valueOf(partId.getId())).getPrice();
+           // totalPrice += partRepository.getById(String.valueOf(partId.getId())).getPrice();
         }
 
         mechanicTf.setText(mechanic.getName());
