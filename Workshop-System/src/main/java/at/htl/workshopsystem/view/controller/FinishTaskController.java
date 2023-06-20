@@ -92,7 +92,7 @@ public class FinishTaskController {
                 e.printStackTrace();
             }
 
-            //taskRepository.delete(taskId);
+            taskRepository.delete(taskId);
             FinishTaskId.cleanTaskSession();
             WorkshopSystem.changeScene(event,"tasks.fxml", "Tasks");
         });
