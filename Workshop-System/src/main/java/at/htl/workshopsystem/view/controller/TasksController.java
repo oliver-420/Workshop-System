@@ -1,25 +1,25 @@
 package at.htl.workshopsystem.view.controller;
 
 import at.htl.workshopsystem.WorkshopSystem;
-import at.htl.workshopsystem.controller.database.MechanicRepository;
-import at.htl.workshopsystem.controller.database.SubTaskRepository;
-import at.htl.workshopsystem.controller.database.TaskPartMappingRepository;
-import at.htl.workshopsystem.controller.database.TaskRepository;
-import at.htl.workshopsystem.model.Mechanic;
-import at.htl.workshopsystem.model.SubTask;
-import at.htl.workshopsystem.model.Task;
-import at.htl.workshopsystem.model.TaskPartMapping;
-import at.htl.workshopsystem.model.factory.CarFactory;
+import at.htl.workshopsystem.controller.database.*;
+import at.htl.workshopsystem.model.*;
 import atlantafx.base.theme.Styles;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.itextpdf.text.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.skin.ChoiceBoxSkin;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.util.List;
-import java.util.Objects;
+import java.awt.event.MouseEvent;
 
 public class TasksController {
     public javafx.scene.control.Button homeBtn;
@@ -36,11 +36,11 @@ public class TasksController {
     public TextField quantityField;
     public Button deletePartBtn;
     public Button addPartBtn;
-    public ListView taskPartMapLv;
+    public ListView<Part> lvParts;
     private ObservableList<Mechanic> mechanics = FXCollections.observableArrayList();
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
     private ObservableList<SubTask> subTasks = FXCollections.observableArrayList();
-    private ObservableList<TaskPartMapping> taskPartMappings = FXCollections.observableArrayList();
+    private ObservableList<Part> olParts = FXCollections.observableArrayList();
     private final TaskRepository taskRepository = new TaskRepository();
     private final SubTaskRepository subTaskRepository = new SubTaskRepository();
     private final MechanicRepository mechanicRepository = new MechanicRepository();
@@ -55,7 +55,14 @@ public class TasksController {
                 Styles.MEDIUM, Styles.ACCENT, Styles.BUTTON_OUTLINED
         );
 
-
+        deletePartBtn.setDisable(true);
+        addPartBtn.setDisable(true);
+        deletePartBtn.getStyleClass().addAll(
+                Styles.ROUNDED, Styles.DANGER, Styles.BUTTON_OUTLINED, Styles.MEDIUM
+        );
+        addPartBtn.getStyleClass().addAll(
+                Styles.ROUNDED, Styles.ACCENT, Styles.BUTTON_OUTLINED, Styles.MEDIUM
+        );
         tasks.addAll(taskRepository.getAll());
         lvTasks.setItems(tasks);
 
@@ -72,9 +79,63 @@ public class TasksController {
                 subTasks.addAll(subTaskRepository.getByTaskId(newValue.getId()));
                 lvSubTasks.setItems(subTasks);
 
-                finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
+                olParts.clear();
+                olParts.addAll(taskPartMappingRepository.getPartsByTaskId(newValue.getId()));
+                lvParts.setItems(olParts);
+                addPartBtn.setDisable(false);
+
+                lvParts.getSelectionModel().selectedItemProperty().addListener((observable1, oldValue1, newValue1) -> {
+                    if (newValue1 != null) {
+                        deletePartBtn.setDisable(false);
+                    }
+                });
+
+                deletePartBtn.setOnAction(event ->{
+                    taskPartMappingRepository.deleteByTaskIdAndPartId(lvTasks.getSelectionModel().getSelectedItem().getId(), lvParts.getSelectionModel().getSelectedItem().getSerialNumber());
+                    olParts.remove(lvParts.getSelectionModel().getSelectedItem());
+                });
+
+                addPartBtn.setOnAction(event -> {
+                    try {
+                        Node node = FXMLLoader.load(getClass().getResource("/at/htl/workshopsystem/" + "newPart.fxml"));
+                        Stage stage = new Stage();
+                        stage.initModality(Modality.APPLICATION_MODAL);
+                        VBox layout =new VBox ((VBox) node.lookup("#hbmain"));
+
+                        layout.setAlignment(Pos.CENTER);
+                        Scene scene = new Scene(layout, 500, 400);
+
+                        stage.setTitle("Dialog");
+                        stage.setScene(scene);
+                        stage.show();
+
+                        ListView<Part> lvParts = (ListView<Part>) layout.lookup("#lvParts");
+                        PartRepository partRepository = new PartRepository();
+                        ObservableList<Part> parts = FXCollections.observableArrayList();
+                        parts.addAll(partRepository.getAll());
+                        lvParts.setItems(parts);
+
+                        lvParts.setOnMouseClicked( event1 -> {
+                            if(lvParts.getSelectionModel().getSelectedItem() != null) {
+                                taskPartMappingRepository.insert(
+                                        lvTasks.getSelectionModel().getSelectedItem(),
+                                        lvParts.getSelectionModel().getSelectedItem(),
+                                        1,
+                                        lvParts.getSelectionModel().getSelectedItem().getPrice());
+                                WorkshopSystem.changeScene("tasks.fxml", "Tasks");
+                                stage.close();
+                            }
+                        });
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+                });
+
 
                 mechanicsDrd.getSelectionModel().select(mechanics.stream().filter(mechanic -> mechanic.getId() == newValue.getFkMechanic()).findFirst().orElse(null));
+
+                finishTaskBtn.setDisable(!subTasks.stream().allMatch(SubTask::getIsDone));
 
                 lvSubTasks.getSelectionModel().selectedItemProperty().addListener((observable1, oldValueSubTask, newValueSubTask) -> {
                     if (newValueSubTask != null) {
@@ -140,5 +201,9 @@ public class TasksController {
         task.setFkMechanic(mechanic.getId());
 
         taskRepository.update(task);
+    }
+
+    private void showAddPartDialog(){
+
     }
 }
