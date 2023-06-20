@@ -194,11 +194,11 @@ public class TasksController {
         durationTf.clear();
         subTaskRepository.update(subTask);
     }
-
     public void finishTask() {
         Task task = lvTasks.getSelectionModel().getSelectedItem();
         Mechanic mechanic = (Mechanic) mechanicsDrd.getSelectionModel().getSelectedItem();
         task.setFkMechanic(mechanic.getId());
+        FinishTaskId.getInstance(task.getId());
 
         taskRepository.update(task);
     }
