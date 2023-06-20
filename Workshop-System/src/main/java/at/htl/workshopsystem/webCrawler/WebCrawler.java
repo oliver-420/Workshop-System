@@ -58,7 +58,8 @@ public class WebCrawler {
     private static String getURL(String searchTerm) throws IOException {
         String apiUrl = "https://api.unsplash.com/search/photos";
         String query = URLEncoder.encode(searchTerm, StandardCharsets.UTF_8);
-        String searchUrl = apiUrl + "?query=" + query + "&per_page=1&client_id=" + PropertiesReader.getProperty("unsplash_api_key");
+        String searchUrl = apiUrl + "?query=" + query + "&per_page=1&client_id=" + PropertiesReader.getProperty(
+                "unsplash_api_key");
 
         URL url = new URL(searchUrl);
         InputStreamReader reader = new InputStreamReader(url.openStream());

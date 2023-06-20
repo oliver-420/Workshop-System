@@ -66,32 +66,32 @@
               </VBox>
           </content>
       </ScrollPane>
-   <HBox alignment="CENTER" layoutX="53.0" layoutY="167.0" prefHeight="27.0" prefWidth="818.0" style="-fx-background-color: #C0C0C0;" AnchorPane.leftAnchor="53.0">
+   <HBox fx:id="hbInput" id="hbInput" alignment="CENTER" layoutX="53.0" layoutY="167.0" prefHeight="27.0" prefWidth="818.0" style="-fx-background-color: #C0C0C0;" AnchorPane.leftAnchor="53.0">
       <children>
-         <TextField fx:id="nameField" prefHeight="25.0" prefWidth="170.0" promptText="Name">
+         <TextField fx:id="nameField" id="nameField" prefHeight="25.0" prefWidth="170.0" promptText="Name">
             <HBox.margin>
                <Insets left="40.0" />
             </HBox.margin>
          </TextField>
-         <TextField fx:id="manufacturerField" prefHeight="25.0" prefWidth="142.0" promptText="Manufactorer">
+         <TextField fx:id="manufacturerField" id="manufacturerField" prefHeight="25.0" prefWidth="142.0" promptText="Manufactorer">
             <HBox.margin>
                <Insets left="20.0" />
             </HBox.margin>
          </TextField>
-         <TextField fx:id="priceField" prefHeight="25.0" prefWidth="80.0" promptText="Buing Price">
+         <TextField fx:id="priceField" id="priceField" prefHeight="25.0" prefWidth="80.0" promptText="Buing Price">
             <HBox.margin>
                <Insets left="30.0" />
             </HBox.margin></TextField>
-         <TextField fx:id="upchargeField" prefHeight="25.0" prefWidth="80.0" promptText="Upcharge">
+         <TextField fx:id="upchargeField" id="upchargeField" prefHeight="25.0" prefWidth="80.0" promptText="Upcharge">
             <HBox.margin>
                <Insets left="50.0" />
             </HBox.margin>
          </TextField>
-         <TextField fx:id="quantityField" prefHeight="25.0" prefWidth="80.0" promptText="Quantity">
+         <TextField fx:id="quantityField" id="quantityField" prefHeight="25.0" prefWidth="80.0" promptText="Quantity">
             <HBox.margin>
                <Insets left="70.0" />
             </HBox.margin></TextField>
-         <Button fx:id="newPartBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="43.0" text="Add">
+         <Button fx:id="newPartBtn" id="newPartBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="43.0" text="Add">
             <HBox.margin>
                <Insets left="5.0" />
             </HBox.margin></Button>

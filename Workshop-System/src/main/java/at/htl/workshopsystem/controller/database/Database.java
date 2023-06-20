@@ -30,7 +30,7 @@ public class Database {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
             //Class.forName("oracle.jdbc.OracleDriver");
 
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@student.cloud.htl-leonding.ac.at:31521:ora19db\n", "IF200210", "oracle");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@student.cloud.htl-leonding.ac.at:31521:ora19db\n", "if200180", "oracle");
             if (conn != null) {
                 System.out.println("Connected");
                 conn.setAutoCommit(true);

@@ -142,7 +142,7 @@
                         <Insets bottom="12.0" top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="taskPartMapLv" prefHeight="483.0" prefWidth="385.0">
+                  <ListView fx:id="lvParts" prefHeight="483.0" prefWidth="385.0">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </VBox.margin></ListView>
