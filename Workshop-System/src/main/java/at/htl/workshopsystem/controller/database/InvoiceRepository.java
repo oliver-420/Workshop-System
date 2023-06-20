@@ -11,8 +11,8 @@ public class InvoiceRepository {
 
     public Invoice insert(Invoice invoice) {
         try (Connection connection = database.getConnection()) {
-            String sql = "INSERT INTO INVOICE (MECHANIC, CUSTOMER, CAR, TOTAL_DURATION, TOTAL_PRICE, ISSUE_DATE)" +
-                    " VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO INVOICE (MECHANIC, CUSTOMER, CAR, TOTAL_DURATION, TOTAL_PRICE, ISSUE_DATE, TASK_ID)" +
+                    " VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql, new String[]{"ID"});
             statement.setString(1, invoice.getMechanic());
             statement.setString(2, invoice.getCustomer());
@@ -20,6 +20,7 @@ public class InvoiceRepository {
             statement.setString(4, invoice.getTotalDuration());
             statement.setString(5, invoice.getTotalCost());
             statement.setString(6, invoice.getDate());
+            statement.setLong(7, invoice.getFkTask());
 
             int affectedRows = statement.executeUpdate();
 
@@ -43,7 +44,7 @@ public class InvoiceRepository {
 
     public void update(Invoice invoice) {
         try (Connection connection = database.getConnection()) {
-            String sql = "UPDATE INVOICE SET MECHANIC=?, CUSTOMER=?, CAR=?, TOTAL_DURATION=?, TOTAL_PRICE=?, ISSUE_DATE=? WHERE ID=?";
+            String sql = "UPDATE INVOICE SET MECHANIC=?, CUSTOMER=?, CAR=?, TOTAL_DURATION=?, TOTAL_PRICE=?, ISSUE_DATE=?, TASK_ID=? WHERE ID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, invoice.getMechanic());
             statement.setString(2, invoice.getCustomer());
@@ -51,7 +52,8 @@ public class InvoiceRepository {
             statement.setString(4, invoice.getTotalDuration());
             statement.setString(5, invoice.getTotalCost());
             statement.setString(6, invoice.getDate());
-            statement.setLong(7, invoice.getId());
+            statement.setLong(7, invoice.getFkTask());
+            statement.setLong(8, invoice.getId());
 
             if (statement.executeUpdate() == 0) {
                 throw new SQLException("Update of invoice failed, no rows affected");
@@ -91,7 +93,8 @@ public class InvoiceRepository {
                         result.getString("CUSTOMER"),
                         result.getString("CAR"),
                         result.getString("TOTAL_DURATION"),
-                        result.getString("TOTAL_PRICE")
+                        result.getString("TOTAL_PRICE"),
+                        result.getLong("TASK_ID")
                 ));
             }
         } catch (SQLException e) {
@@ -115,7 +118,33 @@ public class InvoiceRepository {
                         result.getString("CUSTOMER"),
                         result.getString("CAR"),
                         result.getString("TOTAL_DURATION"),
-                        result.getString("TOTAL_PRICE")
+                        result.getString("TOTAL_PRICE"),
+                        result.getLong("TASK_ID")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return invoice;
+    }
+
+    public Invoice getByTaskId(long id) {
+        Invoice invoice = null;
+        try (Connection connection = database.getConnection()) {
+            String sql = "SELECT * FROM INVOICE WHERE TASK_ID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, id);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                invoice = new Invoice(
+                        result.getLong("ID"),
+                        result.getString("ISSUE_DATE"),
+                        result.getString("MECHANIC"),
+                        result.getString("CUSTOMER"),
+                        result.getString("CAR"),
+                        result.getString("TOTAL_DURATION"),
+                        result.getString("TOTAL_PRICE"),
+                        result.getLong("TASK_ID")
                 );
             }
         } catch (SQLException e) {

@@ -107,12 +107,12 @@
                   </ListView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="finishTaskBtn" mnemonicParsing="false" text="Finish Task">
+                        <Button fx:id="finishTaskBtn" mnemonicParsing="false" text="Complete">
                            <HBox.margin>
                               <Insets bottom="5.0" right="5.0" />
                            </HBox.margin></Button>
-                        <Button fx:id="finishSubTaskBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Finish Subtask" />
-                        <Label prefHeight="25.0" prefWidth="65.0" text="Duration (h)">
+                        <Button fx:id="finishSubTaskBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Finish" />
+                        <Label prefHeight="25.0" prefWidth="86.0" text="Duration (h)">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin>
